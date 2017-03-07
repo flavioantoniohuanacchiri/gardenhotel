@@ -1,0 +1,40 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23/10/2016, 02:32:43 PM
+    Author     : jusernt
+*/
+
+.menu_section {margin-bottom:1px;}
+.display-inline {display: inline;}
+.display-inlineblock {display: inline-block;}
+.float-left {float: left;}
+.float-right {float: right;}
+/*
+=====
+DATATABLE
+=====
+*/
+.dataTables_processing {background:  url("../vendor/datatables/loading_bar.gif") no-repeat scroll center 38px;
+        border: 1px solid #ddd;
+        box-shadow: 2px 2px 5px #444;
+        color: #444;
+        font-size: 14px;
+        height: 80px;
+        left: 50%;
+        margin-left: -125px;
+        margin-top: -15px;
+        padding: 15px 0 30px;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        width: 250px;
+        z-index: 9999;
+}
+h1 {font-size: 28px; font-weight: 900;}
+.nav-md .container.body .col-md-3.left_col{z-index: 1000;}
+.navbar.nav_title {border-bottom: solid 1px #EDEDED}
+.bootstrap-select.btn-group .dropdown-menu li a span.text{color:#000;}

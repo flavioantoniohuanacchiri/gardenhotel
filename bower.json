@@ -1,0 +1,49 @@
+{
+  "name": "laravel-gentelella",
+<<<<<<< HEAD
+  "description": "The Laravel 5.3 framework with Gentelella template",
+  "keywords": [
+    "framework",
+    "laravel",
+    "laravel 5.3",
+=======
+<<<<<<< HEAD
+  "description": "The Laravel 5.3 framework with Gentelella template",
+  "keywords": [
+    "framework",
+    "laravel",
+    "laravel 5.3",
+=======
+  "description": "The Laravel 5.2 framework with Gentelella template",
+  "keywords": [
+    "framework",
+    "laravel",
+>>>>>>> 7a86187f3b98afc795cd27ba7992f98445bfb464
+>>>>>>> b02d7bad9283ae0792f52a7ad08631664b5a2c16
+    "gentelella",
+    "laravel-gentelella",
+    "template",
+    "bootstrap",
+    "responsive",
+    "admin",
+    "php",
+    "html",
+    "css"
+  ],
+  "main": "",
+  "authors": [
+    "FlorientR"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/FlorientR/laravel-gentelella",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "gentelella": "^1.3.0"
+  }
+}
