@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>DBROT GRANDA EIRL | Sistema de Gestion de Avicolas </title>
+    <title>JMA SOLUCIONES | Sistema de Tracking </title>
     
     <!-- Bootstrap -->
     <link href="{{ asset("css/bootstrap.min.css") }}" rel="stylesheet">
@@ -28,7 +28,7 @@
                 <form method="post" action="{{ url('/login') }}">
                     {!! csrf_field() !!}
                     
-                    <h1>Login Form</h1>
+                    <h1>Ingresa</h1>
                     <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">
                         <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -66,7 +66,7 @@
                         
                         <div>
                             <!-- <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1> -->
-                            <p>©{{date('Y')}} Todos los Derechos Reservados.<br>DBROT GRANDA E.I.R.L</p>
+                            <p>©{{date('Y')}} Todos los Derechos Reservados.<br>JMA Soluciones</p>
                         </div>
                     </div>
                 </form>
