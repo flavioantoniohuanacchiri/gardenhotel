@@ -18,19 +18,22 @@ if (!Session::has("sistema.modulos")) {
 
     foreach ($perfiles as $key => $value) {
         $modulosPerfil = App\Perfil::with("modulos")->find($value->id_perfil);
+
         foreach ($modulosPerfil->modulos as $key2 => $value2) {
                 //echo $value2->visible;
             if (isset($modulos[$value2->parent])) {
-                if ($value2->visible == 1 || $value2->visible == "1") {
+                if ($value2->visible == 1 && $value2->estado > 0) {
                         $modulos[$value2->parent]["cuerpo"][] = $value2;
                 }
             }
         }
     }
+    //dd($modulos);
     Session::put("sistema.modulos", $modulos);
 } else {
     $modulos = Session::get("sistema.modulos");
 }
+//dd($modulos);
 
     //print_r($modulos);
 
@@ -74,7 +77,6 @@ if (!Session::has("sistema.modulos")) {
                                 <ul class="nav child_menu">
                                     @foreach ($modulo['cuerpo'] as $submodulo)
                                         <li><a href="{{ url($submodulo['url']) }}">{{ $submodulo['nombre']}}</a></li>
-                                        <!-- <li><a href="{{ route('ventadetalle.index') }}">{{ trans('despacho_distribucion.distribucion') }}</a></li> -->
                                     @endforeach
                                 </ul>
                             </li>
