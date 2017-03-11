@@ -20,3 +20,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::resource('dispositivo', 'Master\DispositivoController');
 });
 Route::resource('prueba', 'PruebaController');
+Route::get("mapa",function(){
+	return view("mapas.tracer");
+});
