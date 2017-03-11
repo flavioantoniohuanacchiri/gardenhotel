@@ -51,7 +51,8 @@ class GrupoDispositivoController extends Controller
      */
     public function create()
     {
-        return view('master.perfil.create');
+        $grupodispositivo = new GrupoDispositivo;
+        return view('master.grupodispositivo.create', ["grupo" => $grupodispositivo]);
     }
 
     /**
@@ -62,39 +63,20 @@ class GrupoDispositivoController extends Controller
      */
     public function store(Request $request)
     {
-        $model = new Perfil;
-        $row= $request->all();//print_r($row);exit;
+        $objgrupo = new GrupoDispositivo;
+        $grupo = $request["grupo"];
 
-        //$perfil = $row['perfil'];
-        $modulo = $row['modulo'];
+        $objgrupo->nombre = $grupo["nombre"];
+        $objgrupo->descripcion = $grupo["descripcion"];
+        $objgrupo->estado = $grupo["estado"];
 
         try {
-            \DB::beginTransaction();
-            $moduloData = (array) json_decode($modulo['data']);
-
-            $validator = \Validator::make($row, $model->rules());
-            if ($validator->fails()) {
-                return view('master.perfil.create')
-                    ->withErrors($validator);
-            }
-            $oRow = Perfil::create($row);
-
-            // CREATE: perfil_modulo
-            foreach($moduloData as $val) {
-                PerfilModulo::create([
-                    'id_perfil' => $oRow->id,
-                    'id_modulo' => $val->id,
-                ]);
-            }
-
-            \DB::commit();
-        } catch (Exception $ex) {
-            \DB::rollback();
-            print_r($ex);
-            exit;
+            $objgrupo->save();
+        } catch (Exception $e) {
+            
         }
 
-        return redirect('perfil');
+        return redirect('grupodispositivo');
     }
 
     /**
@@ -117,8 +99,8 @@ class GrupoDispositivoController extends Controller
      */
     public function edit($id)
     {
-        $row=Perfil::with('modulos')->find($id);
-        return view('master.perfil.edit',compact('row'));
+        $grupodispositivo = GrupoDispositivo::find($id);
+        return view('master.grupodispositivo.edit', ["grupo" => $grupodispositivo]);
     }
 
     /**
@@ -130,56 +112,20 @@ class GrupoDispositivoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $updated=$request->all();
-        //$user = $updated['user'];
-        $modulo = $updated['modulo'];
-        
+        $objgrupo = GrupoDispositivo::find($id);
+        $grupo = $request["grupo"];
+
+        $objgrupo->nombre = $grupo["nombre"];
+        $objgrupo->descripcion = $grupo["descripcion"];
+        $objgrupo->estado = $grupo["estado"];
+
         try {
-            \DB::beginTransaction();
-            $moduloData = (array) json_decode($modulo['data']);
-
-            $row=Perfil::find($id);
-
-            $validator = \Validator::make($updated, $row->rules($id));
-            if ($validator->fails()) {
-                return view('master.perfil.edit', compact('row'))
-                    ->withErrors($validator);
-            }
-            $oPerfils = $row->update($updated);
-
-            // DELETE: perfil_modulo
-            $dPerfils = PerfilModulo::where('id_perfil', $id)->delete();
-            // CREATE: perfil_modulo
-            foreach($moduloData as $val) {
-                PerfilModulo::create([
-                    'id_modulo' => $val->id,
-                    'id_perfil' => $id,
-                ]);
-            }
-
-            \DB::commit();
-        } catch (Exception $ex) {
-            \DB::rollback();
-            print_r($ex);
-            exit;
+            $objgrupo->save();
+        } catch (Exception $e) {
+            
         }
 
-        return redirect('perfil');
-
-
-
-
-
-        $updated=$request->all();
-        $row=Perfil::find($id);
-        $validator = \Validator::make($updated, $row->rules($id));
-        if ($validator->fails()) {
-            return view('master.perfil.edit', compact('row'))
-                ->withErrors($validator);
-        }
-        
-        $row->update($updated);
-        return redirect('perfil');
+        return redirect('grupodispositivo');
     }
 
     /**
@@ -190,7 +136,7 @@ class GrupoDispositivoController extends Controller
      */
     public function destroy($id)
     {
-        Perfil::find($id)->delete();
-        return redirect('perfil');
+        GrupoDispositivo::find($id)->delete();
+        return redirect('grupodispositivo');
     }
 }

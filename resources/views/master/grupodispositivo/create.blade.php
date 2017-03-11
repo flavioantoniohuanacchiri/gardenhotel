@@ -1,7 +1,7 @@
 @extends('layouts.blank')
 
 @push('scripts')
-@include('master/banco/js')
+@include('master/grupodispositivo/js')
 @endpush
 
 @section('main_container')
@@ -9,20 +9,20 @@
 <!-- page content -->
 <div class="right_col" role="main">
 
-        <h1 class="text-uppercase">{{ trans('master.create module', ['module' => 'banco']) }}</h1>
+        <h1 class="text-uppercase">{{ trans('master.create module', ['module' => 'grupodispositivo']) }}</h1>
 
         <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                                 <div class="x_content">
 
-                                        {!! Form::open(['url' => route('banco.store'), 'class'=> 'form-horizontal']) !!}
+                                        {!! Form::open(['url' => route('grupodispositivo.store'), 'class'=> 'form-horizontal']) !!}
                                 
-                                        @include('master/banco/_form')
+                                        @include('master/grupodispositivo/_form')
                                         
                                         <div class="form-group">
                                                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                                        {!! link_to('banco', trans('master.cancel'), ['class' => 'btn btn-primary']) !!}
+                                                        {!! link_to('grupodispositivo', trans('master.cancel'), ['class' => 'btn btn-primary']) !!}
                                                         {!! Form::submit(trans('master.save'),['class' => 'btn btn-info'])  !!}
                                                 </div>
                                         </div>

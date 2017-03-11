@@ -56,6 +56,8 @@ return [
     'name' => 'Avicola y afines!',
     //
     'welcome' => 'Bienvenido',
-    'zonal' => 'Zonal'
+    'zonal' => 'Zonal',
+    'grupodispositivo' => 'Grupo de Dispositivos',
+    'dispositivo' => 'Dispositivos'
 
 ];

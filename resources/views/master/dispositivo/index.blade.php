@@ -32,8 +32,8 @@
                                                 <thead>
                                                         <tr>
                                                                 <th>Id</th>
-                                                                <th>Codigo</th>
-                                                                <th>Descripcion</th>
+                                                                <th>Código</th>
+                                                                <th>Grupo</th>
                                                                 <th>Estado</th>
                                                                 <th>Updated At</th>
                                                                 <th>Action</th>
