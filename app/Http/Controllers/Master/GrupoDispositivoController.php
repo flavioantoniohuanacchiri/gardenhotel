@@ -11,6 +11,7 @@ use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\Helper;
 use Illuminate\Support\Facades\DB;
+use App\ObjectViews\Combo;
 
 class GrupoDispositivoController extends Controller
 {
@@ -51,8 +52,9 @@ class GrupoDispositivoController extends Controller
      */
     public function create()
     {
+        $grupos = Combo::grupoDispositivo();
         $grupodispositivo = new GrupoDispositivo;
-        return view('master.grupodispositivo.create', ["grupo" => $grupodispositivo]);
+        return view('master.grupodispositivo.create', ["grupo" => $grupodispositivo, 'grupos' => $grupos]);
     }
 
     /**

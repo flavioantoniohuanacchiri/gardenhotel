@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Dispositivo;
+use App\GrupoDispositivo;
 use App\DispositivoImagen;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,7 @@ use App\Helpers\Helper;
 use Illuminate\Support\Facades\DB;
 use Image;
 use File;
+use App\ObjectViews\Combo;
 
 class DispositivoController extends Controller
 {
@@ -55,8 +57,9 @@ class DispositivoController extends Controller
      */
     public function create()
     {
+        $grupos = Combo::grupoDispositivo();
         $dispositivo = new Dispositivo;
-        return view('master.dispositivo.create', ["dispositivo" => $dispositivo]);
+        return view('master.dispositivo.create', ["dispositivo" => $dispositivo, 'grupos' => $grupos]);
     }
 
     /**
@@ -67,26 +70,27 @@ class DispositivoController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->file());
         $dispositivo = $request["dispositivo"];
         $objdispositivo = new Dispositivo;
         $objdispositivo->codigo =  $dispositivo["codigo"];
         $objdispositivo->descripcion =  $dispositivo["descripcion"];
         $objdispositivo->estado =  $dispositivo["estado"];
         $objdispositivo->save();
-        $pathImagenesDispositivo = "imgs/dispositivos/".$dispositivo["codigo"]."/";
+        //$pathImagenesDispositivo = public_path()."imgs/dispositivos/".$dispositivo["codigo"]."/";
+        $pathImagenesDispositivo = "imgs/dispositivos/";
         
+        if (!file_exists($pathImagenesDispositivo)) {
+                File::makeDirectory($pathImagenesDispositivo, 0775, true, true);
+            }
         if ($request->file())
         {
-            if (!file_exists($pathImagenesDispositivo)) {
-                File::makeDirectory($pathImagenesDispositivo, $mode = 0775, true, true);
-            }
+            
             $image = $request->file('imagen');
             $filename  = time() . '.' . $image->getClientOriginalExtension();
 
             $path = public_path($pathImagenesDispositivo.$filename);
  
-            Image::make($image->getRealPath())->resize(16, 16)->save($path);
+            Image::make($image->getRealPath())->resize(64, 64)->save($path);
             $objimagen = new DispositivoImagen;
             $objimagen->id_dispositivo = $objdispositivo->id;
             $objimagen->url = $filename;
@@ -116,8 +120,10 @@ class DispositivoController extends Controller
      */
     public function edit($id)
     {
-        $grupodispositivo = GrupoDispositivo::find($id);
-        return view('master.grupodispositivo.edit', ["grupo" => $grupodispositivo]);
+        $grupos = Combo::grupoDispositivo();
+        $dispositivo = Dispositivo::find($id);
+        $imagenesdispositivo = DispositivoImagen::where(["id_dispositivo" => $id])->get();
+        return view('master.dispositivo.edit', ["grupos" => $grupos, "imagenes" => $imagenesdispositivo, "dispositivo" => $dispositivo]);
     }
 
     /**
@@ -129,20 +135,45 @@ class DispositivoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $objgrupo = GrupoDispositivo::find($id);
-        $grupo = $request["grupo"];
+        $objdispositivo= Dispositivo::find($id);
+        $dispositivo = $request["dispositivo"];
 
-        $objgrupo->nombre = $grupo["nombre"];
-        $objgrupo->descripcion = $grupo["descripcion"];
-        $objgrupo->estado = $grupo["estado"];
+        $objdispositivo->codigo = $dispositivo["codigo"];
+        $objdispositivo->descripcion = $dispositivo["descripcion"];
+        $objdispositivo->estado = $dispositivo["estado"];
+         $pathImagenesDispositivo = "imgs/dispositivos/";
 
         try {
-            $objgrupo->save();
+            $imagenesdispositivo = DispositivoImagen::where(["id_dispositivo" => $id])->get();
+            //eliminando imagenes
+            foreach ($imagenesdispositivo as $key => $value) {
+                $pathImagenesDispositivo = "imgs/dispositivos/";
+                $rutaimagen = $pathImagenesDispositivo."/".$value->url;
+                $objimagendispositivo = DispositivoImagen::find($value->id);
+                $objimagendispositivo->delete();
+                File::delete($rutaimagen);
+            }
+
+            if ($request->file())
+            {
+                
+                $image = $request->file('imagen');
+                $filename  = time() . '.' . $image->getClientOriginalExtension();
+
+                $path = public_path($pathImagenesDispositivo.$filename);
+     
+                Image::make($image->getRealPath())->resize(64, 64)->save($path);
+                $objimagen = new DispositivoImagen;
+                $objimagen->id_dispositivo = $objdispositivo->id;
+                $objimagen->url = $filename;
+                $objimagen->save();
+            }
+            $objdispositivo->save();
         } catch (Exception $e) {
             
         }
 
-        return redirect('grupodispositivo');
+        return redirect('dispositivo');
     }
 
     /**

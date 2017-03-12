@@ -1,7 +1,7 @@
 @extends('layouts.blank')
 
 @push('scripts')
-@include('master/dispositivo/js')
+@include('master/grupodispositivo/js')
 @endpush
 
 @section('main_container')
@@ -9,13 +9,13 @@
 <!-- page content -->
 <div class="right_col" role="main">
 
-        <h1 class="">{{ trans('master.dispositivo') }}</h1>
+        <h1 class="">{{ trans('master.grupodispositivo') }}</h1>
 
         <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                                 <div class="x_title">
-                                        <a href="{{route('dispositivo.create')}}" class="btn btn-primary">{{trans('master.create')}}</a>
+                                        <a href="{{route('grupodispositivo.create')}}" class="btn btn-primary">{{trans('master.create')}}</a>
                                         <ul class="nav navbar-right panel_toolbox">
                                                 <li>
                                                         <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -28,7 +28,7 @@
                                 </div>
                                 <div class="x_content">
 
-                                        <table class="table table-striped table-bordered dt-responsive nowrap" id="dispositivo-table"  cellspacing="0" width="100%">
+                                        <table class="table table-striped table-bordered dt-responsive nowrap" id="grupodispositivo-table"  cellspacing="0" width="100%">
                                                 <thead>
                                                         <tr>
                                                                 <th>Id</th>

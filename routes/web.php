@@ -23,3 +23,6 @@ Route::resource('prueba', 'PruebaController');
 Route::get("mapa",function(){
 	return view("mapas.tracer");
 });
+Route::get('tracermapa', 'Tracer\MapaController@getTracer');
+Route::get('tracerubicacion', 'Tracer\MapaController@setUbicacion');
+Route::get('ubicaciones', 'Tracer\MapaController@getUbicaciones');

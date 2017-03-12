@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset=utf-8>
+<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
+<title>¡Seguimiento en directo!</title>
+
+<script src="http://openlayers.org/api/OpenLayers.js"></script>
+<script src="{{ asset("js/prototype.js") }}"></script>
+<script src="{{ asset("js/common.js") }}"></script>
+<script>
+	var map, zoom=13, team1Marker, team1Popup, team2Marker, team2Popup, team3Marker, team3Popup,
+		team4Marker, team4Popup, team5Marker, team5Popup, team6Marker, team6Popup,
+		team7Marker, team7Popup, goalMarker;
+	var teamData = [];
+	var teamMarker = [];
+	var teamPopup = [];
+	var icon = [];
+	function init()
+	{
+		screen = new Ajax.PeriodicalUpdater('', 'ubicaciones', { method: 'get', frequency: 5.0,onSuccess: function(t) {
+			var data = t.responseText.evalJSON();
+			
+			for(var i = 0; i < data.length; i++) {
+				//console.log(data[i]);
+				temporaldata = data[i];
+				teamData[i] = {};
+				teamData[i].latitud = temporaldata.latitud;
+				teamData[i].longitud = temporaldata.longitud;
+				teamData[i].imagen = temporaldata.img;
+			}
+			console.log(teamData);
+			
+			if (typeof(map) === "undefined") {
+				initalizeMap();
+			}
+			
+			updateMarkers();
+		}});
+	}
+	
+	function initalizeMap() {
+		map = new OpenLayers.Map ("mapcanvas", {
+            controls:[
+                new OpenLayers.Control.Navigation(),
+                new OpenLayers.Control.PanZoomBar(),
+                new OpenLayers.Control.LayerSwitcher(),
+                new OpenLayers.Control.Attribution()],
+            maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,20037508.34,20037508.34),
+                maxResolution: 156543.0399,
+            numZoomLevels: 100000,
+            units: 'm',
+            projection: new OpenLayers.Projection("EPSG:900913"),
+            displayProjection: new OpenLayers.Projection("EPSG:4326")
+        } );
+			
+		layerMapnik = new OpenLayers.Layer.OSM();
+        map.addLayer(layerMapnik);
+        layerMarkers = new OpenLayers.Layer.Markers("Markers");
+        map.addLayer(layerMarkers);
+
+		
+       var initLonLat = new OpenLayers.LonLat(-77.0447, -12.0344).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+       map.setCenter (initLonLat, zoom);
+
+       var goalLonLat = new OpenLayers.LonLat(-1.985959, 43.320920).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+		
+        var size = new OpenLayers.Size(21,25);
+		var size2 = new OpenLayers.Size(31,35);
+        var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
+		
+		var goal = new OpenLayers.Icon('http://www.saulcintero.com/gpstracker/img/chequered_flag.png',size2,offset);
+       for(var i = 0; i < teamData.length; i++) {
+	       	if (teamData[i].longitud!=null && teamData[i].latitud!=null) {
+	       		console.log(teamData[i]);
+	        	var iconoimagen = new OpenLayers.Icon(teamData[i].imagen,size,offset);
+	        	console.log(iconoimagen);
+	        	var team1LonLat = new OpenLayers.LonLat(teamData[i].longitud, teamData[i].latitud).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+	        	var team1Marker =new OpenLayers.Marker(team1LonLat,iconoimagen);
+	        	team1Popup = new OpenLayers.Popup("Equipo1",
+	                        team1LonLat,
+	                        new OpenLayers.Size(145,52),
+	                        "<font size=-2>Equipo "+i+"<br>Lon: "+Math.round(teamData[i].longitud * 10000) / 10000+", Lat: "+Math.round(teamData[i].latitud * 10000) / 10000);
+	        	map.addPopup(team1Popup);
+	        	team1Popup.hide();
+				team1Popup.opacity=0.5;
+				teamPopup[i] = team1Popup;
+				team1Marker.events.register('mouseover', team1Marker, function (evt) { team1Popup.toggle();OpenLayers.Event.stop (evt); } );
+				teamMarker[i] = team1Marker;
+				console.log(team1Marker);
+				layerMarkers.addMarker(team1Marker);
+	       	}
+        	
+        }
+		
+		goalMarker =new OpenLayers.Marker(goalLonLat,goal);
+		layerMarkers.addMarker(goalMarker);
+	}
+
+	function updateMarkers(){
+		console.log(teamData);
+		for(var i = 0; i < teamData.length; i++) {
+			var newPx1 = map.getLayerPxFromViewPortPx(map.getPixelFromLonLat(new OpenLayers.LonLat(teamData[i].longitud, teamData[i].latitud).transform(map.displayProjection, map.projection)));
+		teamMarker[i].moveTo(newPx1);
+		teamPopup[i].moveTo(newPx1);
+		teamPopup[i].setContentHTML("<font size=-2>Equipo "+i+"<br>Lon: "+Math.round(teamData[i].longitud * 10000) / 10000+", Lat: "+Math.round(teamData[i].latitud * 10000) / 10000);
+		}
+	}
+</script>
+</head>
+<body onLoad="init()">
+	<div id="mapcanvas" style="width: 100%; height: 100%; position:fixed" />
+</body>
+</html>
