@@ -1,7 +1,8 @@
 @extends('layouts.blank')
 
-@push('scripts')
-@include('master/dispositivo/js')
+@push('stylesheets')
+<link href="{{ asset("css/datepicker.css") }}" rel="stylesheet">
+<link href="{{ asset("css/sweetalert2.min.css") }}" rel="stylesheet">
 @endpush
 
 @section('main_container')
@@ -15,14 +16,12 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                                 <div class="x_title">
-                                        <a href="{{route('dispositivo.create')}}" class="btn btn-primary">{{trans('master.create')}}</a>
+                                    @include('master/dispositivo/_form_filtro')
+                                        
                                         <ul class="nav navbar-right panel_toolbox">
-                                                <li>
-                                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                </li>
-                                                <li>
-                                                        <a class="close-link"><i class="fa fa-close"></i></a>
-                                                </li>
+                                             <li>
+                                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                              </li>
                                         </ul>
                                         <div class="clearfix"></div>
                                 </div>
@@ -48,6 +47,15 @@
 
 </div>
 <!-- /page content -->
-
+@include('master/dispositivo/_form_detalle')
 @include('includes/footer')
 @endsection
+@push('scripts')
+    <script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.1/jquery.xdomainrequest.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="{{ asset("js/bootstrap-datepicker.js") }}"></script>
+    <script src="{{ asset("js/sweetalert2.min.js") }}"></script>
+    <script src="{{ asset("js/bootstrap-select.min.js") }}"></script>
+    <script src="{{ asset("js/utils.js") }}"></script>
+    <script src="{{ asset("js/dispositivo.js") }}"></script>
+@endpush

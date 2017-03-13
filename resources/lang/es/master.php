@@ -53,7 +53,7 @@ return [
     'tiponotaabono' => 'Tipo Nota Abono',
     //
     'system' => 'Sistema',
-    'name' => 'Avicola y afines!',
+    'name' => 'Tracer de Vehiculos',
     //
     'welcome' => 'Bienvenido',
     'zonal' => 'Zonal',

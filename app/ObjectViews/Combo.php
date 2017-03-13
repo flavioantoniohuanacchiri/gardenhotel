@@ -8,10 +8,17 @@ use Session;
 class Combo {
 	public static function grupoDispositivo()
 	{
-		$grupos = GrupoDispositivo::all();
 		$data = [];
-		foreach ($grupos as $key => $value) {
-			$data[$value->id] = $value->nombre;
+		$data[""] = "Todos";
+		if (!Session::has("sistema.grupodispositivo")) {
+			$grupos = GrupoDispositivo::all();
+			
+			foreach ($grupos as $key => $value) {
+				$data[$value->id] = $value->nombre;
+			}
+			Session::put("sistema.grupodispositivo", $data);
+		} else {
+			$data = Session::get("sistema.grupodispositivo");
 		}
 		return $data;
 	}
