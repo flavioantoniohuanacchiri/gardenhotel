@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Dispositivo;
 use App\DispositivoImagen;
+use App\GrupoDispositivo;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\Helper;
@@ -39,6 +40,7 @@ class MapaController
 
 		$dispositivo =Dispositivo::where(["codigo" => $codigo, "estado" => 1])->first();
 		if (!is_null($dispositivo)) {
+			if(!is_null($longitud) && !is_null($latitud)) {
 			$dataupdate = ["longitud" => $longitud, "latitud" => $latitud, "hora" => date("Y-m-d H:i:s")];
 			$rutaubicacion =$folderLocalizaciones."/".$codigo.".txt";
 			if(File::exists($rutaubicacion)) {
@@ -70,40 +72,49 @@ class MapaController
 				}
 			}
 			File::put($rutaubicacion,json_encode($dataupdate));
+			}
+
 		}
 	}
 
-	public function getUbicaciones()
-	{
-		$folderLocalizaciones = public_path('/localizaciones');
-		$folderImagenes =public_path("imgs/dispositivos");
-		$urlImagenes = URL::to('/imgs/dispositivos');
-		$dispositivos = Dispositivo::where(["estado" => 1])->whereRaw("deleted_at IS NULL")->get();
-		$data = [];
-		foreach ($dispositivos as $key => $value) {
-			$urlfile = $folderLocalizaciones."/".$value->codigo.".txt";
-			if (File::exists($urlfile)) {
-				$urlImagenes = URL::to("/imgs/dispositivos/".$value->codigo);
-				$datafile = File::get($urlfile);
-				$imagen = DispositivoImagen::where(["id_dispositivo" => $value->id])->whereRaw("deleted_at IS NULL")->first();
-				$datafile = json_decode($datafile, true);
-				if (!is_null($imagen)) {
-					if ($datafile["direccion"] !="") {
-						$imagenexplode = explode(".", $imagen->url);
-						$datafile["img"] = $urlImagenes."/".$imagenexplode[0]."_".$datafile["direccion"].".".$imagenexplode[1];
+    public function getUbicaciones()
+    {
+        $folderLocalizaciones = public_path('/localizaciones');
+        $folderImagenes =public_path("imgs/dispositivos");
+        $urlImagenes = URL::to('/imgs/dispositivos');
+        $grupos = GrupoDispositivo::where(["estado" => 1])->whereRaw("deleted_at IS NULL")->get();
+        $data = [];
+        foreach ($grupos as $key => $value) {
+            $dispositivos = Dispositivo::where(["estado" => 1, "id_grupo" => $value->id])
+                ->whereRaw("deleted_at IS NULL")
+                ->get();
+
+			foreach ($dispositivos as $key2 => $value2) {
+				$urlfile = $folderLocalizaciones."/".$value2->codigo.".txt";
+				if (File::exists($urlfile)) {
+					$urlImagenes = URL::to("/imgs/dispositivos/".$value2->codigo);
+					$datafile = File::get($urlfile);
+					$imagen = DispositivoImagen::where(["id_dispositivo" => $value2->id])->whereRaw("deleted_at IS NULL")->first();
+					$datafile = json_decode($datafile, true);
+					if (!is_null($imagen)) {
+						if ($datafile["direccion"] !="") {
+							$imagenexplode = explode(".", $imagen->url);
+							$datafile["img"] = $urlImagenes."/".$imagenexplode[0]."_".$datafile["direccion"].".".$imagenexplode[1];
+						} else {
+							$datafile["img"] = $urlImagenes."/".$imagen->url;
+						}
+						
 					} else {
-						$datafile["img"] = $urlImagenes."/".$imagen->url;
+						$datafile["img"] = "";
 					}
+					$datafile["codigo"] = $value2->codigo;
 					
-				} else {
-					$datafile["img"] = "";
+					$data[$value2->codigo] = $datafile;
 				}
-				$datafile["codigo"] = $value->codigo;
 				
-				$data[$value->codigo] = $datafile;
 			}
-			
 		}
+
 
 		return response($data);
 	}

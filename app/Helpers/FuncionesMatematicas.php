@@ -33,6 +33,7 @@ class FuncionesMatematicas
 	{
 		$direccion = "";
 		$diflatitud = $puntosLatitud[0] -  $puntosLatitud[1];
+		$direcciones = ["N" => -90, "S" => 90, "O2230N" => -22.5, "045N" => -45, "N2230O" => -77.5, "N2230E" => -112.5, "N45E" => -135, "E2230N" => 22.5, "E" => 180, "S2230E" => 112.5, "S45E" => 135, "E2230S" => 157.5];
 		//diferencia de distancias entre latitudes
 		if ($diflatitud > 0) {
 			// me voy al sur
@@ -49,7 +50,7 @@ class FuncionesMatematicas
 				if ($diflongitud < 0.000090) {
 					$direccion = "S";
 				} else {
-					$direccion = "O";
+					$direccion = "O2230N";
 				}
 			}
 
@@ -68,14 +69,14 @@ class FuncionesMatematicas
 				if ($diflongitud < 0.00090) {
 					$direccion = "N";
 				} else {
-					$direccion = "O";
+					$direccion = "O2230N";
 				}
 			}
 		} else {
 			$diflongitud = $puntosLongitud[0] - $puntosLongitud[1];
 			if ($diflongitud <=0) {
 				if ($diflongitud > -0.00090) {
-					$direccion = "O";
+					$direccion = "O2230N";
 				} else {
 					$direccion = "E";
 				}
@@ -84,7 +85,7 @@ class FuncionesMatematicas
 				if ($diflongitud < 0.00090) {
 					$direccion = "E";
 				} else {
-					$direccion = "O";
+					$direccion = "O2230N";
 				}
 			}
 		}
