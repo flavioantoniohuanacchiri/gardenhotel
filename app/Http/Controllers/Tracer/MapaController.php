@@ -107,6 +107,7 @@ class MapaController
 					} else {
 						$datafile["img"] = "";
 					}
+					$datafile["descripcion"] = $value2->descripcion;
 					$datafile["codigo"] = $value2->codigo;
 					
 					$data[$value2->codigo] = $datafile;
