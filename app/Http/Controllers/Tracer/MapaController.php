@@ -65,6 +65,12 @@ class MapaController
 					$dataupdate["diflatitud"] = $angulo["diflatitud"];
 					$dataupdate["diflongitud"] = $angulo["diflongitud"];
 					$dataupdate["estado"] = "Movimiento";
+
+					$rumbo = FM::rumbo($puntoInicio, $puntoFin);
+					$dataupdate["rumbo"] = $rumbo;
+
+					$icono = FM::getIconoRumbo($puntosLatitud, $puntosLongitud, $rumbo);
+					$dataupdate["icono"] = $icono;
 				}
 				$dataupdate["velocidad"] = 0;
 				if (isset($dataupdate["distanciarecorrida"])) {

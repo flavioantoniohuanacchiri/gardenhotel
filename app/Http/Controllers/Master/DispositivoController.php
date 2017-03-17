@@ -78,14 +78,18 @@ class DispositivoController extends Controller
             $iddispositivo = $request["iddispositivo"];
         }
         if ($iddispositivo == 0) {
-           $obj = Dispositivo::where("codigo", "=", $dispositivo["codigo"])->first();
+            $obj = Dispositivo::where(
+                "codigo",
+                "=",
+                $dispositivo["codigo"]
+            )->first();
             if (!is_null($obj)) {
                 return response(["rst" => 2, "msj" => "Código ya existe!!!"]);
             }
 
-            if(count($request->file("imagen")) == 0) {
+            if (count($request->file("imagen")) == 0) {
                 return response(["rst" => 2, "msj" => "Debe elegir la Imagen!!!"]);
-            } 
+            }
         }
         try {
             if ($iddispositivo == 0) {
@@ -105,14 +109,13 @@ class DispositivoController extends Controller
             if (!file_exists($pathImagenesDispositivo)) {
                 File::makeDirectory($pathImagenesDispositivo, 0777, true, true);
             }
-            if ($request->file())
-            {
-                $direcciones = ["N" => -90, "S" => 90, "O2230N" => -22.5, "045N" => -45, "N2230O" => -77.5, "N2230E" => -112.5, "N45E" => -135, "E2230N" => 22.5, "E" => 180, "S2230E" => 112.5, "S45E" => 135, "E2230S" => 157.5];
+            if ($request->file()) {
+                $direcciones = ["N" => -90, "S" => 90, "O2230N" => -22.5, "045N" => -45, "N2230O" => -77.5, "N2230E" => -112.5, "N45E" => -135, "E2230N" => 22.5, "E" => 180, "S2230E" => 112.5, "S45E" => 135, "E2230S" => 157.5, "O" => 0];
                 $image = $request->file('imagen');
                 //dd($request->file('imagen')[0]);
                 $time = time();
                 $filename  = $time .'.' . $image->getClientOriginalExtension();
-                $path  = public_path($pathImagenesDispositivo.$filename);  
+                $path = public_path($pathImagenesDispositivo.$filename);
                 Image::make($image->getRealPath())->resize(64, 64)->save($path);
 
                 if ($iddispositivo == 0) {
