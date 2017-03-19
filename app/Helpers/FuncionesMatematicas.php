@@ -39,99 +39,34 @@ class FuncionesMatematicas
 
         return $rumbo;
     }
-    public static function getIconoRumbo($puntosLatitud = [], $puntosLongitud = [], $rumbo = 0)
+    public static function getIconoRumbo($rumbo = 0)
     {
-        $anguloGiro = $rumbo*180/pi();
-        $icono = "";
-        if ($puntosLatitud[0] === $puntosLatitud[1]) {
-            return $icono = "_E";
-        }
-
-        if ($puntosLongitud[0] === $puntosLongitud[1]) {
-            return $icono = "_S";
-        }
-
-        if ($anguloGiro > 0) {
-            // hacia el estes
-            if ($anguloGiro <= 22.5) {
-                $icono = "_O2230N";
-            } else if ($anguloGiro > 22.5 && $anguloGiro <=45) {
-                $icono = "_O45N";
-            } else if ($anguloGiro > 45 && $anguloGiro <= 77.5) {
-                $icono = "_O7730O";
-            } else if ($anguloGiro > 77.5 && $anguloGiro <= 90) {
-                $icono = "_N";
-            } else if ($anguloGiro > 90 && $anguloGiro <= 112.5) {
-                $icono = "_N2230E";
-            } else if ($anguloGiro > 112.5 && $anguloGiro <= 135) {
-                $icono = "_N45E";
-            } else if ($anguloGiro > 135 && $anguloGiro <= 157.5) {
-                $icono = "_N7730E";
-            } else if ($anguloGiro > 157.5 && $anguloGiro <= 180) {
-                $icono = "_E";
-            } else if ($anguloGiro > 180 && $anguloGiro <= 202.5) {
-                $icono = "_E2230S";
-            } else if ($anguloGiro > 202.5 && $anguloGiro <= 225) {
-                $icono = "_E45S";
-            } else if ($anguloGiro > 225 && $anguloGiro <= 247.5) {
-                $icono = "_E7730S";
-            } else if ($anguloGiro > 247.5 && $anguloGiro <= 270) {
-                $icono = "_S";
-            } else if ($anguloGiro > 270 && $anguloGiro <= 292.5) {
-                $icono = "_S2230O";
-            } else if ($anguloGiro > 292.5 && $anguloGiro <= 315) {
-                $icono = "_S45O";
-            } else if ($anguloGiro > 315 && $anguloGiro <= 337.5) {
-                $icono = "_S7730O";
-            } else if ($anguloGiro > 337.5 && $anguloGiro <= 360) {
-                $icono = "_O";
-            }
-        }
-
+        $anguloGiro = (int)($rumbo*180/pi());
+        //dd($anguloGiro);
         if ($anguloGiro < 0) {
-            // hacia el oeste
-            if ($anguloGiro >= -22.5) {
-                $icono = "_S7730O";
-            } else if ($anguloGiro < -22.5 && $anguloGiro >=-45) {
-                $icono = "_S45O";
-            } else if ($anguloGiro < -45 && $anguloGiro >= -77.5) {
-                $icono = "_O7730O";
-            } else if ($anguloGiro > -77.5 && $anguloGiro >= -90) {
-                $icono = "_S2230O";
-            } else if ($anguloGiro < -90 && $anguloGiro >= -112.5) {
-                $icono = "_S";
-            } else if ($anguloGiro < -112.5 && $anguloGiro >= -135) {
-                $icono = "_E7730S";
-            } else if ($anguloGiro < -135 && $anguloGiro >= -157.5) {
-                $icono = "_E45S";
-            } else if ($anguloGiro < -157.5 && $anguloGiro >= -180) {
-                $icono = "_E2230S";
-            } else if ($anguloGiro < -180 && $anguloGiro >= -202.5) {
-                $icono = "_E";
-            } else if ($anguloGiro < -202.5 && $anguloGiro >= -225) {
-                $icono = "_N7730E";
-            } else if ($anguloGiro < -225 && $anguloGiro >= -247.5) {
-                $icono = "_N45E";
-            } else if ($anguloGiro < -247.5 && $anguloGiro >= -270) {
-                $icono = "_N2230E";
-            } else if ($anguloGiro < -270 && $anguloGiro >= -292.5) {
-                $icono = "_N";
-            } else if ($anguloGiro < -292.5 && $anguloGiro >= -315) {
-                $icono = "_O7730O";
-            } else if ($anguloGiro < -315 && $anguloGiro >= -337.5) {
-                $icono = "_O45N";
-            } else if ($anguloGiro < -337.5 && $anguloGiro >= -360) {
-                $icono = "_O2230N";
+            if ($anguloGiro >= -180) {
+                $anguloGiro = 180 + $anguloGiro;
+            } else {
+                $anguloGiro = abs($anguloGiro) - 180;
+                $anguloGiro = 360 - $anguloGiro;
             }
-	    }
+        } else {
+            //$anguloGiro+=90;
+            if ($anguloGiro <=180) {
+                $anguloGiro+=180;
+            } else {
+                $anguloGiro-=180;
+            }
+        }
+        $icono = "";
+        return $icono.="_".$anguloGiro;
 
     }
     public static function anguloGiro($puntosLatitud = [], $puntosLongitud = [])
     {
         $direccion = "";
         $diflatitud = $puntosLatitud[0] - $puntosLatitud[1];
-        $direcciones = ["O" => 0
-        	"O2230N" => 22.5];
+        
         //diferencia de distancias entre latitudes
         // 1 cuadrante es igual a 0.0010350000000017
         if ($diflatitud > 0) {

@@ -25,4 +25,4 @@ Route::resource('prueba', 'PruebaController');
 });*/
 Route::get('tracermapa', 'Tracer\MapaController@getTracer');
 Route::get('tracerubicacion', 'Tracer\MapaController@setUbicacion');
-Route::get('ubicaciones', 'Tracer\MapaController@getUbicaciones');
+Route::post('ubicaciones', 'Tracer\MapaController@getUbicaciones');

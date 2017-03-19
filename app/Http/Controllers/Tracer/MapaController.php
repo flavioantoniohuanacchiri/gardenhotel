@@ -24,7 +24,19 @@ class MapaController
 
 	public function getTracer()
 	{
-		$grupos = Combo::grupoDispositivo();
+		$data = [];
+		$grupos = GrupoDispositivo::where("estado", "=", 1)->whereRaw("deleted_at IS NULL")->get();
+		
+		/*foreach ($grupos as $key => $value) {
+			$dispositivos = Dispositivo::where("id_grupo", "=", $value->id)
+				->where("estado", "=", 1)
+				->whereRaw("deleted_at IS NULL")
+				->get();
+			$data[$value->id]["grupo"] = $value;
+			foreach ($dispositivos as $key2 => $value2) {
+				$data[$value->id]["dispositivos"][$value2->id] = $value2;
+			}
+		} */
 		return view("mapas.tracer", ["grupos" => $grupos]);
 	}
 
@@ -66,11 +78,32 @@ class MapaController
 					$dataupdate["diflongitud"] = $angulo["diflongitud"];
 					$dataupdate["estado"] = "Movimiento";
 
-					$rumbo = FM::rumbo($puntoInicio, $puntoFin);
-					$dataupdate["rumbo"] = $rumbo;
+					$angulogiro = 0;
 
-					$icono = FM::getIconoRumbo($puntosLatitud, $puntosLongitud, $rumbo);
-					$dataupdate["icono"] = $icono;
+					/*if (isset($dataactual["rumbo"])) {
+						$rumboanterior = $dataactual["rumbo"];
+					} else {
+						$rumboanterior = 0;
+					}*/
+					
+					$rumbo = FM::rumbo($puntoInicio, $puntoFin);
+					if ($rumbo == 0) {
+						if (isset($dataactual["angulogiroanterior"])) {
+							$dataupdate["angulogiro"] = $dataactual["angulogiroanterior"];
+						} else {
+							$dataupdate["angulogiroanterior"] = 0;
+						}
+						//$dataupdate["rumbo"] = $rumboanterior;
+						//$dataupdate["rumboanterior"] = $rumboanterior;
+					} else {
+						$dataupdate["angulogiro"] = (int)($rumbo*180/pi());
+						$dataupdate["angulogiroanterior"] = (int)($rumbo*180/pi());
+						//if ($dataactual)
+						//$dataupdate["rumbo"] = $rumbo;
+					}
+					$dataupdate["rumbo"] = $rumbo;
+					//$icono = FM::getIconoRumbo($rumbo);
+					//$dataupdate["icono"] = $icono;
 				}
 				$dataupdate["velocidad"] = 0;
 				if (isset($dataupdate["distanciarecorrida"])) {
@@ -83,42 +116,58 @@ class MapaController
 		}
 	}
 
-    public function getUbicaciones()
+    public function getUbicaciones(Request $request)
     {
+        $filtros = ["idgrupo" => "", "iddispositivo" => []];
+        if (isset($request["idgrupo"])) {
+        	$filtros["idgrupo"] = $request["idgrupo"];
+        }
+        if (isset($request["iddispositivo"])) {
+        	$filtros["iddispositivo"] = $request["iddispositivo"];
+        }
         $folderLocalizaciones = public_path('/localizaciones');
         $folderImagenes =public_path("imgs/dispositivos");
         $urlImagenes = URL::to('/imgs/dispositivos');
-        $grupos = GrupoDispositivo::where(["estado" => 1])->whereRaw("deleted_at IS NULL")->get();
-        $data = [];
-        foreach ($grupos as $key => $value) {
-            $dispositivos = Dispositivo::where(["estado" => 1, "id_grupo" => $value->id])
-                ->whereRaw("deleted_at IS NULL")
-                ->get();
+        $dispositivos = Dispositivo::where(["estado" => 1]);
+        //dd($filtros["idgrupo"]);
+        if ($filtros["idgrupo"]!="") {
+        	$dispositivos = $dispositivos->where("id_grupo", "=", $filtros["idgrupo"]);
+        }
+        $dispositivos = $dispositivos->whereRaw("deleted_at IS NULL")
+            ->get();
 
-			foreach ($dispositivos as $key2 => $value2) {
-				$urlfile = $folderLocalizaciones."/".$value2->codigo.".txt";
-				if (File::exists($urlfile)) {
-					$urlImagenes = URL::to("/imgs/dispositivos/".$value2->codigo);
-					$datafile = File::get($urlfile);
-					$imagen = DispositivoImagen::where(["id_dispositivo" => $value2->id])->whereRaw("deleted_at IS NULL")->first();
-					$datafile = json_decode($datafile, true);
-					if (!is_null($imagen)) {
-						if ($datafile["direccion"] !="") {
-							$imagenexplode = explode(".", $imagen->url);
-							$datafile["img"] = $urlImagenes."/".$imagenexplode[0]."_".$datafile["direccion"].".".$imagenexplode[1];
-						} else {
-							$datafile["img"] = $urlImagenes."/".$imagen->url;
-						}
-						
+        $data = [];
+		foreach ($dispositivos as $key2 => $value2) {
+			$urlfile = $folderLocalizaciones."/".$value2->codigo.".txt";
+			if (File::exists($urlfile)) {
+				//$urlImagenes = URL::to("/imgs/dispositivos/".$value2->codigo);
+				$datafile = File::get($urlfile);
+				$imagen = DispositivoImagen::where(["id_dispositivo" => $value2->id])->whereRaw("deleted_at IS NULL")->first();
+				$datafile = json_decode($datafile, true);
+				if (!is_null($imagen)) {
+					if (isset($datafile["rumbo"]) && $datafile["rumbo"] !="") {
+						$icono = FM::getIconoRumbo($datafile["rumbo"]);
+						$imagenexplode = explode(".", $imagen->url);
+						//$datafile["img"] = $urlImagenes."/".$imagenexplode[0].$icono.".".$imagenexplode[1];
+						$datafile["img"] = $urlImagenes."/2288/1489438813.png";
 					} else {
-						$datafile["img"] = "";
+						//$datafile["img"] = $urlImagenes."/".$imagen->url;
+						$datafile["img"] = $urlImagenes."/2288/1489438813.png";
 					}
-					$datafile["descripcion"] = $value2->descripcion;
-					$datafile["codigo"] = $value2->codigo;
-					
-					$data[$value2->codigo] = $datafile;
+				} else {
+						$datafile["img"] = "";
 				}
-				
+				$datafile["descripcion"] = $value2->descripcion;
+				$datafile["codigo"] = $value2->codigo;
+
+				if ( !isset($datafile["angulogiro"])) {
+					$datafile["rotate"] = 0;
+				} else {
+					$datafile["rotate"] = $datafile["angulogiro"];
+				}
+				//$datafile["rotate"] = $datafile["angulogiro"];
+					
+				$data[$value2->codigo] = $datafile;
 			}
 		}
 

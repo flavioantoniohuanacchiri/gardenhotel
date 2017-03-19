@@ -110,7 +110,6 @@ class DispositivoController extends Controller
                 File::makeDirectory($pathImagenesDispositivo, 0777, true, true);
             }
             if ($request->file()) {
-                $direcciones = ["N" => -90, "S" => 90, "O2230N" => -22.5, "045N" => -45, "N2230O" => -77.5, "N2230E" => -112.5, "N45E" => -135, "E2230N" => 22.5, "E" => 180, "S2230E" => 112.5, "S45E" => 135, "E2230S" => 157.5, "O" => 0];
                 $image = $request->file('imagen');
                 //dd($request->file('imagen')[0]);
                 $time = time();
@@ -131,16 +130,17 @@ class DispositivoController extends Controller
                 }
                 
                 if ($iddispositivo > 0) {
-                    $filename = $objimagen->url;
+                    $explode = explode(".", $objimagen->url);
+                    $filename = $time.".".$explode[1];
                 }
 
-                foreach ($direcciones as $key => $value) {
-                    $filenametmp  = $time . '_'.$key.'.' . $image->getClientOriginalExtension();
+                for($i=0; $i <=360; $i++) {
+                    $filenametmp  = $time . '_'.$i.'.' . $image->getClientOriginalExtension();
                     $path  = public_path($pathImagenesDispositivo.$filenametmp);
                     if (File::exists($path)) {
                         File::delete($path);
                     }
-                    Image::make($image->getRealPath())->resize(64, 64)->rotate($value)->save($path);
+                    Image::make($image->getRealPath())->resize(64, 64)->rotate($i)->save($path);
                 }
                 //dd($request->file('imagen'));
 

@@ -7,7 +7,7 @@
     <style>
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0;}
-      #map{ height: 100% }
+      #map{ height: 100%; }
     </style>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
     <link rel="stylesheet" href="css/leaflet.responsive.popup.css" />
@@ -18,17 +18,56 @@
     <title>Tracker AJAX</title>
     </head>
     <body>
-    <div id="map"></div>
+        <div class="col-md-12 contenedor-filtros">
+            <div class="col-md-4 pull-right">
+                <form id="form-filtros">
+                    {{Form::token()}}
+                    @if (count($grupos))
+                        <select class="lista" name="idgrupo">
+                            <option value="">Todos</option>
+                            @foreach ($grupos as $key => $value)
+                                <option value="{{$value['id']}}">{{$value['nombre']}}</option>
+                            @endforeach
+                        </select>
+                        
+                        <!--<button class="btn btn-success btn-buscar form-control">Buscar</button>-->
+                    @else
+                        <p>No hay grupos de dispositivos disponibles</p>
+                    @endif
+                </form>
+            </div>
+            
+            <!--<button id="btn-filtros" class="btn btn-primary pull-right">Filtros</button>
+            <div id="filtros">
+            <h5>Grupos y Dispositivos</h5>
+                
+            </div>-->
+        </div>
+    <style type="text/css">
+        .contenedor-filtros{padding: 5px 0px; background: #cacaca;}
+      #filtros{height: auto; background: #6ea9c5; margin-top: 40px; width: 270px; display: none;}
+      #filtros h5 {text-align: center;  padding: 10px 0px; font-weight: 700; background: #fff; float: right; width: 100%;margin-top: 0px;}
+      #filtros select {}
+      #filtros ul {list-style: none; padding: 5px;}
+      #filtros ul ul.sublista{display: none; border-top: dotted 3px #aaa; margin-top: 8px;}
+      #filtros ul li input[type=checkbox]{ display: inline-block; vertical-align: middle;}
+      #filtros ul li span {vertical-align: middle;  display: inline-block; font-weight: 700; text-transform: uppercase; text-align: center;  width: 235px;}
+      #filtros ul li ul li span {width: 220px;}
+      #form-filtros .lista {width: 100%;  padding: 2px 8px;}
+    </style>
+    <div id="map" class="col-md-12"></div>
     <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
     <script type="text/javascript" src="js/leaflet.ajax.js"></script>
     <script src="js/spin.js"></script>
     <script src="js/leaflet.spin.js"></script>
     <script src="js/leaflet.responsive.popup.js"></script>
+    <script type="text/javascript" src="js/Marker.Rotate.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"
       integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
       crossorigin="anonymous"></script>
       <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript">// Create the map
+    var ejecutarepintado = true;
     var map = L.map('map', {
                     center: [ -12.0344, -77.0447],
                     zoom: 13,
@@ -43,14 +82,17 @@
     repintar();
     var mapMarkers = [];
     setInterval( function() {
-        repintar();
+        if (ejecutarepintado) {
+            repintar();
+        }
     }, 10000);
 
     function repintar() {
          $.ajax({
-            type: "GET",
-            url: '../ubicaciones',
+            type: "POST",
+            url: 'ubicaciones',
             dataType: 'json',
+            data: $("#form-filtros").serialize(),
             success: function (response) {
                 cleanMarkers();
                 for(var i in response) {
@@ -69,10 +111,16 @@
                 html+="<br><b>Velocidad : </b>"+parseFloat(response[i].velocidad).toFixed(2)+" km/h";
                 html+="<br><b>Estado : </b>"+response[i].estado;
                 var popup = L.responsivePopup().setContent(html);
-                var marker = L.marker([response[i].latitud,response[i].longitud], {icon: greenIcon}).addTo(map).bindPopup(popup);
-                   
+                var marker = L.marker([response[i].latitud,response[i].longitud], {icon: greenIcon, iconAngle: response[i].rotate}).addTo(map).bindPopup(popup);
+                marker.on('mouseover', function (e) {
+                    this.openPopup();
+                });
+                marker.on('mouseout', function (e) {
+                    this.closePopup();
+                });
                     mapMarkers[i] = marker;
                 }
+                ejecutarepintado = true;
             }
         });
     }
@@ -83,6 +131,36 @@
             map.removeLayer(mapMarkers[i]);
         }
     }
+    /*$("#filtros .inputfila").click(function(e){
+        fila = $(this).parent();
+        console.log(fila);
+        subfila = fila.find("ul");
+        if (subfila.css("display") == "none"){
+            subfila.css("display", "block");
+        }
+        else {
+            subfila.css("display", "none");
+            subfila.find(" .inputsubfila").prop("checked", true);
+        }
+    }); */
+    $(".btn-buscar").click(function(e){
+        ejecutarepintado = false;
+        repintar();
+        return false;
+    });
+    $(".lista").change(function(e){
+        ejecutarepintado = false;
+        repintar();
+        console.log("cambiar");
+        return false;
+    });
+    $("#btn-filtros").click(function(e){
+        if ($("#filtros").css("display") == "none") {
+            $("#filtros").slideDown();
+        } else {
+            $("#filtros").slideUp();
+        }
+    });
     </script>
     </body>
 </html>
