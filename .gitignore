@@ -9,3 +9,4 @@ Homestead.json
 /nbproject/private/
 composer.lock
 .idea
+/storage

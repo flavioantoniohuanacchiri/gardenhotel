@@ -62,6 +62,7 @@
     <script src="js/leaflet.spin.js"></script>
     <script src="js/leaflet.responsive.popup.js"></script>
     <script type="text/javascript" src="js/Marker.Rotate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.3.0/gpx.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"
       integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
       crossorigin="anonymous"></script>
@@ -77,7 +78,37 @@
                         })
                     ]
                 });
+    var gpx ="gpx/prueba1.gpx";
+    new L.GPX(gpx, 
+        {
+            async: true,
+            marker_options: {
+                startIconUrl: null,
+                endIconUrl: null,
+                shadowUrl: null
+            }
+        }
+    ).on('loaded', function(e) {
+      map.fitBounds(e.target.getBounds());
+    }).addTo(map);
 
+    var gpx2 ="gpx/prueba2.gpx";
+    new L.GPX(gpx2, {async: true, 
+        polyline_options:  {
+            color: '#9b1d41',
+            weight: 3,
+            opacity: 0.6,
+            fillOpacity: 0.65,
+            fillColor: '#9b1d41'
+        }, 
+        marker_options: {
+            startIconUrl: null,
+            endIconUrl: null,
+            shadowUrl: null
+          } 
+}).on('loaded', function(e) {
+      map.fitBounds(e.target.getBounds());
+    }).addTo(map);
 
     repintar();
     var mapMarkers = [];

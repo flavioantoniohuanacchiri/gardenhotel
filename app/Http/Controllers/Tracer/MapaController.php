@@ -22,35 +22,30 @@ use App\Helpers\FuncionesMatematicas as FM;
 class MapaController
 {
 
-	public function getTracer()
-	{
-		$data = [];
-		$grupos = GrupoDispositivo::where("estado", "=", 1)->whereRaw("deleted_at IS NULL")->get();
-		
-		/*foreach ($grupos as $key => $value) {
-			$dispositivos = Dispositivo::where("id_grupo", "=", $value->id)
-				->where("estado", "=", 1)
-				->whereRaw("deleted_at IS NULL")
-				->get();
-			$data[$value->id]["grupo"] = $value;
-			foreach ($dispositivos as $key2 => $value2) {
-				$data[$value->id]["dispositivos"][$value2->id] = $value2;
-			}
-		} */
-		return view("mapas.tracer", ["grupos" => $grupos]);
-	}
+    public function getTracer()
+    {
+        $data = [];
+        $grupos = GrupoDispositivo::where("estado", "=", 1)
+        ->whereRaw("deleted_at IS NULL")
+        ->get();
+        return view("mapas.tracer", ["grupos" => $grupos]);
+    }
 
-	public function setUbicacion(Request $request)
-	{
-		$folderLocalizaciones = public_path("localizaciones");
-		Log::useDailyFiles(storage_path().'/logs/ubicacion.log');
+    public function setUbicacion(Request $request)
+    {
+        $folderLocalizaciones = public_path("localizaciones");
+        Log::useDailyFiles(storage_path().'/logs/ubicacion.log');
         Log::info([$request]);
-		$longitud = $request->lon;
-		$latitud = $request->lat;
-		$codigo =$request->cod;
-		$tiempo = 10/3600;
+        $longitud = $request->lon;
+        $latitud = $request->lat;
+        $codigo =$request->cod;
+        $tiempo = 10/3600;
 
-		$dispositivo =Dispositivo::where(["codigo" => $codigo, "estado" => 1])->first();
+        $dispositivo =Dispositivo::where([
+            "codigo" => $codigo,
+            "estado" => 1
+        ])->first();
+        
 		if (!is_null($dispositivo)) {
 			if(!is_null($longitud) && !is_null($latitud)) {
 			$dataupdate = ["longitud" => $longitud, "latitud" => $latitud, "hora" => date("Y-m-d H:i:s")];
@@ -125,51 +120,53 @@ class MapaController
         if (isset($request["iddispositivo"])) {
         	$filtros["iddispositivo"] = $request["iddispositivo"];
         }
-        $folderLocalizaciones = public_path('/localizaciones');
-        $folderImagenes =public_path("imgs/dispositivos");
-        $urlImagenes = URL::to('/imgs/dispositivos');
-        $dispositivos = Dispositivo::where(["estado" => 1]);
-        //dd($filtros["idgrupo"]);
-        if ($filtros["idgrupo"]!="") {
-        	$dispositivos = $dispositivos->where("id_grupo", "=", $filtros["idgrupo"]);
-        }
-        $dispositivos = $dispositivos->whereRaw("deleted_at IS NULL")
-            ->get();
-
         $data = [];
-		foreach ($dispositivos as $key2 => $value2) {
-			$urlfile = $folderLocalizaciones."/".$value2->codigo.".txt";
-			if (File::exists($urlfile)) {
-				//$urlImagenes = URL::to("/imgs/dispositivos/".$value2->codigo);
-				$datafile = File::get($urlfile);
-				$imagen = DispositivoImagen::where(["id_dispositivo" => $value2->id])->whereRaw("deleted_at IS NULL")->first();
-				$datafile = json_decode($datafile, true);
-				if (!is_null($imagen)) {
-					if (isset($datafile["rumbo"]) && $datafile["rumbo"] !="") {
-						$icono = FM::getIconoRumbo($datafile["rumbo"]);
-						$imagenexplode = explode(".", $imagen->url);
-						//$datafile["img"] = $urlImagenes."/".$imagenexplode[0].$icono.".".$imagenexplode[1];
-						$datafile["img"] = $urlImagenes."/2288/1489438813.png";
-					} else {
-						//$datafile["img"] = $urlImagenes."/".$imagen->url;
-						$datafile["img"] = $urlImagenes."/2288/1489438813.png";
-					}
-				} else {
-						$datafile["img"] = "";
-				}
-				$datafile["descripcion"] = $value2->descripcion;
-				$datafile["codigo"] = $value2->codigo;
+        if ($filtros["idgrupo"]!="") {
+        	$folderLocalizaciones = public_path('/localizaciones');
+	        $folderImagenes =public_path("imgs/dispositivos");
+	        $urlImagenes = URL::to('/imgs/dispositivos');
+	        $dispositivos = Dispositivo::where(["estado" => 1]);
+	        $dispositivos = $dispositivos->where("id_grupo", "=", $filtros["idgrupo"]);
 
-				if ( !isset($datafile["angulogiro"])) {
-					$datafile["rotate"] = 0;
-				} else {
-					$datafile["rotate"] = $datafile["angulogiro"];
+	        $dispositivos = $dispositivos->whereRaw("deleted_at IS NULL")
+	            ->get();
+
+	        
+			foreach ($dispositivos as $key2 => $value2) {
+				$urlfile = $folderLocalizaciones."/".$value2->codigo.".txt";
+				if (File::exists($urlfile)) {
+					//$urlImagenes = URL::to("/imgs/dispositivos/".$value2->codigo);
+					$datafile = File::get($urlfile);
+					$imagen = DispositivoImagen::where(["id_dispositivo" => $value2->id])->whereRaw("deleted_at IS NULL")->first();
+					$datafile = json_decode($datafile, true);
+					if (!is_null($imagen)) {
+						if (isset($datafile["rumbo"]) && $datafile["rumbo"] !="") {
+							$icono = FM::getIconoRumbo($datafile["rumbo"]);
+							$imagenexplode = explode(".", $imagen->url);
+							//$datafile["img"] = $urlImagenes."/".$imagenexplode[0].$icono.".".$imagenexplode[1];
+							$datafile["img"] = $urlImagenes."/2288/1489438813.png";
+						} else {
+							//$datafile["img"] = $urlImagenes."/".$imagen->url;
+							$datafile["img"] = $urlImagenes."/2288/1489438813.png";
+						}
+					} else {
+							$datafile["img"] = "";
+					}
+					$datafile["descripcion"] = $value2->descripcion;
+					$datafile["codigo"] = $value2->codigo;
+
+					if ( !isset($datafile["angulogiro"])) {
+						$datafile["rotate"] = 0;
+					} else {
+						$datafile["rotate"] = $datafile["angulogiro"];
+					}
+					//$datafile["rotate"] = $datafile["angulogiro"];
+						
+					$data[$value2->codigo] = $datafile;
 				}
-				//$datafile["rotate"] = $datafile["angulogiro"];
-					
-				$data[$value2->codigo] = $datafile;
 			}
-		}
+        }
+        
 
 
 		return response($data);
