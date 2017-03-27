@@ -178,11 +178,13 @@ class GrupoDispositivoController extends Controller
                 }
 
                 foreach ($data as $key => $value) {
-                   if (isset( $jsongrupogpx[$key])) {
-                        $data[$key] = $jsongrupogpx[$key];
+                    if (isset($jsongrupogpx[$key])) {
+                        $update["color"] = $jsongrupogpx[$key]["color"];
+                        $update["estado"] = $jsongrupogpx[$key]["estado"];
                         $objgpx = GrupoDispositivoGpx::find($key);
-                        $objgpx->update($data[$key]);
-                   }
+                        //dd($data[$key]);
+                        $objgpx->update($update);
+                    }
                 }
             }
             if ($request->file()) {
@@ -202,7 +204,7 @@ class GrupoDispositivoController extends Controller
                     $objgrupogpx->color = $colores[$i];
                     $objgrupogpx->id_grupo_dispositivo = $objgrupo->id;
                     $objgrupogpx->save();
-                $i++;
+                    $i++;
                 }
             }
 

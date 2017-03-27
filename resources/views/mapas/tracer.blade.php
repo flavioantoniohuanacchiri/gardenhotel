@@ -23,8 +23,11 @@
                 <form id="form-filtros">
                     {{Form::token()}}
                     @if (count($grupos))
+                        <script type="text/javascript">
+                            var grupos = {{json_encode($grupos)}};
+                        </script>
                         <select class="lista" name="idgrupo">
-                            <option value="">Todos</option>
+                            <option value="">Seleccione...</option>
                             @foreach ($grupos as $key => $value)
                                 <option value="{{$value['id']}}">{{$value['nombre']}}</option>
                             @endforeach

@@ -134,7 +134,7 @@ class DispositivoController extends Controller
                     $filename = $time.".".$explode[1];
                 }
 
-                for($i=0; $i <=360; $i++) {
+                for ($i=0; $i <=360; $i++) {
                     $filenametmp  = $time . '_'.$i.'.' . $image->getClientOriginalExtension();
                     $path  = public_path($pathImagenesDispositivo.$filenametmp);
                     if (File::exists($path)) {
@@ -221,13 +221,16 @@ class DispositivoController extends Controller
      */
     public function edit($id)
     {
-       $dispositivo = Dispositivo::select("dispositivo.*", "di.url as urlimagen")
-       ->leftJoin("dispositivo_imagenes as di", "di.id_dispositivo", "=", "dispositivo.id")
-       ->where("dispositivo.id", "=", $id)
-       ->whereRaw("dispositivo.deleted_at IS NULL")
-       ->whereRaw("di.deleted_at IS NULL")
-       ->first();
-       return response(["rst" => 1, "dispositivo" => $dispositivo]);
+        $dispositivo = Dispositivo::select(
+            "dispositivo.*",
+            "di.url as urlimagen"
+        )
+           ->leftJoin("dispositivo_imagenes as di", "di.id_dispositivo", "=", "dispositivo.id")
+           ->where("dispositivo.id", "=", $id)
+           ->whereRaw("dispositivo.deleted_at IS NULL")
+           ->whereRaw("di.deleted_at IS NULL")
+           ->first();
+        return response(["rst" => 1, "dispositivo" => $dispositivo]);
     }
 
     /**
@@ -250,6 +253,6 @@ class DispositivoController extends Controller
     public function destroy($id)
     {
         Dispositivo::find($id)->delete();
-        return redirect('dispositivo');
+        return response(["rst" => 1, "msj" => "Eliminado"]);
     }
 }

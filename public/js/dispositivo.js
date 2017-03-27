@@ -38,7 +38,48 @@ Dispositivo = {
 		});
 
 		return false;
-	}
+	},
+	eliminar: function (id, url) {
+		timer = true;
+		var contentType ="application/x-www-form-urlencoded; charset=utf-8";
+        /* $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('input[name="_token"]').val()
+            }
+        }) */
+        $.ajax({
+            type: "DELETE",
+            headers: {
+                'X-CSRF-TOKEN': $('input[name="_token"]').val()
+            },
+            url: url + '/' + id,
+            success: function (data) {
+                console.log(data);
+                	
+                	if (data.rst == "2" || data.rst == 2){
+                		Mensaje.alerta(data.msj);
+                		return false;
+                	}
+                	timer = false;
+
+                swal(
+				    'Eliminado!',
+				    'El registro ha sido eliminado.',
+				    'success'
+				  );
+				  switch(url){
+					case 'dispositivo':
+						iddispositivo = 0;
+						Dispositivo.listar();
+						break;
+				}
+                
+            },
+            error: function (data) {
+                console.log('Error:', data);
+            }
+        });
+	}, 
 };
 $(document).ready(function(){
 	$(".btn-search").click(listar);
@@ -76,6 +117,25 @@ $(document).ready(function(){
 		$("#descripcion").val("");
 		$("#idgrupo").val("");
 		$("h4.modal-title").text("Nuevo Dispositivo");
+	});
+
+	$(document).delegate(".masterDelete", "click", function(e){
+		id = $(this).data("id");
+		url = $(this).data("url");
+
+		swal.queue([{
+					  title: '¿Estás seguro de eliminarlo?',
+					  text: "Este cambio no es reversible!",
+		  			  type: 'warning',
+					  showCancelButton: true,
+					  confirmButtonText: 'Si deseo, eliminarlo!',
+					  confirmButtonColor: '#3085d6',
+					  cancelButtonColor: '#d33',
+					  showLoaderOnConfirm: true
+					}]).then(function () {
+						Dispositivo.eliminar(id, url);
+					});
+		
 	});
 });
 

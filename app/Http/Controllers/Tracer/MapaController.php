@@ -36,7 +36,7 @@ class MapaController
     {
         $folderLocalizaciones = public_path("localizaciones");
         Log::useDailyFiles(storage_path().'/logs/ubicacion.log');
-        Log::info([$request]);
+        //Log::info([$request]);
         $longitud = $request->lon;
         $latitud = $request->lat;
         $codigo =$request->cod;
