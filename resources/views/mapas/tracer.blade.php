@@ -24,7 +24,7 @@
                     {{Form::token()}}
                     @if (count($grupos))
                         <script type="text/javascript">
-                            var grupos = {{json_encode($grupos)}};
+                            var gruposgpx = <?php echo json_encode($grupos); ?>;
                         </script>
                         <select class="lista" name="idgrupo">
                             <option value="">Seleccione...</option>
@@ -85,6 +85,7 @@
     repintar();
     var mapMarkers = [];
     var mapGpxs = [];
+    var idgrupodispositivo = 0;
     setInterval( function() {
         if (ejecutarepintado) {
             repintar();
@@ -130,7 +131,10 @@
                     mapMarkers[i] = marker;
                 }
                 ejecutarepintado = true;
-
+                console.log(idgrupodispositivo);
+                //pintadogpx = gruposgpx[idgrupodispositivo].pintadogpx;
+                pintadogpx = false;
+                if (pintadogpx == false) {
                     for (var j in gpxs) {
                         var gpx = gpxs[j].url;
                         var mapgpx = new L.GPX(gpx, {async: true, 
@@ -147,10 +151,13 @@
                                 shadowUrl: null
                             } 
                         }).on('loaded', function(e) {
-                            //map.fitBounds(e.target.getBounds());
+                                //map.fitBounds(e.target.getBounds());
                         }).addTo(map);
-                       mapGpxs[j] = mapgpx;
+                        mapGpxs[j] = mapgpx;
                     }
+                    //gruposgpx[idgrupodispositivo].pintadogpx = true;
+                }
+
             }
         });
     }
@@ -188,7 +195,10 @@
     $(".lista").change(function(e){
         ejecutarepintado = false;
         repintar();
-        console.log("cambiar");
+        idgrupodispositivo = $(this).val();
+        for(var i in gruposgpx){
+            gruposgpx[i].pintadogpx = false;
+        }
         return false;
     });
     $("#btn-filtros").click(function(e){

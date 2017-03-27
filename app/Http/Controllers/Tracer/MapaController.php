@@ -29,7 +29,13 @@ class MapaController
         $grupos = GrupoDispositivo::where("estado", "=", 1)
         ->whereRaw("deleted_at IS NULL")
         ->get();
-        return view("mapas.tracer", ["grupos" => $grupos]);
+        $data = [];
+        foreach ($grupos as $key => $value) {
+            $grupos[$key]->pintadogpx = false;
+            $data[$value->id] = $grupos[$key];
+        }
+
+        return view("mapas.tracer", ["grupos" => $data]);
     }
 
     public function setUbicacion(Request $request)
@@ -47,9 +53,9 @@ class MapaController
             "estado" => 1
         ])->first();
         
-		if (!is_null($dispositivo)) {
-			if(!is_null($longitud) && !is_null($latitud)) {
-			$dataupdate = ["longitud" => $longitud, "latitud" => $latitud, "hora" => date("Y-m-d H:i:s")];
+        if (!is_null($dispositivo)) {
+            if (!is_null($longitud) && !is_null($latitud)) {
+            $dataupdate = ["longitud" => $longitud, "latitud" => $latitud, "hora" => date("Y-m-d H:i:s")];
 			$rutaubicacion =$folderLocalizaciones."/".$codigo.".txt";
 			if(File::exists($rutaubicacion)) {
 				$dataactual = File::get($rutaubicacion);

@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use File;
 
 class Dispositivo extends BaseModel
 {
