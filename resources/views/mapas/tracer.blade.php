@@ -18,7 +18,7 @@
     <title>Tracker AJAX</title>
     </head>
     <body>
-        <div class="col-md-12 contenedor-filtros">
+        <div class="col-md-12 contenedor-filtros form-control ">
             <div class="col-md-4 pull-right">
                 <form id="form-filtros">
                     {{Form::token()}}
@@ -70,48 +70,18 @@
     <script type="text/javascript">// Create the map
     var ejecutarepintado = true;
     var map = L.map('map', {
-                    center: [ -12.0344, -77.0447],
-                    zoom: 13,
-                    layers: [
-                        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-                            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                        })
-                    ]
-                });
-    var gpx ="gpx/prueba1.gpx";
-    new L.GPX(gpx, 
-        {
-            async: true,
-            marker_options: {
-                startIconUrl: null,
-                endIconUrl: null,
-                shadowUrl: null
-            }
-        }
-    ).on('loaded', function(e) {
-      map.fitBounds(e.target.getBounds());
-    }).addTo(map);
-
-    var gpx2 ="gpx/prueba2.gpx";
-    new L.GPX(gpx2, {async: true, 
-        polyline_options:  {
-            color: '#9b1d41',
-            weight: 3,
-            opacity: 0.6,
-            fillOpacity: 0.65,
-            fillColor: '#9b1d41'
-        }, 
-        marker_options: {
-            startIconUrl: null,
-            endIconUrl: null,
-            shadowUrl: null
-          } 
-}).on('loaded', function(e) {
-      map.fitBounds(e.target.getBounds());
-    }).addTo(map);
+        center: [ -12.0344, -77.0447],
+        zoom: 13,
+        layers: [
+            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            })
+        ]
+    });
 
     repintar();
     var mapMarkers = [];
+    var mapGpxs = [];
     setInterval( function() {
         if (ejecutarepintado) {
             repintar();
@@ -126,9 +96,14 @@
             data: $("#form-filtros").serialize(),
             success: function (response) {
                 cleanMarkers();
-                for(var i in response) {
+                cleanGpxs();
+
+                var dispositivos = response.dispositivos;
+                var gpxs = response.gpxs;
+                for(var i in dispositivos) {
+                    var dispositivo = dispositivos[i];
                     var greenIcon = L.icon({
-                    iconUrl: response[i].img,
+                    iconUrl: dispositivo.img,
 
                     iconSize:     [64, 64], // size of the icon
                     shadowSize:   [50, 64], // size of the shadow
@@ -137,12 +112,12 @@
                     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
                 });
                 html ="";
-                html+="<b>Código : </b>"+response[i].codigo;
-                html+="<br><b>Descripcion : </b>"+response[i].descripcion;
-                html+="<br><b>Velocidad : </b>"+parseFloat(response[i].velocidad).toFixed(2)+" km/h";
-                html+="<br><b>Estado : </b>"+response[i].estado;
+                html+="<b>Código : </b>"+dispositivo.codigo;
+                html+="<br><b>Descripcion : </b>"+dispositivo.descripcion;
+                html+="<br><b>Velocidad : </b>"+parseFloat(dispositivo.velocidad).toFixed(2)+" km/h";
+                html+="<br><b>Estado : </b>"+dispositivo.estado;
                 var popup = L.responsivePopup().setContent(html);
-                var marker = L.marker([response[i].latitud,response[i].longitud], {icon: greenIcon, iconAngle: response[i].rotate}).addTo(map).bindPopup(popup);
+                var marker = L.marker([dispositivo.latitud,dispositivo.longitud], {icon: greenIcon, iconAngle: dispositivo.rotate}).addTo(map).bindPopup(popup);
                 marker.on('mouseover', function (e) {
                     this.openPopup();
                 });
@@ -152,6 +127,27 @@
                     mapMarkers[i] = marker;
                 }
                 ejecutarepintado = true;
+
+                    for (var j in gpxs) {
+                        var gpx = gpxs[j].url;
+                        var mapgpx = new L.GPX(gpx, {async: true, 
+                            polyline_options:  {
+                                color: gpxs[j].color,
+                                weight: 3,
+                                opacity: 0.6,
+                                fillOpacity: 0.65,
+                                fillColor: gpxs[j].color
+                            }, 
+                            marker_options: {
+                                startIconUrl: null,
+                                endIconUrl: null,
+                                shadowUrl: null
+                            } 
+                        }).on('loaded', function(e) {
+                            //map.fitBounds(e.target.getBounds());
+                        }).addTo(map);
+                       mapGpxs[j] = mapgpx;
+                    }
             }
         });
     }
@@ -160,6 +156,13 @@
     {
         for(var i in mapMarkers){
             map.removeLayer(mapMarkers[i]);
+        }
+    }
+
+    function cleanGpxs()
+    {
+        for(var i in mapGpxs){
+            map.removeLayer(mapGpxs[i]);
         }
     }
     /*$("#filtros .inputfila").click(function(e){

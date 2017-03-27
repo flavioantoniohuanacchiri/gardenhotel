@@ -16,7 +16,7 @@
                         <div class="x_panel">
                                 <div class="x_content">
 
-                                        {!! Form::open(['url' => route('grupodispositivo.store'), 'class'=> 'form-horizontal']) !!}
+                                        {!! Form::open(['url' => route('grupodispositivo.store'), 'class'=> 'form-horizontal', 'files' => true]) !!}
                                 
                                         @include('master/grupodispositivo/_form')
                                         

@@ -16,7 +16,7 @@
                         <div class="x_panel">
                                 <div class="x_content">
 
-                                        {!! Form::model($grupo,['method' => 'PATCH', 'route'=>['grupodispositivo.update',$grupo->id], 'class'=> 'form-horizontal']) !!}
+                                        {!! Form::model($grupo,['method' => 'PATCH', 'route'=>['grupodispositivo.update',$grupo->id], 'class'=> 'form-horizontal', 'files' => true]) !!}
 
                                         @include('master/grupodispositivo/_form')
 

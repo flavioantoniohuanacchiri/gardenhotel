@@ -7,11 +7,14 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\GrupoDispositivo;
+use App\GrupoDispositivoGpx;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\Helper;
 use Illuminate\Support\Facades\DB;
 use App\ObjectViews\Combo;
+use File;
+use URL;
 
 class GrupoDispositivoController extends Controller
 {
@@ -54,7 +57,7 @@ class GrupoDispositivoController extends Controller
     {
         $grupos = Combo::grupoDispositivo();
         $grupodispositivo = new GrupoDispositivo;
-        return view('master.grupodispositivo.create', ["grupo" => $grupodispositivo, 'grupos' => $grupos]);
+        return view('master.grupodispositivo.create', ["grupo" => $grupodispositivo, "grupogpx" => []]);
     }
 
     /**
@@ -74,10 +77,29 @@ class GrupoDispositivoController extends Controller
 
         try {
             $objgrupo->save();
+            if ($request->file()) {
+                $gpxs = $request->file("archivogpx");
+                $colores = $request["colorgpx"];
+                $i = 0;
+                foreach ($gpxs as $key => $value) {
+                    $url = (time() + $i). '.' .$value->getClientOriginalExtension();
+
+                    $path = base_path() . "/public/gpx/_".$objgrupo->id;
+                    if (!file_exists($path)) {
+                        File::makeDirectory($path, 0777, true, true);
+                    }
+                    $value->move($path."/", $url);
+                    $objgrupogpx = new GrupoDispositivoGpx;
+                    $objgrupogpx->url = $url;
+                    $objgrupogpx->color = $colores[$i];
+                    $objgrupogpx->id_grupo_dispositivo = $objgrupo->id;
+                    $objgrupogpx->save();
+                $i++;
+                }
+            }
         } catch (Exception $e) {
             
         }
-
         return redirect('grupodispositivo');
     }
 
@@ -102,7 +124,21 @@ class GrupoDispositivoController extends Controller
     public function edit($id)
     {
         $grupodispositivo = GrupoDispositivo::find($id);
-        return view('master.grupodispositivo.edit', ["grupo" => $grupodispositivo]);
+        $grupogpx = GrupoDispositivoGpx::where(["id_grupo_dispositivo" => $id])
+            ->whereRaw("deleted_at IS NULL")
+            ->orderBy("id", "DESC")
+            ->get();
+        $urlGpx = URL::to('/gpx');
+        foreach ($grupogpx as $key2 => $value2) {
+            $value2->url = $urlGpx."/_".$id."/".$value2->url;
+            $grupogpx[$key2] = $value2;
+        }
+        $data = [];
+        foreach ($grupogpx as $key => $value) {
+            $data[$value->id] = $value;
+        }
+        //dd($grupogpx);
+        return view('master.grupodispositivo.edit', ["grupo" => $grupodispositivo, "grupogpx" => $data]);
     }
 
     /**
@@ -114,6 +150,8 @@ class GrupoDispositivoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
+        //dd($request["jsongrupogpx"]);
         $objgrupo = GrupoDispositivo::find($id);
         $grupo = $request["grupo"];
 
@@ -123,6 +161,51 @@ class GrupoDispositivoController extends Controller
 
         try {
             $objgrupo->save();
+            if (isset($request["jsongrupogpx"])) {
+                $jsongrupogpx = json_decode($request["jsongrupogpx"], true);
+                $grupogpx = GrupoDispositivoGpx::where(["id_grupo_dispositivo" => $id])
+                    ->whereRaw("deleted_at IS NULL")
+                    ->orderBy("id", "DESC")
+                    ->get();
+                $urlGpx = URL::to('/gpx');
+                foreach ($grupogpx as $key2 => $value2) {
+                    $value2->url = $urlGpx."/_".$id."/".$value2->url;
+                    $grupogpx[$key2] = $value2;
+                }
+                $data = [];
+                foreach ($grupogpx as $key => $value) {
+                    $data[$value->id] = $value;
+                }
+
+                foreach ($data as $key => $value) {
+                   if (isset( $jsongrupogpx[$key])) {
+                        $data[$key] = $jsongrupogpx[$key];
+                        $objgpx = GrupoDispositivoGpx::find($key);
+                        $objgpx->update($data[$key]);
+                   }
+                }
+            }
+            if ($request->file()) {
+                $gpxs = $request->file("archivogpx");
+                $colores = $request["colorgpx"];
+                $i = 0;
+                foreach ($gpxs as $key => $value) {
+                    $url = (time() + $i). '.' .$value->getClientOriginalExtension();
+
+                    $path = base_path() . "/public/gpx/_".$objgrupo->id;
+                    if (!file_exists($path)) {
+                        File::makeDirectory($path, 0777, true, true);
+                    }
+                    $value->move($path."/", $url);
+                    $objgrupogpx = new GrupoDispositivoGpx;
+                    $objgrupogpx->url = $url;
+                    $objgrupogpx->color = $colores[$i];
+                    $objgrupogpx->id_grupo_dispositivo = $objgrupo->id;
+                    $objgrupogpx->save();
+                $i++;
+                }
+            }
+
         } catch (Exception $e) {
             
         }

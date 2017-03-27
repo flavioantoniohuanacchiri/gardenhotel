@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Dispositivo;
 use App\DispositivoImagen;
 use App\GrupoDispositivo;
+use App\GrupoDispositivoGpx;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\Helper;
@@ -121,10 +122,13 @@ class MapaController
         	$filtros["iddispositivo"] = $request["iddispositivo"];
         }
         $data = [];
+        $data["dispositivos"] = [];
+        $data["gpxs"] = [];
         if ($filtros["idgrupo"]!="") {
         	$folderLocalizaciones = public_path('/localizaciones');
 	        $folderImagenes =public_path("imgs/dispositivos");
 	        $urlImagenes = URL::to('/imgs/dispositivos');
+	        $urlGpx = URL::to('/gpx');
 	        $dispositivos = Dispositivo::where(["estado" => 1]);
 	        $dispositivos = $dispositivos->where("id_grupo", "=", $filtros["idgrupo"]);
 
@@ -162,8 +166,15 @@ class MapaController
 					}
 					//$datafile["rotate"] = $datafile["angulogiro"];
 						
-					$data[$value2->codigo] = $datafile;
+					$data["dispositivos"][$value2->codigo] = $datafile;
 				}
+			}
+
+			$gpxs = GrupoDispositivoGpx::where(["id_grupo_dispositivo" => $filtros["idgrupo"], "estado" => 1])->whereRaw("deleted_at IS NULL")->get();
+
+			foreach ($gpxs as $key2 => $value2) {
+				$value2->url = $urlGpx."/_".$filtros["idgrupo"]."/".$value2->url;
+				$data["gpxs"][$value2->id] = $value2;
 			}
         }
         
