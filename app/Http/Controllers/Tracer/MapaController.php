@@ -88,7 +88,12 @@ class MapaController
 					}*/
 					
 					$rumbo = FM::rumbo($puntoInicio, $puntoFin);
-					$rumboanterior = $dataactual["rumbo"];
+					if (isset($dataactual["rumbo"])) {
+						$rumboanterior = $dataactual["rumbo"];
+					} else {
+						$rumboanterior = 0;
+					}
+					
 					if ($rumbo > 0) {
 						$dataupdate["rumbo"] = $rumbo;
 					} else {
