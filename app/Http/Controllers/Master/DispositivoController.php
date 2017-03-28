@@ -103,7 +103,7 @@ class DispositivoController extends Controller
             $objdispositivo->estado =  $dispositivo["estado"];
             $objdispositivo->id_grupo =  $dispositivo["grupo"];
             $objdispositivo->save();
-            $pathImagenesDispositivo = "imgs/dispositivos/".$objdispositivo->codigo."/";
+            /*$pathImagenesDispositivo = "imgs/dispositivos/".$objdispositivo->codigo."/";
             //$pathImagenesDispositivo = "imgs/dispositivos/";
             
             if (!file_exists($pathImagenesDispositivo)) {
@@ -144,50 +144,12 @@ class DispositivoController extends Controller
                 }
                 //dd($request->file('imagen'));
 
-                /*foreach ($request->file('imagen') as $key => $value) {
-                    $image = $value;
-                    if ($key == 0) {
-                        $filename = $time . '.' . $image->getClientOriginalExtension();
-                        $path           = public_path($pathImagenesDispositivo.$filename);
-                        Image::make($image->getRealPath())->resize(64, 64)->save($path);
-                        $filenameNorte  = $time . '_N.' . $image->getClientOriginalExtension();
-                        $filenameOeste  = $time . '_O.' . $image->getClientOriginalExtension();
-                        $filenameSur    = $time . '_S.' . $image->getClientOriginalExtension();
-
-                        $pathNorte      = public_path($pathImagenesDispositivo.$filenameNorte);
-                        $pathOeste      = public_path($pathImagenesDispositivo.$filenameOeste);
-                        $pathSur        = public_path($pathImagenesDispositivo.$filenameSur);
-
-                        if (File::exists($pathNorte)) {
-                            File::delete($pathNorte);
-                        }
-                        if (File::exists($pathOeste)) {
-                            File::delete($pathOeste);
-                        }
-                        if (File::exists($pathSur)) {
-                            File::delete($pathSur);
-                        }
-
-                        Image::make($image->getRealPath())->resize(64, 64)->rotate(-90)->save($pathNorte);
-                        Image::make($image->getRealPath())->resize(64, 64)->save($pathOeste);
-                        Image::make($image->getRealPath())->resize(64, 64)->rotate(90)->save($pathSur);
-                    }
-                    if ($key == 1) {
-                        $filenameEste   = $time . '_E.' . $image->getClientOriginalExtension();
-                        $pathEste       = public_path($pathImagenesDispositivo.$filenameEste);
-                        if (File::exists($pathEste)) {
-                            //dd($pathEste);
-                            File::delete($pathEste);
-                        }
-                        Image::make($image->getRealPath())->resize(64, 64)->save($pathEste);
-                    }
-                } */
                 //dd($objimagen);
                 if ($iddispositivo > 0) {
                     $objimagen->url = $filename;
                     $objimagen->save();
                 }
-            }
+            }*/
             $objdispositivo->save();
 
             if ($iddispositivo == 0) {

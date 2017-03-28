@@ -100,7 +100,6 @@
             data: $("#form-filtros").serialize(),
             success: function (response) {
                 cleanMarkers();
-                cleanGpxs();
 
                 var dispositivos = response.dispositivos;
                 var gpxs = response.gpxs;
@@ -116,12 +115,12 @@
                     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
                 });
                 html ="";
-                html+="<b>Código : </b>"+dispositivo.codigo;
+                //html+="<b>Código : </b>"+dispositivo.codigo;
                 html+="<br><b>Descripcion : </b>"+dispositivo.descripcion;
                 html+="<br><b>Velocidad : </b>"+parseFloat(dispositivo.velocidad).toFixed(2)+" km/h";
                 html+="<br><b>Estado : </b>"+dispositivo.estado;
                 var popup = L.responsivePopup().setContent(html);
-                var marker = L.marker([dispositivo.latitud,dispositivo.longitud], {icon: greenIcon, iconAngle: dispositivo.rotate}).addTo(map).bindPopup(popup);
+                var marker = L.marker([dispositivo.latitud,dispositivo.longitud], {icon: greenIcon}).addTo(map).bindPopup(popup);
                 marker.on('mouseover', function (e) {
                     this.openPopup();
                 });
@@ -132,9 +131,10 @@
                 }
                 ejecutarepintado = true;
                 console.log(idgrupodispositivo);
-                //pintadogpx = gruposgpx[idgrupodispositivo].pintadogpx;
-                pintadogpx = false;
+                pintadogpx = gruposgpx[idgrupodispositivo].pintadogpx;
+                //pintadogpx = false;
                 if (pintadogpx == false) {
+                    cleanGpxs();
                     for (var j in gpxs) {
                         var gpx = gpxs[j].url;
                         var mapgpx = new L.GPX(gpx, {async: true, 
@@ -155,7 +155,7 @@
                         }).addTo(map);
                         mapGpxs[j] = mapgpx;
                     }
-                    //gruposgpx[idgrupodispositivo].pintadogpx = true;
+                    gruposgpx[idgrupodispositivo].pintadogpx = true;
                 }
 
             }

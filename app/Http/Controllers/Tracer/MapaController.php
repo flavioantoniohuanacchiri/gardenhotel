@@ -34,7 +34,6 @@ class MapaController
             $grupos[$key]->pintadogpx = false;
             $data[$value->id] = $grupos[$key];
         }
-
         return view("mapas.tracer", ["grupos" => $data]);
     }
 
@@ -89,21 +88,12 @@ class MapaController
 					}*/
 					
 					$rumbo = FM::rumbo($puntoInicio, $puntoFin);
-					if ($rumbo == 0) {
-						if (isset($dataactual["angulogiroanterior"])) {
-							$dataupdate["angulogiro"] = $dataactual["angulogiroanterior"];
-						} else {
-							$dataupdate["angulogiroanterior"] = 0;
-						}
-						//$dataupdate["rumbo"] = $rumboanterior;
-						//$dataupdate["rumboanterior"] = $rumboanterior;
+					$rumboanterior = $dataactual["rumbo"];
+					if ($rumbo > 0) {
+						$dataupdate["rumbo"] = $rumbo;
 					} else {
-						$dataupdate["angulogiro"] = (int)($rumbo*180/pi());
-						$dataupdate["angulogiroanterior"] = (int)($rumbo*180/pi());
-						//if ($dataactual)
-						//$dataupdate["rumbo"] = $rumbo;
+						$dataupdate["rumbo"] = $rumboanterior;
 					}
-					$dataupdate["rumbo"] = $rumbo;
 					//$icono = FM::getIconoRumbo($rumbo);
 					//$dataupdate["icono"] = $icono;
 				}
@@ -134,6 +124,7 @@ class MapaController
         	$folderLocalizaciones = public_path('/localizaciones');
 	        $folderImagenes =public_path("imgs/dispositivos");
 	        $urlImagenes = URL::to('/imgs/dispositivos');
+	        $urlImagenesMapa = URL::to('/imgs/mapa');
 	        $urlGpx = URL::to('/gpx');
 	        $dispositivos = Dispositivo::where(["estado" => 1]);
 	        $dispositivos = $dispositivos->where("id_grupo", "=", $filtros["idgrupo"]);
@@ -154,10 +145,10 @@ class MapaController
 							$icono = FM::getIconoRumbo($datafile["rumbo"]);
 							$imagenexplode = explode(".", $imagen->url);
 							//$datafile["img"] = $urlImagenes."/".$imagenexplode[0].$icono.".".$imagenexplode[1];
-							$datafile["img"] = $urlImagenes."/2288/1489438813.png";
+							$datafile["img"] = $urlImagenesMapa."/".$icono;
 						} else {
 							//$datafile["img"] = $urlImagenes."/".$imagen->url;
-							$datafile["img"] = $urlImagenes."/2288/1489438813.png";
+							$datafile["img"] = $urlImagenesMapa."/icono-o_ON.png";
 						}
 					} else {
 							$datafile["img"] = "";
