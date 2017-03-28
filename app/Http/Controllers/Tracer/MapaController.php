@@ -147,13 +147,15 @@ class MapaController
 					$datafile = json_decode($datafile, true);
 					if (!is_null($imagen)) {
 						if (isset($datafile["rumbo"]) && $datafile["rumbo"] !="") {
-							$icono = FM::getIconoRumbo($datafile["rumbo"]);
+							//$icono = FM::getIconoRumbo($datafile["rumbo"]);
+							$icono = FM::getIconoDireccion($datafile["direccion"]);
 							$imagenexplode = explode(".", $imagen->url);
 							//$datafile["img"] = $urlImagenes."/".$imagenexplode[0].$icono.".".$imagenexplode[1];
 							$datafile["img"] = $urlImagenesMapa."/".$icono;
 						} else {
+							$icono = FM::getIconoDireccion("");
 							//$datafile["img"] = $urlImagenes."/".$imagen->url;
-							$datafile["img"] = $urlImagenesMapa."/icono-o_ON.png";
+							$datafile["img"] = $urlImagenesMapa."/".$icono;
 						}
 					} else {
 							$datafile["img"] = "";

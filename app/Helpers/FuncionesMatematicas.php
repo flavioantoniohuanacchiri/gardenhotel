@@ -74,6 +74,29 @@ class FuncionesMatematicas
         return $icono;
 
     }
+
+    public static function getIconoDireccion($direccion = "")
+    {
+        $icono = "icono-o_ON.png";
+        switch ($direccion) {
+            case 'N':
+                $icono = "icono-n_ON.png";
+                break;
+            case 'S':
+                $icono = "icono-s_ON.png";
+                break;
+            case 'E':
+                $icono = "icono-e_ON.png";
+                break;
+            case 'O':
+                $icono = "icono-o_ON.png";
+                break;
+            default:
+                # code...
+                break;
+        }
+        return $icono;
+    }
     public static function anguloGiro($puntosLatitud = [], $puntosLongitud = [])
     {
         $direccion = "";

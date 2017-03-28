@@ -1,6 +1,5 @@
-<?php
+<?php namespace App;
 
-namespace App;
 use File;
 
 class Dispositivo extends BaseModel
@@ -41,6 +40,7 @@ class Dispositivo extends BaseModel
                 // tiempo mayor a 1 minutos
                 if ($diferencia > 60) {
                     $data["estado"] = "Detenido";
+                    $data["velocidad"] = 0;
                 }
                 File::put($urlfile, json_encode($data));
             }

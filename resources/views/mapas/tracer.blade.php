@@ -47,7 +47,8 @@
             </div>-->
         </div>
     <style type="text/css">
-        .contenedor-filtros{padding: 5px 0px; background: #cacaca;}
+    .leaflet-control-zoom.leaflet-bar.leaflet-control{margin-top: 80px !important;}
+        .contenedor-filtros{padding: 5px 0px; background: #cacaca; position: fixed;z-index: 9999999;}
       #filtros{height: auto; background: #6ea9c5; margin-top: 40px; width: 270px; display: none;}
       #filtros h5 {text-align: center;  padding: 10px 0px; font-weight: 700; background: #fff; float: right; width: 100%;margin-top: 0px;}
       #filtros select {}
@@ -131,33 +132,34 @@
                 }
                 ejecutarepintado = true;
                 console.log(idgrupodispositivo);
-                pintadogpx = gruposgpx[idgrupodispositivo].pintadogpx;
-                //pintadogpx = false;
-                if (pintadogpx == false) {
-                    cleanGpxs();
-                    for (var j in gpxs) {
-                        var gpx = gpxs[j].url;
-                        var mapgpx = new L.GPX(gpx, {async: true, 
-                            polyline_options:  {
-                                color: gpxs[j].color,
-                                weight: 3,
-                                opacity: 0.6,
-                                fillOpacity: 0.65,
-                                fillColor: gpxs[j].color
-                            }, 
-                            marker_options: {
-                                startIconUrl: null,
-                                endIconUrl: null,
-                                shadowUrl: null
-                            } 
-                        }).on('loaded', function(e) {
-                                //map.fitBounds(e.target.getBounds());
-                        }).addTo(map);
-                        mapGpxs[j] = mapgpx;
+                if (idgrupodispositivo > 0) {
+                    pintadogpx = gruposgpx[idgrupodispositivo].pintadogpx;
+                    //pintadogpx = false;
+                    if (pintadogpx == false) {
+                        cleanGpxs();
+                        for (var j in gpxs) {
+                            var gpx = gpxs[j].url;
+                            var mapgpx = new L.GPX(gpx, {async: true, 
+                                polyline_options:  {
+                                    color: gpxs[j].color,
+                                    weight: 3,
+                                    opacity: 0.6,
+                                    fillOpacity: 0.65,
+                                    fillColor: gpxs[j].color
+                                }, 
+                                marker_options: {
+                                    startIconUrl: null,
+                                    endIconUrl: null,
+                                    shadowUrl: null
+                                } 
+                            }).on('loaded', function(e) {
+                                    //map.fitBounds(e.target.getBounds());
+                            }).addTo(map);
+                            mapGpxs[j] = mapgpx;
+                        }
+                        gruposgpx[idgrupodispositivo].pintadogpx = true;
                     }
-                    gruposgpx[idgrupodispositivo].pintadogpx = true;
                 }
-
             }
         });
     }
