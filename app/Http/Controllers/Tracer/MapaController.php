@@ -77,7 +77,7 @@ class MapaController
 					$dataupdate["direccion"] = $angulo["direccion"];
 					$dataupdate["diflatitud"] = $angulo["diflatitud"];
 					$dataupdate["diflongitud"] = $angulo["diflongitud"];
-					$dataupdate["estado"] = "Movimiento";
+					
 
 					$angulogiro = 0;
 
@@ -93,6 +93,8 @@ class MapaController
 					} else {
 						$rumboanterior = 0;
 					}
+
+
 					
 					if ($rumbo > 0) {
 						$dataupdate["rumbo"] = $rumbo;
@@ -105,6 +107,24 @@ class MapaController
 				$dataupdate["velocidad"] = 0;
 				if (isset($dataupdate["distanciarecorrida"])) {
 					$dataupdate["velocidad"] = $dataupdate["distanciarecorrida"] / $tiempo;
+				}
+				if ($dataupdate["velocidad"] == 0) {
+					$dataupdate["estado"] = "Detenido";
+				} else {
+					$dataupdate["estado"] = "En Movimiento";
+				}
+				
+				if (isset($dataactual["direccionanterior"])) {
+					if ($dataupdate["velocidad"] <=5) {
+						$dataupdate["direccion"] = $dataactual["direccionanterior"];
+						$dataupdate["direccionanterior"] = $dataactual["direccion"];
+					}else {
+						$dataupdate["direccionanterior"] = $dataactual["direccion"];
+						//$dataupdate["direccion"] = $dataactual["direccion"];
+					}
+					
+				} else {
+					$dataupdate["direccionanterior"] = "O";
 				}
 			}
 			File::put($rutaubicacion,json_encode($dataupdate));
