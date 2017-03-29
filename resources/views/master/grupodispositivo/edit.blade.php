@@ -1,9 +1,5 @@
 @extends('layouts.blank')
 
-@push('scripts')
-@include('master/grupodispositivo/js')
-@endpush
-
 @section('main_container')
 
 <!-- page content -->
@@ -19,6 +15,7 @@
                                         {!! Form::model($grupo,['method' => 'PATCH', 'route'=>['grupodispositivo.update',$grupo->id], 'class'=> 'form-horizontal', 'files' => true]) !!}
 
                                         @include('master/grupodispositivo/_form')
+                                        @include('master/grupodispositivo/_form_gpx_dispositivos')
 
                                         <div class="form-group">
                                                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
@@ -36,6 +33,8 @@
 
 </div>
 <!-- /page content -->
-
+@push('scripts')
+@include('master/grupodispositivo/js')
+@endpush
 @include('includes/footer')
 @endsection

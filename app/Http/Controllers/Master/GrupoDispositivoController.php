@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 use App\ObjectViews\Combo;
 use File;
 use URL;
+use App\Dispositivo;
 
 class GrupoDispositivoController extends Controller
 {
@@ -128,6 +129,7 @@ class GrupoDispositivoController extends Controller
             ->whereRaw("deleted_at IS NULL")
             ->orderBy("id", "DESC")
             ->get();
+        $dispositivos = Dispositivo::where(["id_grupo" => $id])->whereRaw("deleted_at IS NULL")->get();
         $urlGpx = URL::to('/gpx');
         foreach ($grupogpx as $key2 => $value2) {
             $value2->url = $urlGpx."/_".$id."/".$value2->url;
@@ -137,8 +139,14 @@ class GrupoDispositivoController extends Controller
         foreach ($grupogpx as $key => $value) {
             $data[$value->id] = $value;
         }
+
+        $datadispositivo = [];
+        foreach ($dispositivos as $key => $value) {
+            $datadispositivo[$value->id] = $value;
+        }
+
         //dd($grupogpx);
-        return view('master.grupodispositivo.edit', ["grupo" => $grupodispositivo, "grupogpx" => $data]);
+        return view('master.grupodispositivo.edit', ["grupo" => $grupodispositivo, "grupogpx" => $data, "dispositivos" => $datadispositivo]);
     }
 
     /**
@@ -151,6 +159,7 @@ class GrupoDispositivoController extends Controller
     public function update(Request $request, $id)
     {
         
+        //dd($request["dispositivo"]);
         //dd($request["jsongrupogpx"]);
         $objgrupo = GrupoDispositivo::find($id);
         $grupo = $request["grupo"];
@@ -161,8 +170,59 @@ class GrupoDispositivoController extends Controller
 
         try {
             $objgrupo->save();
+            if (isset($request["dispositivo"]["codigo"])) {
+                $codigos = $request["dispositivo"]["codigo"];
+                foreach ($codigos as $key => $value) {
+                   if ($value == "") {
+                    unset($codigos[$key]);
+                   }
+                }
+                $descripcion = $request["dispositivo"]["descripcion"];
+                $estado = $request["dispositivo"]["estado"];
+
+                foreach ($codigos as $key => $value) {
+                    $objdispositivo = new Dispositivo;
+                    $objdispositivo->id_grupo = $id;
+                    $objdispositivo->codigo = $value;
+                    if (isset($descripcion[$key])) {
+                        $objdispositivo->descripcion = $descripcion[$key];
+                    }
+                    if (isset($estado[$key])) {
+                        $objdispositivo->estado = $estado[$key];
+                    }
+                    $objdispositivo->save();
+                }
+            }
+
+            if (isset($request["jsondispositivo"])) {
+                $jsondispositivo = json_decode($request["jsondispositivo"], true);
+                $dispositivo = Dispositivo::where(["id_grupo" => $id])
+                    ->whereRaw("deleted_at IS NULL")
+                    ->orderBy("id", "DESC")
+                    ->get();
+                foreach ($dispositivo as $key2 => $value2) {
+                    $dispositivo[$key2] = $value2;
+                }
+                $data = [];
+                foreach ($dispositivo as $key => $value) {
+                    $data[$value->id] = $value;
+                }
+
+                foreach ($data as $key => $value) {
+                    if (isset($jsondispositivo[$key])) {
+                        $update["estado"] = $jsondispositivo[$key]["estado"];
+                        $objdispositivo = Dispositivo::find($key);
+                        $objdispositivo->estado = $update["estado"];
+                        $objdispositivo->save();
+                        //dd($data[$key]);
+                        
+                    }
+                }
+            }
+
             if (isset($request["jsongrupogpx"])) {
                 $jsongrupogpx = json_decode($request["jsongrupogpx"], true);
+                //dd($request["jsongrupogpx"]);
                 $grupogpx = GrupoDispositivoGpx::where(["id_grupo_dispositivo" => $id])
                     ->whereRaw("deleted_at IS NULL")
                     ->orderBy("id", "DESC")
@@ -176,14 +236,17 @@ class GrupoDispositivoController extends Controller
                 foreach ($grupogpx as $key => $value) {
                     $data[$value->id] = $value;
                 }
-
+                
                 foreach ($data as $key => $value) {
                     if (isset($jsongrupogpx[$key])) {
                         $update["color"] = $jsongrupogpx[$key]["color"];
                         $update["estado"] = $jsongrupogpx[$key]["estado"];
                         $objgpx = GrupoDispositivoGpx::find($key);
-                        //dd($data[$key]);
-                        $objgpx->update($update);
+                        //dd($update);
+                        $objgpx->estado = $update["estado"];
+                        $objgpx->color = $update["color"];
+                        $objgpx->save();
+                        //$objgpx->update($update);
                     }
                 }
             }

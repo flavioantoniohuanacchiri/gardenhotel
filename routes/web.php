@@ -16,6 +16,7 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/', 'HomeController@index');
 
 Route::group(['middleware' => ['web']], function () {
+	Route::resource('grupodispositivogpx', 'Master\GrupoDispositivoGpxController');
     Route::resource('grupodispositivo', 'Master\GrupoDispositivoController');
     Route::resource('dispositivo', 'Master\DispositivoController');
 });

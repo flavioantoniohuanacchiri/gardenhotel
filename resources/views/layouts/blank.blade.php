@@ -23,6 +23,7 @@
         <link rel="stylesheet" href="{{ asset("css/fixedHeader.bootstrap.min.css") }}">
         <link rel="stylesheet" href="{{ asset("css/scroller.bootstrap.min.css") }}">
         <link rel="stylesheet" href="{{ asset("css/bootstrap-select.min.css") }}">
+        <link rel="stylesheet" href="{{ asset("css/sweetalert2.min.css") }}">
         
 
         @stack('stylesheets')
@@ -46,6 +47,7 @@
         <script src="{{ asset("js/jquery.min.js") }}"></script>
         <!-- Bootstrap -->
         <script src="{{ asset("js/bootstrap.min.js") }}"></script>
+        <script src="{{ asset("js/sweetalert2.min.js") }}"></script>
         <!-- DataTables -->
         <script src="{{ asset("js/jquery.dataTables.min.js") }}"></script>
         <script src="{{ asset("js/dataTables.bootstrap.min.js") }}"></script>

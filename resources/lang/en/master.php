@@ -20,7 +20,7 @@ return [
     'delete module' => 'Eliminar :module',
     'show module' => 'Mostrar :module',
     'edit module' => 'Editar :module',
-    'name' => 'Avicola y afines!',
+    'name' => '',
     'delete_confirm' => 'Desea eliminar este registro? :value',
     //
     'system' => 'Sistema',

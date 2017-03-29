@@ -87,6 +87,7 @@ $(document).ready(function(){
 		save();
 		return false;
 	});
+	$("#fechafiltro").datepicker({format: "YYYY-MM-D"});
 	Dispositivo.listar();
 	$("#modal-dispositivo").on('show.bs.modal', function (event) {
 		var button = $(event.relatedTarget);
