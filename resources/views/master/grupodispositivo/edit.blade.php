@@ -11,7 +11,13 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                                 <div class="x_content">
-
+                                        @if(isset($errors))
+                                            @foreach ($errors as $key => $value)
+                                                <div style="background: red;color: #fff;padding: 8px;font-size: 14px;font-weight: 700;">
+                                                    {{$value}}    
+                                                </div>
+                                            @endforeach
+                                        @endif
                                         {!! Form::model($grupo,['method' => 'PATCH', 'route'=>['grupodispositivo.update',$grupo->id], 'class'=> 'form-horizontal', 'files' => true]) !!}
 
                                         @include('master/grupodispositivo/_form')

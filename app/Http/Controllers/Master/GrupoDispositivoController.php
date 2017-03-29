@@ -95,7 +95,7 @@ class GrupoDispositivoController extends Controller
                     $objgrupogpx->color = $colores[$i];
                     $objgrupogpx->id_grupo_dispositivo = $objgrupo->id;
                     $objgrupogpx->save();
-                $i++;
+                    $i++;
                 }
             }
         } catch (Exception $e) {
@@ -113,7 +113,7 @@ class GrupoDispositivoController extends Controller
     public function show($id)
     {
         $row=Perfil::find($id);
-        return view('master.perfil.show',compact('row'));
+        return view('master.perfil.show', compact('row'));
     }
 
     /**
@@ -161,6 +161,30 @@ class GrupoDispositivoController extends Controller
         
         //dd($request["dispositivo"]);
         //dd($request["jsongrupogpx"]);
+        $grupodispositivo = GrupoDispositivo::find($id);
+        $grupodatagpx = GrupoDispositivoGpx::where(["id_grupo_dispositivo" => $id])
+            ->whereRaw("deleted_at IS NULL")
+            ->orderBy("id", "DESC")
+            ->get();
+        $dispositivos = Dispositivo::where(["id_grupo" => $id])->whereRaw("deleted_at IS NULL")->get();
+        $urlGpx = URL::to('/gpx');
+        foreach ($grupodatagpx as $key2 => $value2) {
+            $value2->url = $urlGpx."/_".$id."/".$value2->url;
+            $grupodatagpx[$key2] = $value2;
+        }
+        $data = [];
+        foreach ($grupodatagpx as $key => $value) {
+            $data[$value->id] = $value;
+        }
+
+        $datadispositivo = [];
+        foreach ($dispositivos as $key => $value) {
+            $datadispositivo[$value->id] = $value;
+        }
+
+        /*
+        *
+        */
         $objgrupo = GrupoDispositivo::find($id);
         $grupo = $request["grupo"];
 
@@ -173,14 +197,27 @@ class GrupoDispositivoController extends Controller
             if (isset($request["dispositivo"]["codigo"])) {
                 $codigos = $request["dispositivo"]["codigo"];
                 foreach ($codigos as $key => $value) {
-                   if ($value == "") {
-                    unset($codigos[$key]);
-                   }
+                    if ($value == "") {
+                        unset($codigos[$key]);
+                    }
                 }
                 $descripcion = $request["dispositivo"]["descripcion"];
                 $estado = $request["dispositivo"]["estado"];
 
                 foreach ($codigos as $key => $value) {
+                    $existedispositivo = Dispositivo::where("codigo", "=", $value)
+                        ->whereRaw("deleted_at IS NULL")
+                        ->first();
+                    if (!is_null($existedispositivo)) {
+                        $errors = ["Codigo ".$value." para Dispositivo ya Existe"];
+                        return view(
+                            'master.grupodispositivo.edit',
+                            ["grupo" => $grupodispositivo,
+                                "grupogpx" => $data,
+                                "dispositivos" => $datadispositivo,
+                                "errors" => $errors]
+                        );
+                    }
                     $objdispositivo = new Dispositivo;
                     $objdispositivo->id_grupo = $id;
                     $objdispositivo->codigo = $value;
@@ -190,7 +227,18 @@ class GrupoDispositivoController extends Controller
                     if (isset($estado[$key])) {
                         $objdispositivo->estado = $estado[$key];
                     }
-                    $objdispositivo->save();
+                    try {
+                        $objdispositivo->save();
+                    } catch (Exception $e) {
+                        $errors = ["Codigo ya Existe"];
+                            return view(
+                                'master.grupodispositivo.edit',
+                                ["grupo" => $grupodispositivo,
+                                "grupogpx" => $data,
+                                "dispositivos" => $datadispositivo,
+                                "errors" => $errors]
+                            );
+                    }
                 }
             }
 

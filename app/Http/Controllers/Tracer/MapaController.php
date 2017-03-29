@@ -165,11 +165,9 @@ class MapaController
 					$datafile = File::get($urlfile);
 					$imagen = DispositivoImagen::where(["id_dispositivo" => $value2->id])->whereRaw("deleted_at IS NULL")->first();
 					$datafile = json_decode($datafile, true);
-					if (!is_null($imagen)) {
-						if (isset($datafile["rumbo"]) && $datafile["rumbo"] !="") {
+					if (isset($datafile["rumbo"]) && $datafile["rumbo"] !="") {
 							//$icono = FM::getIconoRumbo($datafile["rumbo"]);
 							$icono = FM::getIconoDireccion($datafile["direccion"]);
-							$imagenexplode = explode(".", $imagen->url);
 							//$datafile["img"] = $urlImagenes."/".$imagenexplode[0].$icono.".".$imagenexplode[1];
 							$datafile["img"] = $urlImagenesMapa."/".$icono;
 						} else {
@@ -177,9 +175,6 @@ class MapaController
 							//$datafile["img"] = $urlImagenes."/".$imagen->url;
 							$datafile["img"] = $urlImagenesMapa."/".$icono;
 						}
-					} else {
-							$datafile["img"] = "";
-					}
 					$datafile["descripcion"] = $value2->descripcion;
 					$datafile["codigo"] = $value2->codigo;
 
@@ -203,7 +198,6 @@ class MapaController
         }
         
 
-
-		return response($data);
+        return response($data);
 	}
 }
