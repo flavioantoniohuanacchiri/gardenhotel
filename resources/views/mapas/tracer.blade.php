@@ -4,13 +4,9 @@
      <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <style>
-      html { height: 100% }
-      body { height: 100%; margin: 0; padding: 0;}
-      #map{ height: 100%; }
-    </style>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
     <link rel="stylesheet" href="css/leaflet.responsive.popup.css" />
+    <link rel="stylesheet" href="css/tracer.css" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.6.4/leaflet.ie.css" />
@@ -46,20 +42,14 @@
                 
             </div>-->
         </div>
-    <style type="text/css">
-    .leaflet-control-zoom.leaflet-bar.leaflet-control{margin-top: 80px !important;}
-        .contenedor-filtros{padding: 5px 0px; background: #cacaca; position: fixed;z-index: 9999999;}
-      #filtros{height: auto; background: #6ea9c5; margin-top: 40px; width: 270px; display: none;}
-      #filtros h5 {text-align: center;  padding: 10px 0px; font-weight: 700; background: #fff; float: right; width: 100%;margin-top: 0px;}
-      #filtros select {}
-      #filtros ul {list-style: none; padding: 5px;}
-      #filtros ul ul.sublista{display: none; border-top: dotted 3px #aaa; margin-top: 8px;}
-      #filtros ul li input[type=checkbox]{ display: inline-block; vertical-align: middle;}
-      #filtros ul li span {vertical-align: middle;  display: inline-block; font-weight: 700; text-transform: uppercase; text-align: center;  width: 235px;}
-      #filtros ul li ul li span {width: 220px;}
-      #form-filtros .lista {width: 100%;  padding: 2px 8px;}
-    </style>
     <div id="map" class="col-md-12"></div>
+    <div id="contenedor-spinner">
+        <div class="spinner">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
+        </div>
+    </div>
+    
     <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
     <script type="text/javascript" src="js/leaflet.ajax.js"></script>
     <script src="js/spin.js"></script>
@@ -153,13 +143,17 @@
                                     shadowUrl: null
                                 } 
                             }).on('loaded', function(e) {
-                                    //map.fitBounds(e.target.getBounds());
+                                    map.fitBounds(e.target.getBounds());
                             }).addTo(map);
                             mapGpxs[j] = mapgpx;
                         }
                         gruposgpx[idgrupodispositivo].pintadogpx = true;
                     }
                 }
+                ocultarLoading();
+            },
+            error: function(){
+                ocultarLoading();
             }
         });
     }
@@ -195,11 +189,17 @@
         return false;
     });
     $(".lista").change(function(e){
+        mostrarLoading();
         ejecutarepintado = false;
         repintar();
         idgrupodispositivo = $(this).val();
         for(var i in gruposgpx){
             gruposgpx[i].pintadogpx = false;
+        }
+        if (idgrupodispositivo =="") {
+            idgrupodispositivo = 0;
+            cleanGpxs();
+            cleanMarkers();
         }
         return false;
     });
@@ -210,6 +210,13 @@
             $("#filtros").slideUp();
         }
     });
+    function mostrarLoading(){
+        $("#contenedor-spinner").css("display", "block");
+    }
+    function ocultarLoading(){
+        setTimeout(function(){ 
+            $("#contenedor-spinner").css("display", "none") }, 1000);
+    }
     </script>
     </body>
 </html>
