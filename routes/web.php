@@ -19,6 +19,10 @@ Route::group(['middleware' => ['web']], function () {
 	Route::resource('grupodispositivogpx', 'Master\GrupoDispositivoGpxController');
     Route::resource('grupodispositivo', 'Master\GrupoDispositivoController');
     Route::resource('dispositivo', 'Master\DispositivoController');
+    Route::get('/auth/edituser', function() {
+    	return view("edituser");
+    });
+    Route::post('/user/editardatos', 'Master\UserController@editarDatos');
 });
 Route::resource('prueba', 'PruebaController');
 /*Route::get("mapa",function(){

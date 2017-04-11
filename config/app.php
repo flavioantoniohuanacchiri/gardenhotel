@@ -161,7 +161,8 @@ return [
 	
 		Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class
+        Intervention\Image\ImageServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
         
     ],
 
