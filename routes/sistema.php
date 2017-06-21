@@ -13,10 +13,10 @@
 Route::group(['prefix' => 'admin', 'middleware' => ['web']], function () {
     Auth::routes();
     Route::get('/', 'HomeController@index');
-    Route::get('/logout', 'Auth\LoginController@logout');
-    Route::post('/login', 'Auth\LoginController@login');
+    
 });
-
+Route::get('/logout', 'Auth\LoginController@logout');
+Route::post('/login', 'Auth\LoginController@postLogin');
 Route::group(['middleware' => ['web']], function () {
     Route::resource('grupodispositivogpx', 'Master\GrupoDispositivoGpxController');
     Route::resource('grupodispositivo', 'Master\GrupoDispositivoController');
