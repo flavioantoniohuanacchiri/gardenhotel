@@ -1,1 +1,2 @@
-# My project's README
+# gardenhotel
+Web de Hoteleria Garden
