@@ -17,21 +17,18 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web']], function () {
     Route::get('section-inicio', function (){
       return view('master.web.hoteles');
     });
-
 });
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::post('/login', 'Auth\LoginController@postLogin');
 Route::group(['middleware' => ['web']], function () {
-    Route::resource('grupodispositivogpx', 'Master\GrupoDispositivoGpxController');
-    Route::resource('grupodispositivo', 'Master\GrupoDispositivoController');
-    Route::resource('dispositivo', 'Master\DispositivoController');
-    Route::get('/auth/edituser', function () {
-        return view("edituser");
-    });
+  Route::resource('grupodispositivogpx', 'Master\GrupoDispositivoGpxController');
+  Route::resource('grupodispositivo', 'Master\GrupoDispositivoController');
+  Route::resource('dispositivo', 'Master\DispositivoController');
+  Route::get('/auth/edituser', function () {
+      return view("edituser");
+  });
 
-    Route::post('/user/editardatos', 'Master\UserController@editarDatos');
-
-
+  Route::post('/user/editardatos', 'Master\UserController@editarDatos');
 });
 Route::resource('prueba', 'PruebaController');
 /*Route::get("mapa",function(){
@@ -40,6 +37,7 @@ Route::resource('prueba', 'PruebaController');
 Route::get('tracermapa', 'Tracer\MapaController@getTracer');
 Route::get('tracerubicacion', 'Tracer\MapaController@setUbicacion');
 Route::post('ubicaciones', 'Tracer\MapaController@getUbicaciones');
+//rutas públicas
 Route::get('index', 'PublicController@inicio');
 Route::get('hotel', 'PublicController@hotel');
 Route::get('habitaciones', 'PublicController@habitaciones');
