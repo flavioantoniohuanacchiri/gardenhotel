@@ -1,0 +1,610 @@
+/* Developer: Tania Cuya Medina
+   Cel: 951 445 629
+   tania.cuyamedina@gmail.com
+*/
+/****COMUNS*******/
+@import 'https://fonts.googleapis.com/css?family=Roboto+Slab';
+@import 'https://fonts.googleapis.com/css?family=Roboto';
+@import 'https://fonts.googleapis.com/css?family=Cabin';
+@import 'https://fonts.googleapis.com/css?family=Droid+Serif';
+* {
+  margin: 0;
+  padding: 0; }
+.nav-fix{
+  position: sticky;
+  width: 100%;
+  z-index: 99;
+}
+.navbar-default .navbar-toggle {border-color: white;}
+.navbar-default .navbar-toggle .icon-bar {background-color: white;}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{background-color: #bbd8a2;}
+.navbar-fixed-top {
+  top: 0;
+  border-width: 0 0 1px;
+  position: sticky;
+}
+body {
+  background: #fff;
+  font-family: 'Century Gothic', sans-serif; 
+  height:100%;}
+body {
+  margin: 0;
+  padding: 0; }
+body a {
+  -webkit-transition: 0.5s all; }
+ul {
+  padding: 0;
+  margin: 0; }
+.row{margin: 0px;}
+/****COMMUNS*****/
+.box-body {
+  padding: 10px; }
+.box-body p {
+  font-size: 13px;
+  margin: 0px; }
+.border-green {
+  border: 1.3px solid #bbd8a2;
+  padding: 9px; 
+  margin-top: 9px;}
+.i-green-light{color: #BBD8A2;}
+.txt-light{color: #bcd7a2;}
+.color-white{color: white;}
+.color-green {color: #0E5D36;}
+.pd-0 {padding: 0; }
+.mt-30{margin-top: 30px}
+.mr-5{margin-right: 5px;}
+.mg-0{margin: 0px;}
+.inlineflex{display: inline-flex;}
+.items-line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start; 
+  padding-top: 20px;}
+
+/*********HEADER***********/
+section.header {
+  padding: 6px 0;
+  background-color: white !important;
+  color: black !important;
+  border-top: 4px solid #BBD8A2;}
+.idiomas {
+  height: auto;
+  width: auto;
+  overflow: hidden;
+  padding-top: 5px;
+      height: 25px; }
+.idiomas ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  list-style-type: none;
+      display: none; }
+.idiomas ul li {
+  font-size: 12px; }
+.idiomas ul li a {
+  color: #666; }
+.icon_euu {
+  background: url(../icons/eeuu.svg) no-repeat;
+  padding-left: 40px;
+  margin-left: 20px; }
+.icon_euu:hover {
+  background: url(../icons/eeuu-hover.svg) no-repeat;
+}
+.icon_peru {
+  background: url(../icons/peru.svg) no-repeat;
+  padding-left: 30px; }
+.icon_peru:hover {
+  background: url(../icons/peru-hover.svg) no-repeat;
+}
+.header-contacto {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: center;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  }
+.header-contacto p {
+  padding: 5px 0 0px 10px;
+  font-size: 17px;}
+
+/*************MENU************/
+.navbar-default {
+  background-color: #0E5D36;
+  border: none; }
+.navbar {
+  border-radius: 0px; }
+.navbar-default .navbar-nav > li > a {
+  color: #fff; }
+/*jugadamenu*/
+.navbar-brand {
+  display: none; }
+.navbar-nav {
+  margin-left: -15px; }
+.logo-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+.navbar {margin-bottom: 0px !important; }
+.nav.navbar-nav li a {
+    padding: 15px 15px;
+    font-size: 12.4px;
+    letter-spacing: 0.4px;}
+.nav.navbar-nav li:hover {
+  color: #fff;
+  background-color: #002D23; }
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: #fff;
+  background-color: transparent; }
+.nav-top {
+  background-color: white !important;
+  color: black !important;
+  height: 30px;
+  padding: 20px;
+  border-top: 4px solid #BBD8A2; }
+.logo {
+  width: 141px; 
+  position: absolute;
+  z-index: 1;
+  top: 18px;}
+.circle-logo {
+  align-items: center;
+  position: absolute;
+  top: 76px;
+  z-index: 1;
+  }
+/*-hover-on-menu*/
+
+.nav-hover li {position: relative; }
+.nav-hover li a:before {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background-color: #BBD8A2;
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+  -webkit-transform: scale(0, 1);
+  transform: scale(0, 1);
+  -webkit-transition: color 0.3s,-webkit-transform 1s ease-out;
+  transition: color 0.3s,-webkit-transform 1s ease-out;
+  transition: color 0.3s,transform 1s ease-out;
+  transition: color 0.3s,transform 1s ease-out,-webkit-transform 1s ease-out; }
+.nav-hover li a:active::before {
+  background-color: #BBD8A2; }
+.nav-hover li a:hover::before, .nav-hover li a:focus::before {
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+  -webkit-transform: scale(1, 1);
+  transform: scale(1, 1); }
+
+
+
+
+/*******SLIDER-HOME**********/
+.carousel-inner .txt-slid {color: #fff; }
+.carousel-inner .txt-slid h2 {
+  font-size: 40px;
+  text-shadow: 5px 4px 10px #2b0a0c;
+   }
+/*
+#carousel-example .carousel-inner .item {
+  opacity: 0;
+  transition: opacity 5000ms ease-in-out;}
+#carousel-example .carousel-inner .active {
+  opacity: 1;
+  transition: opacity 5000ms ease-in-out;}
+.img-shadow {
+    box-shadow:0px -21px 45px 117px rgba(0, 0, 0, 0.56);
+    height: 140px;
+    position: absolute;
+    width: 100%;
+  }
+.carousel-caption {
+    bottom: 60px;
+
+}*/
+.carousel-example {  
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  max-width: 700px;
+  margin: 50px auto;}
+.carousel-inner {
+  box-shadow: 0 20px 50px -25px rgba(0, 0, 0, 1);
+}
+#carousel-example .carousel-inner .item {
+      height: 100%;
+    position: relative;
+    z-index: 1;
+}
+#carousel-example .carousel-inner .item  {
+    width: 100%;
+  transition: all 1s cubic-bezier(0.7, 0, 0.3, 1);
+  transform: scale(1.2);
+}
+#carousel-example .carousel-inner .active  {
+    transform: scale(1);
+  }
+/*********incon-slider*************/
+.icon-left, .icon-right {
+  padding: 5px 20px;
+  position: relative;
+  top: 44%;
+  font-size: 60px;}
+.btn-reserva {
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  right: 0px;
+  z-index: 999;
+  top: 40%;}
+
+/*#option*/
+
+.sectio-title {padding-bottom: 30px; }
+.home1 {
+  height: auto; 
+  position: relative;}
+#bg-home {
+  background-image: url(../img/inicio-optimizados/banner1.jpg);
+  width: 100%;
+  width: 100%;
+  background-size: cover;
+  height: 600px;
+  background-position: bottom; }
+.content-text {
+  text-align: center;
+  position: relative;
+  top: 140px;
+  margin: auto;
+  color: white;
+  font-family: 'Aparaj_0'; }
+.content-text .wrap-txt {
+  position: absolute;
+  width: 100%;
+  top: 340px; }
+/*LINE WHITE***********************/
+.options {padding: 6% 0% 0; }
+.options h4 {
+  color: #002E24;
+  margin-bottom: 50px;
+  font-family: 'Aparaj_0'; }
+
+/*****************IMG BOX ******/
+#grid-img {margin-top: 25px;}
+.img-box {
+  width: 100%;
+  /*background-image: url("../images/calidad/habitaciones.jpg");*/
+  background-size: cover;
+  height: 232px; }
+.img-box1 {
+  /*background-image: url("../images/calidad/hotel.jpg");*/
+  width: 100%;
+  background-size: cover;
+  height: 232px; }
+.img-box2 {
+  /*background-image: url("../images/calidad/auditrorio.jpg");*/
+  width: 100%;
+  background-size: cover;
+  height: 232px; }
+.img-box3 {
+  /*background-image: url("../images/calidad/comedor.jpg");*/
+  width: 100%;
+  background-size: cover;
+  height: 232px; }
+.green-light {
+  background-color: #BBD8A2;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 100%; }
+.green-dark {
+  background-color: #002E24;
+  /*width: 22%;*/
+  padding: 14px;
+  text-align: center; }
+.green-light span {
+  font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.box-verde.green-dark {
+  background-color: rgba(0, 45, 35, 0.77);
+  /*width: auto; */
+  text-align: left;}
+.img-dark {width: 38px; }
+.title-service {
+  padding: 25px 15px 0px;
+  color: #002E24; }
+
+/*****************IMG ZOOM***********/
+.overflow {
+  overflow: hidden;
+  width: 100%;
+  cursor: pointer;
+  -webkit-transition: -webkit-all 1s ease;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease; }
+.img-zoom {
+  width: 100%;
+  -webkit-transition: -webkit-all 1s ease;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease; }
+.img-zoom:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-transition: -webkit-all 1s ease;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease; }
+
+/****FINANCIERO***/
+
+.text-financiero {
+  padding: 9% 0 50px;
+  text-align: center; }
+.text-financiero .intro {padding-top: 10px; }
+.box-financiero {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap; }
+.box-financiero .col-flex {
+  width: 20%;
+  background-color: #0E5D36;
+  position: relative; }
+.box-financiero .col-flex img {width: 100%; }
+.box-financiero .col-flex .box-verde {
+  background-color: rgba(14, 93, 54, 0.79);
+  bottom: -1px;
+  height: 30%;
+  width: 100%; }
+.box-verde {
+  background-color: rgba(14, 93, 54, 0.79);
+  position: absolute;
+  bottom: -1px;
+  height: 38%;
+  width: 100%;
+  padding: 14px;}
+.box-financiero .col-flex .box-verde p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 15px;
+  color: #fff;
+  padding: 20px; }
+
+/*****FINANCIERO****/
+.img-w1       {
+  /*background-image: url('../images/ubicacion/bancos.jpg');*/
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 280px;
+}
+.img-w2       {
+  /*background-image: url('../images/ubicacion/westin.jpg');*/
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 280px;}
+.img-w3       {
+  /*background-image: url('../images/ubicacion/centro-comercial.jpg');*/
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 280px;}
+.img-w4       {
+  /*background-image: url('../images/ubicacion/areas-verdes.jpg');!**!*/
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 280px;
+}
+/**********MEDIAS**************/
+@media(max-width:1300px) {
+  .title-service {
+    padding: 18px 15px 0px;
+  }
+  .green-dark {
+    padding: 12px;
+  }
+  .green-light span {
+    font-size: 18px;
+  }
+}
+ @media(max-width:1187px) {
+      .green-light span {
+      font-size: 14px;
+    }
+ }
+
+  @media(max-width:1024px) {
+    .box-financiero :nth-child(4), 
+    .box-financiero :nth-child(5) {
+      display: none;
+    }
+
+    .box-financiero-resp {
+          display: flex;
+    }
+    /***********************HABITACIONES***********************/
+    .positionabs{margin-top: 0px !important;}
+  }
+
+  @media(max-width:1500px) {
+    .box-verde {
+      background-color: rgba(14, 93, 54, 0.79);
+      position: absolute;
+      bottom: -1px;
+      height: 40%;
+      width: 100%;
+      padding: 14px; }
+
+
+/************************************LOGO/header ****************************/
+
+  }
+  @media(max-width:991px) {
+    .items-line{padding-top: 0px;}
+    .navbar-nav{margin-right: -35px;}
+    .navbar-nav{margin-left: 11px !important; } 
+    
+    section.header {padding: 12px 0 0px;}
+    .circle-logo{
+      top: 116px;
+    }
+    .logo {
+      width: 70px;
+      position: absolute;
+      z-index: 1;
+      top: 132px;
+    }
+    .nav.navbar-nav li a {
+      font-size: 11.4px !important;
+      padding: 15px 10px;
+    }
+  }
+  @media (max-width: 968px){
+      .logo {
+            width: 100px;
+           position: absolute;
+           z-index: 1;
+           top: 76px;
+            margin-left: -24px;
+      }
+      .circle-logo img {
+      width: 80%;
+    }
+  }
+
+
+  @media(max-width:768px) {
+    .box-financiero :nth-child(4), 
+    .box-financiero :nth-child(5) {
+      display: block;
+    }
+    .box-financiero-resp {display: none;}
+    .box-financiero {flex-direction: column;}
+    .box-financ-dom {width: 100%;}
+    .navbar-brand {
+      display: block;
+      color: white !important;
+    }
+    .logo-nav{display: none;}
+    .navbar-nav{margin: 0px !important}
+    .img-hab {min-height: 100px;}
+    .img-hotel1 {
+      min-height: 220px;
+    }
+    .slider .slick-prev .fa {
+    position: relative;
+    top: -380px;
+    left: -49px;
+    z-index: 1;
+    color: #bcd7a2;
+    font-size: x-large;
+    }
+    .idiomas {
+      position: absolute;
+    top: -30px;
+    right: -20px;
+    }
+    .navbar-fixed-top {
+      position: relative;
+    }
+  }
+
+  .logo-responsive {
+    display: none;
+    margin: auto;
+    padding-bottom: 15px;
+
+  }
+
+  @media(max-width: 580px){
+    .btn-reserva,.header-contacto, .items-line{
+      display: none;
+    }
+    .logo-responsive {
+    display: block;
+    width: 50%;
+    }
+    .idiomas ul { 
+    justify-content: center;
+    margin: 20px 0;
+    }
+
+  }
+  @media(max-width: 480px){
+    .carousel-inner .txt-slid h2 {font-size: 20px;}
+    .carousel-inner .txt-slid h4 {font-size: 11px;}
+    .icon-left, .icon-right {
+      top: 70px;
+      font-size: 50px;
+    }
+     .img-hotel1 {
+      min-height: 150px;
+    }   
+  }
+
+/**********FOOTER¨**************/
+.icon-footer{
+  width: 35px;
+}
+/*FOOTER*/
+.footer {
+  color: #fff;
+  background-color: #002D23; }
+
+.footer .footer-logo {
+  text-align: center; }
+
+.footer .footer-logo img {
+  padding: 20px; }
+
+.footer .contac {
+  background-color: #01281F; }
+
+.creditos {
+ margin-top: 20px;
+ font-size: 12px;
+}
+.direc, .copy {
+  text-align: left;
+}
+.mail, .name {
+  text-align: right;
+}
+.name a {
+  text-decoration: none;
+  color: #1e5f33;
+}
+
+@media(max-width: 992px){
+ .direc, .copy {
+  text-align: center;
+}
+.mail, .name {
+  text-align: center;
+}
+.icon-footer {
+    width: 29px;
+}
+}

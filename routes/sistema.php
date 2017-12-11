@@ -13,7 +13,11 @@
 Route::group(['prefix' => 'admin', 'middleware' => ['web']], function () {
     Auth::routes();
     Route::get('/', 'HomeController@index');
-    
+    //rrutas web
+    Route::get('section-inicio', function (){
+      return view('master.web.hoteles');
+    });
+
 });
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::post('/login', 'Auth\LoginController@postLogin');
@@ -24,7 +28,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/auth/edituser', function () {
         return view("edituser");
     });
+
     Route::post('/user/editardatos', 'Master\UserController@editarDatos');
+
+
 });
 Route::resource('prueba', 'PruebaController');
 /*Route::get("mapa",function(){
@@ -33,3 +40,8 @@ Route::resource('prueba', 'PruebaController');
 Route::get('tracermapa', 'Tracer\MapaController@getTracer');
 Route::get('tracerubicacion', 'Tracer\MapaController@setUbicacion');
 Route::post('ubicaciones', 'Tracer\MapaController@getUbicaciones');
+Route::get('index', 'PublicController@inicio');
+Route::get('hotel', 'PublicController@hotel');
+Route::get('habitaciones', 'PublicController@habitaciones');
+Route::get('sala-de-conferencias', 'PublicController@sala_conferencias');
+Route::get('ubicacion', 'PublicController@ubicacion');

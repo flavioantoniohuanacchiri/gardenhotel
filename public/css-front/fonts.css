@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'Century Gothic';
+    src: url('../fonts/CenturyGothic.eot');
+    src: url('../fonts/CenturyGothic.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/CenturyGothic.woff') format('woff'),
+  url('../fonts/CenturyGothic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+    font-family: 'Century Gothic Bold';
+    src: url('../fonts/CenturyGothic-Bold.eot');
+    src: url('../fonts/CenturyGothic-Bold.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/CenturyGothic-Bold.woff') format('woff'),
+  url('../fonts/CenturyGothic-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+    font-family: 'Century Gothic bold italic';
+    src: url('../fonts/CenturyGothic-BoldItalic.eot');
+    src: url('../fonts/CenturyGothic-BoldItalic.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/CenturyGothic-BoldItalic.woff') format('woff'),
+  url('../fonts/CenturyGothic-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+    font-family: 'Century Gothic italic';
+    src: url('../fonts/CenturyGothic-Italic.eot');
+    src: url('../fonts/CenturyGothic-Italic.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/CenturyGothic-Italic.woff') format('woff'),
+  url('../fonts/CenturyGothic-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
