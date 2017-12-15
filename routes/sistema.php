@@ -14,9 +14,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web']], function () {
     Auth::routes();
     Route::get('/', 'HomeController@index');
     //rrutas web
-    Route::get('section-inicio', function (){
-      return view('master.web.hoteles');
-    });
+
 });
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::post('/login', 'Auth\LoginController@postLogin');
@@ -27,10 +25,19 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('/auth/edituser', function () {
       return view("edituser");
   });
+  Route::get('section-home', function (){
+    return view('master.web.index');
+  });
+  Route::get('section-hoteles', function (){
+    return view('master.web.hoteles');
+  });
 
+
+  Route::get('web/listar', 'WebController@listar');
   Route::post('/user/editardatos', 'Master\UserController@editarDatos');
 });
 Route::resource('prueba', 'PruebaController');
+Route::resource('web', 'WebController');
 /*Route::get("mapa",function(){
 	return view("mapas.tracer");
 });*/
@@ -41,5 +48,8 @@ Route::post('ubicaciones', 'Tracer\MapaController@getUbicaciones');
 Route::get('index', 'PublicController@inicio');
 Route::get('hotel', 'PublicController@hotel');
 Route::get('habitaciones', 'PublicController@habitaciones');
-Route::get('sala-de-conferencias', 'PublicController@sala_conferencias');
+Route::get('sala-conferencias', 'PublicController@sala_conferencias');
 Route::get('ubicacion', 'PublicController@ubicacion');
+Route::get('version', function(){
+  echo 'Versión actual de PHP: ' . phpversion();
+});

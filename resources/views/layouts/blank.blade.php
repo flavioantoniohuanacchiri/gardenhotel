@@ -28,6 +28,7 @@
 
         @stack('stylesheets')
         <link href="{{ asset("css/styles.css") }}" rel="stylesheet">
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
     </head>
 
     <body class="nav-md">

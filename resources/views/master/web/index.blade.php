@@ -1,12 +1,8 @@
 @extends('layouts.blank')
-
-@push('scripts')
-@endpush
-
 @section('main_container')
   <div class="right_col" role="main">
 
-    <h1 class="text-uppercase">Hoteles</h1>
+    <h1 class="text-uppercase">Inicio</h1>
 
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
@@ -16,7 +12,7 @@
             <div class="clearfix"></div>
           </div>
           <div class="col-lg-9">
-            <a href="#" class="btn btn-primary">+ Nuevo Banner</a>
+            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#banner-modal">+ Nuevo Banner</a>
             <ul class="nav navbar-right panel_toolbox">
               <li>
                 <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -50,5 +46,9 @@
     </div>
 
   </div>
-
+  @include('master.web-partials._banner-form')
 @endsection
+@push('scripts')
+  <script src="{{ asset("js/web.js") }}"></script>
+  <script src="{{ asset("js/web_ajax.js") }}"></script>
+@endpush
