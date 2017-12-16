@@ -32,13 +32,14 @@
             <textarea type="text" class="form-control" name="descripcion_en" id="descripcion_en"></textarea>
           </div>
           <div class="col-lg-10 form-group">
+            <figure id="img" style="width: 200px; height: 175px; background-size: cover;">
+              <img src="" id="img" alt="" >
+            </figure>
             <label for="">
               Imagen:
             </label>
             <input type="file" name="banner" id="banner">
           </div>
-          <input type="hidden" name="section_id" value="1">
-          <input type="hidden" name="id" id="id" value="1">
           <input type="hidden" name="_method" id="id" value="PUT">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
         </div>

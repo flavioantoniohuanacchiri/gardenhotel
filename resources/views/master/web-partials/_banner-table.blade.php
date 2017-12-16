@@ -6,7 +6,7 @@
         <div class="clearfix"></div>
       </div>
       <div class="col-lg-9">
-        <a href="#" class="btn btn-primary" id="myModal">+ Nuevo Banner</a>
+        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#banner-modal">+ Nuevo Banner</a>
         <ul class="nav navbar-right panel_toolbox">
           <li>
             <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -16,16 +16,15 @@
 
         <div class="x_content" style="margin-top: 20px">
 
-          <table class="table table-striped table-bordered dt-responsive nowrap" id="granja-table"  cellspacing="0" width="100%">
+          <table class="table table-striped table-bordered dt-responsive nowrap" id="banner-table"  cellspacing="0" width="100%">
             <thead>
             <tr>
-              <th>Id</th>
-              <th>Nombres</th>
-              <th>Codigo</th>
-              <th>Direccion</th>
-              <th>Created At</th>
-              <th>Updated At</th>
-              <th>Action</th>
+              <th>Título</th>
+              <th>Título (en)</th>
+              <th>Descripción</th>
+              <th>Descripción (en)</th>
+              <th>[]</th>
+              <th>[]</th>
             </tr>
             </thead>
           </table>

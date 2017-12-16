@@ -29,6 +29,13 @@
         @stack('stylesheets')
         <link href="{{ asset("css/styles.css") }}" rel="stylesheet">
         <meta name="csrf-token" content="{{ csrf_token() }}" />
+        <style>
+            #img-form{
+                display: block;
+                width: 300px;
+                height: 300px;
+            }
+        </style>
     </head>
 
     <body class="nav-md">

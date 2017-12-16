@@ -9,16 +9,16 @@ use Illuminate\Support\Facades\Storage as Storage;
 
 class WebController extends Controller
 {
-  public function getBanners(Request $request) {
+  public function getBanners(Request $request)
+  {
 
 
   }
 
-  public function listar(Request $request) {
-    $section =  $request->section;
-    if ($section == 3){
-      //HabitacionModel
-    }
+  public function listar(Request $request)
+  {
+    $banners = WebbannerModel::where('section_id', '=', $request->section)->get();
+    return $banners;
   }
 
   public function show($id){
@@ -26,11 +26,15 @@ class WebController extends Controller
     return $banner;
   }
 
-  public function store(Request $request){
+  public function store(Request $request)
+  {
     if ($request->hasFile('banner')) {
-      $path = $request->banner->store('public');
+
+
+      Storage::disk('uploads')->put($request->banner->getClientOriginalName(), file_get_contents($request->banner->getRealPath()));
+
       $datos = $request->all();
-      $datos['path_imagen'] = $path;
+      $datos['path_imagen'] = 'uploads/'.$request->banner->getClientOriginalName();
       WebbannerModel::create($datos);
 
       return Response::json([
@@ -45,14 +49,15 @@ class WebController extends Controller
     ]);
   }
 
-  public function update(Request $request, $id) {
+  public function update(Request $request, $id)
+  {
     $banner = WebbannerModel::find($id);
     if ($banner) {
       $datos = $request->all();
       if ($request->hasFile('banner')) {
-        Storage::delete($banner->path_image);
-        $path = $request->banner->store('public');
-        $datos['path_imagen'] = $path;
+        Storage::disk('uploads')->delete(str_replace("uploads/", "", $banner->path_imagen));
+        Storage::disk('uploads')->put($request->banner->getClientOriginalName(), file_get_contents($request->banner->getRealPath()));
+        $datos['path_imagen'] = 'uploads/'.$request->banner->getClientOriginalName();
       }
       $banner->update($datos);
 
@@ -65,6 +70,12 @@ class WebController extends Controller
       'mensaje' => 'No se logro actualizar el Banner',
       'estado' => 2
     ]);
+  }
+
+  public function destroy($id) {
+    $banner = WebbannerModel::find($id);
+    $banner->delete();
+    return response(["rst" => 1, "msj" => "Eliminado"]);
   }
 
 }
