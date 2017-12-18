@@ -20,14 +20,16 @@ class LoginController extends Controller
 	|
 	*/
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers {
+      logout as performLogout;
+    }
 
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = 'admin/section-inicio';
  
     /**
      * Create a new controller instance.
@@ -39,13 +41,9 @@ class LoginController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
 
-    public function postLogin(Request $request)
+    public function logout(Request $request)
     {
-        //dd(Auth::attempt(['email' => $request->email, 'password' => $request->password]));
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            // Authentication passed...
-            return redirect()->guest('admin/');
-        }
-        return redirect()->guest('admin/login');
+      $this->performLogout($request);
+      return redirect('/');
     }
 }

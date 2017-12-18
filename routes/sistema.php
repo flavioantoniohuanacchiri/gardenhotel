@@ -10,46 +10,30 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::group(['prefix' => 'admin', 'middleware' => ['web']], function () {
-    Auth::routes();
-    Route::get('/', 'HomeController@index');
-    //rrutas web
-
-});
-Route::get('/logout', 'Auth\LoginController@logout');
-Route::post('/login', 'Auth\LoginController@postLogin');
-Route::group(['middleware' => ['web']], function () {
-  Route::resource('grupodispositivogpx', 'Master\GrupoDispositivoGpxController');
-  Route::resource('grupodispositivo', 'Master\GrupoDispositivoController');
-  Route::resource('dispositivo', 'Master\DispositivoController');
-  Route::get('/auth/edituser', function () {
-      return view("edituser");
-  });
-  Route::get('section-home', function (){
-    return view('master.web.index');
-  });
-  Route::get('section-hoteles', function (){
-    return view('master.web.hoteles');
-  });
-
-
-  Route::get('web/listar', 'WebController@listar');
-  Route::post('/user/editardatos', 'Master\UserController@editarDatos');
-});
-Route::resource('prueba', 'PruebaController');
-Route::resource('web', 'WebController');
-/*Route::get("mapa",function(){
-	return view("mapas.tracer");
-});*/
-Route::get('tracermapa', 'Tracer\MapaController@getTracer');
-Route::get('tracerubicacion', 'Tracer\MapaController@setUbicacion');
-Route::post('ubicaciones', 'Tracer\MapaController@getUbicaciones');
-//rutas públicas
-Route::get('index', 'PublicController@inicio');
+Route::get('/', 'PublicController@index');
 Route::get('hotel', 'PublicController@hotel');
 Route::get('habitaciones', 'PublicController@habitaciones');
 Route::get('sala-conferencias', 'PublicController@sala_conferencias');
 Route::get('ubicacion', 'PublicController@ubicacion');
+Route::get('ofertas', 'PublicController@ofertas');
+
+Auth::routes();
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    //Route::get('/', 'HomeController@index');
+  Route::get('logout', 'Auth\LoginController@logout');
+  Route::get('web/listar', 'WebController@listar');
+  Route::get('web/cambiarestado/{id}', 'WebController@cambiarEstado');
+  Route::get('section-inicio', 'WebController@index');
+  Route::get('section-hotel', 'WebController@hotel');
+  Route::get('section-habitaciones', 'WebController@habitaciones');
+  Route::get('section-ofertas', 'WebController@ofertas');
+  Route::get('section-salaconferencias', 'WebController@salaconferencias');
+  Route::get('section-centrofinanciero', 'WebController@centrofinanciero');
+
+  Route::resource('web', 'WebController');
+});
+
+
 Route::get('version', function(){
   echo 'Versión actual de PHP: ' . phpversion();
 });

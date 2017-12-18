@@ -1,51 +1,18 @@
 @extends('layouts.blank')
-
-@push('scripts')
-@endpush
-
 @section('main_container')
   <div class="right_col" role="main">
 
-    <h1 class="text-uppercase">Hoteles</h1>
+    <h1 class="text-uppercase">Habitaciones</h1>
 
-    <div class="row">
-      <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="x_panel">
-          <div class="x_title">
-            <h2>Banners</h2>
-            <div class="clearfix"></div>
-          </div>
-          <div class="col-lg-9">
-            <a href="#" class="btn btn-primary">+ Nuevo Banner</a>
-            <ul class="nav navbar-right panel_toolbox">
-              <li>
-                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-              </li>
-            </ul>
-            <div class="clearfix"></div>
-
-            <div class="x_content" style="margin-top: 20px">
-
-              <table class="table table-striped table-bordered dt-responsive nowrap" id="granja-table"  cellspacing="0" width="100%">
-                <thead>
-                <tr>
-                  <th>Id</th>
-                  <th>Titulo</th>
-                  <th>Codigo</th>
-                  <th>Direccion</th>
-                  <th>Created At</th>
-                  <th>Updated At</th>
-                  <th>Action</th>
-                </tr>
-                </thead>
-              </table>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    @include('master.web-partials._banner-table')
 
   </div>
-
+  @include('master.web-partials._banner-form')
 @endsection
+@push('scripts')
+  <script>
+      var located = 2;
+  </script>
+  <script src="{{ asset("js/web.js") }}"></script>
+  <script src="{{ asset("js/web_ajax.js") }}"></script>
+@endpush

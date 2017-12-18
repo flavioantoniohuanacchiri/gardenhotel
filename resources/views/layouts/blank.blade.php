@@ -24,7 +24,7 @@
         <link rel="stylesheet" href="{{ asset("css/scroller.bootstrap.min.css") }}">
         <link rel="stylesheet" href="{{ asset("css/bootstrap-select.min.css") }}">
         <link rel="stylesheet" href="{{ asset("css/sweetalert2.min.css") }}">
-        
+        <link rel="stylesheet" href="{{ asset("css/toastr.min.css") }}">
 
         @stack('stylesheets')
         <link href="{{ asset("css/styles.css") }}" rel="stylesheet">
@@ -67,6 +67,7 @@
         <script src="{{ asset("js/scripts.js") }}"></script>
         <script src="{{ asset("js/notify.min.js") }}"></script>
         <script src="{{ asset("js/jquery.numeric.min.js") }}"></script>
+        <script src="{{ asset("js/toastr.min.js") }}"></script>
         @stack('scripts')
 
     </body>

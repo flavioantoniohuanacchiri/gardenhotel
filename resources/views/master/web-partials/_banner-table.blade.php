@@ -5,7 +5,7 @@
         <h2>Banners</h2>
         <div class="clearfix"></div>
       </div>
-      <div class="col-lg-9">
+      <div class="col-sm-12">
         <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#banner-modal">+ Nuevo Banner</a>
         <ul class="nav navbar-right panel_toolbox">
           <li>
@@ -16,15 +16,16 @@
 
         <div class="x_content" style="margin-top: 20px">
 
-          <table class="table table-striped table-bordered dt-responsive nowrap" id="banner-table"  cellspacing="0" width="100%">
+          <table class="table table-striped table-bordered dt-responsive" id="banner-table"  cellspacing="0" width="100%">
             <thead>
             <tr>
               <th>Título</th>
               <th>Título (en)</th>
               <th>Descripción</th>
               <th>Descripción (en)</th>
-              <th>[]</th>
-              <th>[]</th>
+              <th>Estado</th>
+              <th style="display: block !important; text-align: center">[]</th>
+              <th style="display: block !important; text-align: center">[]</th>
             </tr>
             </thead>
           </table>

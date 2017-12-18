@@ -5,6 +5,7 @@ $.ajaxSetup({
 });
 var  WebItem = {
     Listar: function (section) {
+        console.log(section);
         $.ajax({
             url         : 'web/listar',
             type        : 'GET',
@@ -18,27 +19,42 @@ var  WebItem = {
                 table.DataTable({
                     data: obj,
                     columns: [
-                        { data: 'titulo' },
-                        { data: 'titulo_en' },
-                        { data: 'descripcion' },
-                        { data: 'descripcion_en' },
-                        {data : function( row, type, val, meta) {
+                        { data: 'titulo', name:'btn-titulo'},
+                        { data: 'titulo_en', name:'titulo_en'},
+                        { data: 'descripcion', name:'descripcion' },
+                        { data: 'descripcion_en', name:'descripcion_en' },
+                        { data : function( row, type, val, meta) {
                             if (typeof row.id !== "undefined" && typeof row.id !== undefined) {
-                                let html = '<button class="btn btn-primary edit-item" data-toggle="modal" data-target="#banner-modal" data-id="'+row.id+'"><span class="glyphicon glyphicon-pencil"></span></button>';
+                                let estado_item = 'inactivo';
+                                if (row.estado == 1) {
+                                    estado_item = 'activo';
+                                }
+                                let html = '<div style="display: block; text-align:center"><button class="btn btn-success cambiarestado-item" data-id="'+row.id+'">'+ estado_item +'</button></div>';
+                                return html;
+                            }
+                        }, name:'estado'},
+                        { data : function( row, type, val, meta) {
+                            if (typeof row.id !== "undefined" && typeof row.id !== undefined) {
+                                let html = '<div style="display: block; text-align:center"><button class="btn btn-primary edit-item" data-toggle="modal" data-target="#banner-modal" data-id="'+row.id+'"><span class="glyphicon glyphicon-pencil"></span></button></div>';
                                 return html;
                             }
                         }, name:'btn-edit'},
-                        {data : function( row, type, val, meta) {
+                        { data : function( row, type, val, meta) {
                             if (typeof row.id !== "undefined" && typeof row.id !== undefined) {
-                                let html = '<button class="btn btn-danger delete-item" data-toggle="modal" data-id="'+row.id+'"><span class="glyphicon glyphicon-remove"></span></button>';
+                                let html = '<div style="display: block; text-align:center"><button class="btn btn-danger delete-item" data-id="'+row.id+'"><span class="glyphicon glyphicon-remove"></span></button></div>';
                                 return html;
                             }
-                        }, name:'btn-edit'},
-                    ]
+                        }, name:'btn-edit'}
+                    ],
+                    autoWidth: true,
+                    responsive: true
                 });
-                //$('#request').text(obj.request);
-                //$('#response').text(obj.response);
-                //$('#envioLegado').modal('show');
+                if (section === 5) {
+                    let column_descripcion  = table.DataTable().column(2);
+                    column_descripcion.visible( false);
+                    let column_descripcion_en = table.DataTable().column(3);
+                    column_descripcion_en.visible( false );
+                }
             },
             error: function(){
                 //$(".overlay,.loading-img").remove();
@@ -58,10 +74,15 @@ var  WebItem = {
             success: function (data) {
                 $("#banner-modal").modal("hide");
                 WebItem.Listar(section);
+                if (data.estado === 1) {
+                    toastr.success(data.mensaje);
+                } else {
+                    toastr.error(data.mensaje);
+                }
             },
-            error: function(){
+            error: function(data){
                 $("#banner-modal").modal("hide");
-            },
+            }
         });
     },
     ObtenerBanner: function (id) {
@@ -76,10 +97,10 @@ var  WebItem = {
                 $('#descripcion').val(data.descripcion);
                 $('#titulo').val(data.titulo);
                 $('#titulo_en').val(data.titulo_en);
-                $('#img').css('background-image', 'url(' + data.path_imagen + ')');
+                $('#img').css('background-image', 'url(../'+ data.path_imagen + ')');
             },
             error: function(){
-            },
+            }
         });
     },
     
@@ -91,9 +112,33 @@ var  WebItem = {
             cache: false,
             success: function (data) {
                 WebItem.Listar(section);
+                if (data.estado === 1) {
+                    toastr.success(data.mensaje);
+                } else {
+                    toastr.error(data.mensaje);
+                }
             },
             error: function(){
+            }
+        });
+    },
+    
+    CambiarEstado: function (id, section) {
+        $.ajax({
+            url: 'web/cambiarestado/' + id,
+            type: 'GET',
+            contentType: false,
+            cache: false,
+            success: function (data) {
+                WebItem.Listar(section);
+                if (data.estado === 1) {
+                    toastr.info(data.mensaje);
+                } else {
+                    toastr.error(data.mensaje);
+                }
             },
+            error: function(){
+            }
         });
     }
 

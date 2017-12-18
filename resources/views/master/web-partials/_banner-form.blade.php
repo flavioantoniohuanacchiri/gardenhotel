@@ -13,12 +13,15 @@
             </label>
             <input type="text" class="form-control"  name="titulo" id="titulo">
           </div>
+          @if(explode("-", Request::url())[1] !== 'hotel')
           <div class="col-lg-10 form-group">
             <label for="">
               Titulo (en):
             </label>
             <input type="text" class="form-control" name="titulo_en" id="titulo_en">
           </div>
+          @endif
+          @if(explode("-", Request::url())[1] !== 'centrofinanciero' && explode("-", Request::url())[1] !== 'hotel')
           <div class="col-lg-10 form-group">
             <label for="">
               Descripión:
@@ -31,6 +34,12 @@
             </label>
             <textarea type="text" class="form-control" name="descripcion_en" id="descripcion_en"></textarea>
           </div>
+          @endif
+          {{--<div  class="col-lg-10 form-group">
+            <label for="">Activo</label>
+            <input type="checkbox" name="estado">
+          </div>--}}
+
           <div class="col-lg-10 form-group">
             <figure id="img" style="width: 200px; height: 175px; background-size: cover;">
               <img src="" id="img" alt="" >

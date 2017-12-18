@@ -23,38 +23,14 @@
   <section>
     <div class="container-fluid pd-0">
       <div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-12 pd-0 wow fadeInUp" data-wow-offset="150" data-wow-delay="0.2s">
-          <div  class="img-w1" style="background-image: url('../imgs-front/ubicacion/bancos.jpg');"></div>
-          <div class="box-verde green-dark">
-            <p class="color-white size-12 mg-0 ">
-              21 bancos principales, 5 agencias bancarias, 5 administradoras de fondos de pensiones y 6 sociedades agentes de bolsa.
-            </p>
+        @foreach ($centros as $centro)
+          <div class="col-md-3 col-sm-6 col-xs-12 pd-0 wow fadeInUp" data-wow-offset="150" data-wow-delay="0.2s">
+            <div  class="img-w1" style="background-image: url('../{{$centro->path_imagen}}')"></div>
+            <div class="box-verde green-dark wow fadeInRight" data-wow-delay="0.2s">
+              <p class="color-white size-12 mg-0 ">{{$centro->titulo}}</p>
+            </div>
           </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12 pd-0 wow fadeInUp" data-wow-offset="150" data-wow-delay="0.2s">
-          <div  class="img-w2" style="background-image: url('../imgs-front/ubicacion/westin.jpg');"></div>
-          <div class="box-verde" >
-            <p class="color-white size-12 mg-0">
-              Centro de Convenciones Hotel Westin (a dos cuadras del Garden Hotel).
-            </p>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12 pd-0 wow fadeInUp" data-wow-offset="150" data-wow-delay="0.2s">
-          <div  class="img-w3" style="background-image: url('../imgs-front/ubicacion/centro-comercial.jpg');"></div>
-          <div class="box-verde green-dark">
-            <p class="color-white size-12 mg-0">
-              A menos de 4km del Centro de Convenciones de Lima "27 de Enero"
-            </p>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12 pd-0 wow fadeInUp" data-wow-offset="150" data-wow-delay="0.2s">
-          <div  class="img-w4" style="background-image: url('../imgs-front/ubicacion/areas-verdes.jpg');"></div>
-          <div class="box-verde" >
-            <p class="color-white size-12 mg-0">
-              Áreas verdes incluyendo el el Parque de Abtao (15,000 m2) a solo unos metros del Garden Hotel y el Bosque El Olivar (10ha) a 1.2 km de distancia.
-            </p>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
   </section>

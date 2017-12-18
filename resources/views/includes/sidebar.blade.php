@@ -28,7 +28,6 @@ if (!Session::has("sistema.modulos")) {
             }
         }
     }
-    //dd($modulos);
     Session::put("sistema.modulos", $modulos);
 } else {
     $modulos = Session::get("sistema.modulos");

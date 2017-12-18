@@ -61,14 +61,14 @@
         <!-- Collect the nav links, forms, and other content for toggling-->
         <div class="collapse navbar-collapse content-small" id="bs-example-navbar-collapse-1" style="margin: auto">
           <ul class="nav-hover nav navbar-nav">
-            <li><a href="index.html">INICIO</a></li>
-            <li><a href="hotel.html">HOTEL</a></li>
-            <li><a href="habitaciones.html">HABITACIONES</a></li>
+            <li><a href="{{url('/')}}" >INICIO</a></li>
+            <li><a href="{{url('/hotel')}}">HOTEL</a></li>
+            <li><a href="{{url('/habitaciones')}}">HABITACIONES</a></li>
           </ul>
           <ul class="nav-hover nav navbar-nav navbar-right">
-            <li><a href="sala-de-conferencias.html">SALA DE CONFERENCIA</a></li>
-            <li><a href="ofertas.html">OFERTAS  </a></li>
-            <li><a href="ubicacion.html">UBICACIÓN </a></li>
+            <li><a href="{{url('/sala-conferencias')}}">SALA DE CONFERENCIA</a></li>
+            <li><a href="{{url('/ofertas')}}">OFERTAS  </a></li>
+            <li><a href="{{url('/ubicacion')}}">UBICACIÓN </a></li>
           </ul>
         </div>
       </div>

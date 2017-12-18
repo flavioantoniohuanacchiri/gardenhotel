@@ -9,16 +9,38 @@ use Illuminate\Support\Facades\Storage as Storage;
 
 class WebController extends Controller
 {
-  public function getBanners(Request $request)
-  {
-
-
-  }
-
   public function listar(Request $request)
   {
     $banners = WebbannerModel::where('section_id', '=', $request->section)->get();
     return $banners;
+  }
+
+  public function index()
+  {
+    return view('master.web.index');
+  }
+
+  public function hotel()
+  {
+    return view('master.web.hotel');
+  }
+  public function habitaciones()
+  {
+    return view('master.web.habitaciones');
+  }
+  public function ofertas()
+  {
+    return view('master.web.ofertas');
+  }
+
+  public function salaconferencias()
+  {
+    return view('master.web.sala-conferencias');
+  }
+
+  public function centrofinanciero()
+  {
+    return view('master.web.centro-financiero');
   }
 
   public function show($id){
@@ -29,10 +51,7 @@ class WebController extends Controller
   public function store(Request $request)
   {
     if ($request->hasFile('banner')) {
-
-
       Storage::disk('uploads')->put($request->banner->getClientOriginalName(), file_get_contents($request->banner->getRealPath()));
-
       $datos = $request->all();
       $datos['path_imagen'] = 'uploads/'.$request->banner->getClientOriginalName();
       WebbannerModel::create($datos);
@@ -76,6 +95,14 @@ class WebController extends Controller
     $banner = WebbannerModel::find($id);
     $banner->delete();
     return response(["rst" => 1, "msj" => "Eliminado"]);
+  }
+
+  public function cambiarEstado($id) {
+    $banner = WebbannerModel::find($id);
+    $estado_cambio = ($banner->estado == 1) ? 0: 1;
+    $banner->estado = $estado_cambio;
+    $banner->save();
+    return response(["rst" => 1, "msj" => "Se ha actualizado el estado con éxito"]);
   }
 
 }

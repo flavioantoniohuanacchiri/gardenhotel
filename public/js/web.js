@@ -22,9 +22,8 @@ $(document).ready(function () {
     })
 });
 
-
-
 $('#banner-modal').on('hidden.bs.modal', function () {
+    $('.modal-title').html('Crear Banner');
     $('#descripcion_en').val('');
     $('#descripcion').val('');
     $('#titulo').val('');
@@ -35,10 +34,16 @@ $('#banner-modal').on('hidden.bs.modal', function () {
 });
 
 $(document).on('click', '.edit-item', function () {
+    $('.modal-title').html('Editar Banner');
     id = $(this).data('id');
     WebItem.ObtenerBanner(id);
 });
 $(document).on('click', '.delete-item', function () {
     let id_delete = $(this).data('id');
     WebItem.EliminarBanner(id_delete, located);
+});
+
+$(document).on('click', '.cambiarestado-item', function () {
+    let id_cambiar = $(this).data('id');
+    WebItem.CambiarEstado(id_cambiar, located);
 });
