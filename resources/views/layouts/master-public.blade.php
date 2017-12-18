@@ -33,7 +33,7 @@
                 <li><a class="icon_euu" href=""></a></li>
               </ul>
             </div>
-            <div class="header-contacto"><img src="icons/tel.svg" width="31px">
+            <div class="header-contacto"><img src="imgs-front/icons/tel.svg" width="31px">
               <p>(511) <strong>4421771</strong> / 995743685 </p>
             </div>
           </div>
@@ -85,18 +85,18 @@
         <div class="row">
           <div class="col-md-5">
             <p class="color-white direc">
-              <img class="icon-footer" src="icons/direccion-cabecera.svg" alt="">
+              <img class="icon-footer" src="imgs-front/icons/direccion-cabecera.svg" alt="">
               Avenida Ricardo Rivera Navarrete 450, San Isidro </p>
           </div>
           <div class="col-md-3">
             <p class="color-white tel">
-              <img class="icon-footer" src="icons/telefono-footer.svg">
+              <img class="icon-footer" src="imgs-front/icons/telefono-footer.svg">
               (511) 4421771 / 995743685
             </p>
           </div>
           <div class="col-md-4">
             <p class="color-white mail">
-              <img class="icon-footer" src="icons/sms.svg">
+              <img class="icon-footer" src="imgs-front/icons/sms.svg">
               <a href="mailto:reservas@gardenhotel.com.pe" style="text-decoration: none; color: #fff;">
                 reservas@gardenhotel.com.pe
               </a>
