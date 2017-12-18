@@ -18,7 +18,7 @@
   <section class="header">
     <div class="container content-small">
       <div class="row">
-        <div class="items-line col-md-3 col-xs-12 col-sm-12"><img src="icons/ubicacion.svg" width="25px">
+        <div class="items-line col-md-3 col-xs-12 col-sm-12"><img src="{{asset('icons/ubicacion.svg')}}" width="25px">
           <p class="mg-0" style="font-size: 12px;    padding-left: 10px">Avenida Ricardo Rivera Navarrete 450, San Isidro</p>
         </div>
         <div class="col-md-5 col-xs-12 col-sm-12"></div>
