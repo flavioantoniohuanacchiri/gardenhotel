@@ -6,7 +6,7 @@
   <div class="container padding-off">
     <div class="text-center">
       <p class="text-light mb-0">Para nuestro futuros huéspedes les traemos</p>
-      <h2 class="text-aparaj mt-0">LAS MEJORES OFERTAS</h2><img src="images/marco-centro.png">
+      <h2 class="text-aparaj mt-0">LAS MEJORES OFERTAS</h2><img src="imgs-front/marco-centro.png">
     </div>
   </div>
   @foreach ($ofertas as $key => $oferta)
