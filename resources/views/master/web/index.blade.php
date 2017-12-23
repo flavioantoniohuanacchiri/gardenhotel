@@ -15,4 +15,5 @@
   </script>
   <script src="{{ asset("js/web.js") }}"></script>
   <script src="{{ asset("js/web_ajax.js") }}"></script>
+
 @endpush

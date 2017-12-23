@@ -6,12 +6,24 @@ $(document).ready(function () {
         ev.preventDefault();
     });
 
+    //console.log($('#ck_editor').val());
     $('#banner-form').submit( function (ev) {
         ev.preventDefault();
+        //
         let file_data = $('#banner').prop('files')[0];
         let formData = new FormData($('#banner-form')[0]);
         formData.append('file', file_data);
         formData.append('section_id', section);
+        if ( $('#ckeditor_text')[0]  !== undefined &&  $('#ckeditor_text')[0]) {
+            console.log('qweq', $('#ckeditor_text')[0]);
+            let descripcion = CKEDITOR.instances.ckeditor_text;
+            let descripcion_en = CKEDITOR.instances.ckeditor_text_en;
+            descripcion = descripcion.getData();
+            descripcion_en = descripcion_en.getData();
+            formData.append('descripcion', descripcion);
+            formData.append('descripcion_en', descripcion_en);
+        }
+
 
         if (id !== undefined && id !==  '') {
             WebItem.Guardar('web/' + id, formData, section);
@@ -24,13 +36,20 @@ $(document).ready(function () {
 
 $('#banner-modal').on('hidden.bs.modal', function () {
     $('.modal-title').html('Crear Banner');
-    $('#descripcion_en').val('');
-    $('#descripcion').val('');
     $('#titulo').val('');
     $('#titulo_en').val('');
     $('#img').css('background-image', 'url("")');
     $('#banner').val('');
     id = '';
+    if ( $('#ckeditor_text')[0]  !== undefined &&  $('#ckeditor_text')[0]) {
+        let descripcion = CKEDITOR.instances.ckeditor_text;
+        let descripcion_en = CKEDITOR.instances.ckeditor_text_en;
+        descripcion.setData('');
+        descripcion_en.setData('');
+    } else {
+        $('#descripcion_en').val('');
+        $('#descripcion').val('');
+    }
 });
 
 $(document).on('click', '.edit-item', function () {

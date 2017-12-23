@@ -24,6 +24,7 @@ class CreateWebBannersTable extends Migration
         $table->string('path_imagen_md');
         $table->string('estado')->default(1);
         $table->smallInteger('section_id');
+        $table->smallInteger('orden');
         $table->timestamps();
       });
     }

@@ -14,7 +14,9 @@ class WebBanner extends Model
     'descripcion_en',
     'path_imagen',
     'path_imagen_sm',
+    'section_id',
     'path_imagen_md',
-    'estado'
+    'estado',
+    'orden'
   ];
 }

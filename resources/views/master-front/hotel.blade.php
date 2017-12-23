@@ -33,397 +33,49 @@
 @section('content')
   <section class="home1">
     <div id="slider-hotel" class="slider slider-for">
-      <div class="bar">
-        <img class="img-hotel1" alt="" src="./imgs-front/hotel/lobby-bar.jpg" alt="">
+      @foreach ($banners as $key => $banner)
+      <div class="mezanine{{$key}}">
+        <img class="img-hotel1" alt="" src="{{ $banner->path_imagen }}" alt="">
         <div class="row">
           <div class="container">
             <div class="box-body">
               <div class="green-light">
                 <div class="green-dark"><img class="img-dark" style="width:30px; margin:auto" src="imgs-front/icons/hotel.svg"></div><br><span class="pd-15 text-light">
-                    GARDEN HOTEL CUENTAN CON333
+                    {{ $banner->titulo }}
                   </span>
               </div>
               <div class="border-green">
                 <ul class="text-light">
+                  @foreach( $banner->lists as $list)
                   <li>
                     <div class="inlineflex">
                       <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
                       <p style="font-size: 12px;">
-                        Aire acondicionado, calefacción, wifi gratuito
-                        de máximo 50MB, TV HD de 40 pulgadas con
-                        125 canales de cable Radio/Despertador,
-                        teléfono con discado internacional, frio bar,
-                        caja de seguridad, servicio de lavanderia
-                        express (24 horas), baño con ducha y tina.
+                        {{ $list }}
                       </p>
                     </div>
                   </li>
-                  <li>
-                    <div class="inlineflex">
-                      <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                      <p style="font-size: 12px;">
-                        La habitación doble puede incluir dos camas
-                        twin o una cama queen.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="inlineflex">
-                      <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                      <p style="font-size: 12px;">
-                        Habitaciones con piso de alfombra o piso de
-                        madera
-                      </p>
-                    </div>
-                  </li>
+                  @endforeach
                 </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="comedor">
-        <img class="img-hotel1" alt="" src="./imgs-front/hotel/comedor.jpg" alt="">
-        <div class="row">
-          <div class="container">
-            <div class="box-body">
-              <div class="green-light">
-                <div class="green-dark"><img class="img-dark" style="width:30px; margin:auto" src="imgs-front/icons/hotel.svg"></div><br><span class="pd-15 text-light">
-                    GARDEN HOTEL CUENTAN CON222
-                  </span>
-              </div>
-              <div class="border-green">
-                <ul class="text-light">
-                  <li>
-                    <div class="inlineflex">
-                      <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                      <p style="font-size: 12px;">
-                        Aire acondicionado, calefacción, wifi gratuito
-                        de máximo 50MB, TV HD de 40 pulgadas con
-                        125 canales de cable Radio/Despertador,
-                        teléfono con discado internacional, frio bar,
-                        caja de seguridad, servicio de lavanderia
-                        express (24 horas), baño con ducha y tina.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="inlineflex">
-                      <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                      <p style="font-size: 12px;">
-                        La habitación doble puede incluir dos camas
-                        twin o una cama queen.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="inlineflex">
-                      <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                      <p style="font-size: 12px;">
-                        Habitaciones con piso de alfombra o piso de
-                        madera
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="mezanine">
-        <img class="img-hotel1" alt="" src="./imgs-front/hotel/mezanine.jpg" alt="">
-        <div class="row">
-          <div class="container">
-            <div class="box-body">
-              <div class="green-light">
-                <div class="green-dark"><img class="img-dark" style="width:30px; margin:auto" src="imgs-front/icons/hotel.svg"></div><br><span class="pd-15 text-light">
-                    GARDEN HOTEL CUENTAN CON111
-                  </span>
-              </div>
-              <div class="border-green">
-                <ul class="text-light">
-                  <li>
-                    <div class="inlineflex">
-                      <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                      <p style="font-size: 12px;">
-                        Aire acondicionado, calefacción, wifi gratuito
-                        de máximo 50MB, TV HD de 40 pulgadas con
-                        125 canales de cable Radio/Despertador,
-                        teléfono con discado internacional, frio bar,
-                        caja de seguridad, servicio de lavanderia
-                        express (24 horas), baño con ducha y tina.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="inlineflex">
-                      <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                      <p style="font-size: 12px;">
-                        La habitación doble puede incluir dos camas
-                        twin o una cama queen.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="inlineflex">
-                      <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                      <p style="font-size: 12px;">
-                        Habitaciones con piso de alfombra o piso de
-                        madera
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="jardin">
-        <img class="img-hotel1" alt="" src="./imgs-front/hotel/jardin.jpg" alt="">
-        <div class="row">
-          <div class="container">
-            <div class="box-body">
-              <div class="green-light">
-                <div class="green-dark"><img class="img-dark" style="width:30px; margin:auto" src="imgs-front/icons/hotel.svg"></div><br><span class="pd-15 text-light">
-                    GARDEN HOTEL CUENTAN CON
-                  </span>
-              </div>
-              <div class="border-green">
-                <ul class="text-light">
-                  <li>
-                    <div class="inlineflex">
-                      <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                      <p style="font-size: 12px;">
-                        Aire acondicionado, calefacción, wifi gratuito
-                        de máximo 50MB, TV HD de 40 pulgadas con
-                        125 canales de cable Radio/Despertador,
-                        teléfono con discado internacional, frio bar,
-                        caja de seguridad, servicio de lavanderia
-                        express (24 horas), baño con ducha y tina.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="inlineflex">
-                      <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                      <p style="font-size: 12px;">
-                        La habitación doble puede incluir dos camas
-                        twin o una cama queen.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="inlineflex">
-                      <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                      <p style="font-size: 12px;">
-                        Habitaciones con piso de alfombra o piso de
-                        madera
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="terraza">
-        <img class="img-hotel1" alt="" src="./imgs-front/hotel/lobby-terraza.jpg" alt="">
-        <div class="row">
-          <div class="container">
-            <div class="box-body">
-              <div class="green-light">
-                <div class="green-dark"><img class="img-dark" style="width:30px; margin:auto" src="imgs-front/icons/hotel.svg"></div><br><span class="pd-15 text-light">
-                    GARDEN HOTEL CUENTAN CON
-                  </span>
-              </div>
-              <div class="border-green">
-                <ul class="text-light">
-                  <li>
-                    <div class="inlineflex">
-                      <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                      <p style="font-size: 12px;">
-                        Aire acondicionado, calefacción, wifi gratuito
-                        de máximo 50MB, TV HD de 40 pulgadas con
-                        125 canales de cable Radio/Despertador,
-                        teléfono con discado internacional, frio bar,
-                        caja de seguridad, servicio de lavanderia
-                        express (24 horas), baño con ducha y tina.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="inlineflex">
-                      <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                      <p style="font-size: 12px;">
-                        La habitación doble puede incluir dos camas
-                        twin o una cama queen.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="inlineflex">
-                      <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                      <p style="font-size: 12px;">
-                        Habitaciones con piso de alfombra o piso de
-                        madera
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="lobby">
-        <img class="img-hotel1" alt="" src="./imgs-front/hotel/lobby2.jpg" alt="">
-        <div class="row">
-          <div class="container">
-            <div class="box-body">
-              <div class="green-light">
-                <div class="green-dark"><img class="img-dark" style="width:30px; margin:auto" src="imgs-front/icons/hotel.svg"></div><br><span class="pd-15 text-light">
-                    GARDEN HOTEL CUENTAN CON
-                  </span>
-              </div>
-              <div class="border-green">
-                <ul class="text-light">
-                  <li>
-                    <div class="inlineflex">
-                      <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                      <p style="font-size: 12px;">
-                        Aire acondicionado, calefacción, wifi gratuito
-                        de máximo 50MB, TV HD de 40 pulgadas con
-                        125 canales de cable Radio/Despertador,
-                        teléfono con discado internacional, frio bar,
-                        caja de seguridad, servicio de lavanderia
-                        express (24 horas), baño con ducha y tina.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="inlineflex">
-                      <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                      <p style="font-size: 12px;">
-                        La habitación doble puede incluir dos camas
-                        twin o una cama queen.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="inlineflex">
-                      <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                      <p style="font-size: 12px;">
-                        Habitaciones con piso de alfombra o piso de
-                        madera
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="recepcion">
-        <img class="img-hotel1" alt="" src="./imgs-front/hotel/recepcion.jpg" alt="">
-        <div class="row">
-          <div class="container">
-            <div class="box-body">
-              <div class="green-light">
-                <div class="green-dark"><img class="img-dark" style="width:30px; margin:auto" src="imgs-front/icons/hotel.svg"></div><br><span class="pd-15 text-light">
-                    GARDEN HOTEL CUENTAN CON
-                  </span>
-              </div>
-              <div class="border-green">
-                <ul class="text-light">
-                  <li>
-                    <div class="inlineflex">
-                      <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                      <p style="font-size: 12px;">
-                        Aire acondicionado, calefacción, wifi gratuito
-                        de máximo 50MB, TV HD de 40 pulgadas con
-                        125 canales de cable Radio/Despertador,
-                        teléfono con discado internacional, frio bar,
-                        caja de seguridad, servicio de lavanderia
-                        express (24 horas), baño con ducha y tina.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="inlineflex">
-                      <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                      <p style="font-size: 12px;">
-                        La habitación doble puede incluir dos camas
-                        twin o una cama queen.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="inlineflex">
-                      <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                      <p style="font-size: 12px;">
-                        Habitaciones con piso de alfombra o piso de
-                        madera
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      @endforeach
     </div>
     <div class="bg-slide-black">
       <div class="slider slider-nav">
-        <div class="wrap-small">
-          <img class="img-hotel" alt="" src="./imgs-front/hotel-optimizados/lobby-bar.jpg" alt="">
-          <p class="txt-float color-white">
-            BAR
-          </p>
-        </div>
-        <div class="wrap-small">
-          <img class="img-hotel" alt="" src="./imgs-front/hotel-optimizados/comedor.jpg" alt="">
-          <p class="txt-float color-white">
-            RESTAURANTE
-          </p>
-        </div>
-        <div class="wrap-small">
-          <img class="img-hotel" alt="" src="./imgs-front/hotel-optimizados/mezanine.jpg" alt="">
-          <p class="txt-float color-white">
-            MEZANINE
-          </p>
-        </div>
-        <div class="wrap-small">
-          <img class="img-hotel" alt="" src="./imgs-front/hotel-optimizados/jardin.jpg" alt="">
-          <p class="txt-float color-white">
-            JARDIN
-          </p>
-        </div>
-        <div class="wrap-small">
-          <img class="img-hotel" alt="" src="./imgs-front/hotel-optimizados/lobby-terraza.jpg" alt="">
-          <p class="txt-float color-white">
-            TERRAZA
-          </p>
-        </div>
-        <div class="wrap-small">
-          <img class="img-hotel" alt="" src="./imgs-front/hotel-optimizados/lobby2.jpg" alt="">
-          <p class="txt-float color-white">
-            LOBBY
-          </p>
-        </div>
-        <div class="wrap-small">
-          <img class="img-hotel" alt="" src="./imgs-front/hotel-optimizados/recepcion.jpg" alt="">
-          <p class="txt-float color-white">
-            RECEPCIÓN
-          </p>
-        </div>
+        @foreach ($banners as $key => $banner)
+          <div class="wrap-small">
+            <img class="img-hotel" alt="" src="{{$banner->path_imagen_sm}}" alt="">
+            <p class="txt-float color-white">
+              {{$banner->titulo}}
+            </p>
+          </div>
+        @endforeach
       </div>
     </div>
-    <!--<pre><code class="language-javascript"></code></pre>-->
   </section>
 @endsection
 @push('scripts')

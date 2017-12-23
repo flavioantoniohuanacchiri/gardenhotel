@@ -13,8 +13,8 @@ if (!Session::has("sistema.modulos")) {
         $modulos[$value->id]["cabecera"] = $value;
         $modulos[$value->id]["cuerpo"] = [];
     }
-    $usuarioPerfil = App\User::with("perfils")->find(Auth::user()->id);
-    $perfiles = $usuarioPerfil->perfils;
+  $usuarioPerfil = App\User::with("perfils")->find(Auth::user()->id);
+  $perfiles = $usuarioPerfil->perfils;
 
     foreach ($perfiles as $key => $value) {
         $modulosPerfil = App\Perfil::with("modulos")->find($value->id_perfil);
@@ -32,7 +32,7 @@ if (!Session::has("sistema.modulos")) {
 } else {
     $modulos = Session::get("sistema.modulos");
 }
-//dd($modulos);
+
 
     //print_r($modulos);
 

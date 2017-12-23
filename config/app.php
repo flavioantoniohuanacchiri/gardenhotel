@@ -163,9 +163,10 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        Unisharp\Ckeditor\ServiceProvider::class,
         
     ],
-
+  
     /*
     |--------------------------------------------------------------------------
     | Class Aliases

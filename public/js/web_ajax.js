@@ -63,6 +63,7 @@ var  WebItem = {
     },
     
     Guardar: function (url, formData, section) {
+        console.log(section);
         console.log(url);
         $.ajax({
             url: url,
@@ -73,8 +74,9 @@ var  WebItem = {
             data: formData,
             success: function (data) {
                 $("#banner-modal").modal("hide");
-                WebItem.Listar(section);
+
                 if (data.estado === 1) {
+                    WebItem.Listar(section);
                     toastr.success(data.mensaje);
                 } else {
                     toastr.error(data.mensaje);
@@ -98,6 +100,7 @@ var  WebItem = {
                 $('#titulo').val(data.titulo);
                 $('#titulo_en').val(data.titulo_en);
                 $('#img').css('background-image', 'url(../'+ data.path_imagen + ')');
+                $('#orden').val(data.orden);
             },
             error: function(){
             }
@@ -113,9 +116,9 @@ var  WebItem = {
             success: function (data) {
                 WebItem.Listar(section);
                 if (data.estado === 1) {
-                    toastr.success(data.mensaje);
+                    toastr.success(data.msj);
                 } else {
-                    toastr.error(data.mensaje);
+                    toastr.error(data.msj);
                 }
             },
             error: function(){
@@ -132,9 +135,9 @@ var  WebItem = {
             success: function (data) {
                 WebItem.Listar(section);
                 if (data.estado === 1) {
-                    toastr.info(data.mensaje);
+                    toastr.info(data.msj);
                 } else {
-                    toastr.error(data.mensaje);
+                    toastr.error(data.msj);
                 }
             },
             error: function(){
