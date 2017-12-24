@@ -82,8 +82,13 @@ class WebController extends Controller
       $datos = (array) $request->all();
       if ($request->hasFile('banner')) {
         Storage::disk('uploads')->delete(str_replace("uploads/", "", $banner->path_imagen));
+        Storage::disk('uploads')->delete(str_replace("uploads/", "", $banner->path_imagen_sm));
         Storage::disk('uploads')->put($request->banner->getClientOriginalName(), file_get_contents($request->banner->getRealPath()));
         $datos['path_imagen'] = 'uploads/'.$request->banner->getClientOriginalName();
+
+        $small_imagen_path = substr_replace($datos['path_imagen'], '_small', strlen($datos['path_imagen']) - 4, 0 );
+        $new_img = $this->resize_image('uploads/'.$request->banner->getClientOriginalName(), 242, 120, true);
+        $datos['path_imagen_sm'] = $small_imagen_path;
       }
       $banner->update($datos);
 
@@ -101,7 +106,7 @@ class WebController extends Controller
   public function destroy($id) {
     $banner = WebbannerModel::find($id);
     $banner->delete();
-    return response(["rst" => 1, "msj" => "Eliminado"]);
+    return response(["rst" => 1, "msj" => "Banner eliminado correctamente."]);
   }
 
   public function cambiarEstado($id) {
