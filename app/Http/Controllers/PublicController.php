@@ -42,23 +42,27 @@ class PublicController extends Controller
 
     public function getLists($banner){
 
-    $lists_descripciones = [];
-    if ($banner['descripcion'] !== null && $banner['descripcion']) {
-      $descripciones = preg_split("/[\r\n]+/", $banner['descripcion']);
-      $cantidad_descripciones = count($descripciones);
-      if( strpos($descripciones[$cantidad_descripciones - 1], "<li>") === false ){
-        unset($descripciones[$cantidad_descripciones - 1]);
-      }
-      if( strpos($descripciones[$cantidad_descripciones - 2], "<li>") === false ){
-        unset($descripciones[$cantidad_descripciones - 2]);
-      }
-      unset($descripciones[0]);
-      if (count($descripciones)) {
-        foreach ($descripciones as $descripcion) {
-          $lists_descripciones[] = strip_tags($descripcion);
+      $lists_descripciones = [];
+      if ($banner['descripcion'] !== null && $banner['descripcion']) {
+        $descripciones = preg_split("/[\r\n]+/", $banner['descripcion']);
+        $cantidad_descripciones = count($descripciones);
+        if( strpos($descripciones[$cantidad_descripciones - 1], "<li>") === false ){
+          unset($descripciones[$cantidad_descripciones - 1]);
+        }
+        if( strpos($descripciones[$cantidad_descripciones - 2], "<li>") === false ){
+          unset($descripciones[$cantidad_descripciones - 2]);
+        }
+        unset($descripciones[0]);
+        if (count($descripciones)) {
+          foreach ($descripciones as $descripcion) {
+            $lists_descripciones[] = strip_tags($descripcion);
+          }
         }
       }
+      return $lists_descripciones;
     }
-    return $lists_descripciones;
-  }
+
+    public function analizeLiTag(){
+      
+    }
 }
