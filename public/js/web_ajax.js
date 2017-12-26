@@ -95,12 +95,20 @@ var  WebItem = {
             cache: false,
             processData: false,
             success: function (data) {
-                $('#descripcion_en').val(data.descripcion_en);
-                $('#descripcion').val(data.descripcion);
+                console.log(data);
                 $('#titulo').val(data.titulo);
                 $('#titulo_en').val(data.titulo_en);
                 $('#img').css('background-image', 'url(../'+ data.path_imagen + ')');
                 $('#orden').val(data.orden);
+                if ( $('#ckeditor_text')[0]  !== undefined &&  $('#ckeditor_text')[0]) {
+                    let descripcion = CKEDITOR.instances.ckeditor_text;
+                    let descripcion_en = CKEDITOR.instances.ckeditor_text_en;
+                    descripcion.setData(data.descripcion);
+                    descripcion_en.setData(data.descripcion_en);
+                } else {
+                    $('#descripcion_en').val(data.descripcion_en);
+                    $('#descripcion').val(data.descripcion);
+                }
             },
             error: function(){
             }

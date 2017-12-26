@@ -113,6 +113,115 @@ class WebBannerSeeder extends Seeder
         'estado' => 1,
         'path_imagen' => 'uploads/oferta-4.jpg'
       ]);
+      ////hotelll
+      DB::table('web_banners')->insert([
+        'titulo' => 'BAR',
+        'titulo_en' => 'BAR(en)',
+        'descripcion' => "<ul>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    </ul>",
+        'descripcion_en' => "<ul>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    </ul>",
+        'section_id' => '1',
+        'estado' => 1,
+        'path_imagen' => 'uploads/lobby-bar.jpg',
+        'path_imagen_sm' => 'uploads/lobby-bar_sm.jpg'
+      ]);
+      DB::table('web_banners')->insert([
+        'titulo' => 'RESTAURANTE',
+        'titulo_en' => 'RESTAURANTE(en)',
+        'descripcion' =>"<ul>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    </ul>",
+        'descripcion_en' =>"<ul>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    </ul>",
+        'section_id' => '1',
+        'estado' => 1,
+        'path_imagen' => 'uploads/comedor.jpg',
+        'path_imagen_sm' => 'uploads/comedor_sm.jpg'
+      ]);
+      DB::table('web_banners')->insert([
+        'titulo' => 'MEZANINE',
+        'titulo_en' => 'MEZANINE(en)',
+        'descripcion' =>"<ul>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    </ul>",
+        'descripcion_en' =>"<ul>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    </ul>",
+        'section_id' => '1',
+        'estado' => 1,
+        'path_imagen' => 'uploads/mezanine.jpg',
+        'path_imagen_sm' => 'uploads/mezanine_sm.jpg'
+      ]);
+      DB::table('web_banners')->insert([
+        'titulo' => 'TERRAZA',
+        'titulo_en' => 'TERRAZA(en)',
+        'descripcion' =>"<ul>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    </ul>",
+        'descripcion_en' =>"<ul>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    </ul>",
+        'section_id' => '1',
+        'estado' => 1,
+        'path_imagen' => 'uploads/lobby-terraza.jpg',
+        'path_imagen_sm' => 'uploads/lobby-terraza_sm.jpg'
+      ]);
+      DB::table('web_banners')->insert([
+        'titulo' => 'LOBBY',
+        'titulo_en' => 'LOBBY(en)',
+        'descripcion' =>"<ul>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    </ul>",
+        'descripcion_en' =>"<ul>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    </ul>",
+        'section_id' => '1',
+        'estado' => 1,
+        'path_imagen' => 'uploads/lobby2.jpg',
+        'path_imagen_sm' => 'uploads/lobby2_sm.jpg'
+      ]);
+      DB::table('web_banners')->insert([
+        'titulo' => 'RECEPCIÓN',
+        'titulo_en' => 'RECEPCIÓN(en)',
+        'descripcion' =>"<ul>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    </ul>",
+        'descripcion_en' =>"<ul>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    </ul>",
+        'section_id' => '1',
+        'estado' => 1,
+        'path_imagen' => 'uploads/recepcion.jpg',
+        'path_imagen_sm' => 'uploads/recepcion_sm.jpg'
+      ]);
 
 
 

@@ -23,7 +23,7 @@
             <label for="">
               Orden:
             </label>
-            <input type="orden" class="form-control" name="orden" id="titulo_en">
+            <input type="orden" class="form-control" name="orden" id="orden">
           </div>
           @if(explode("-", Request::url())[1] !== 'centrofinanciero' && explode("-", Request::url())[1] !== 'hotel')
           <div class="col-lg-10 form-group">
@@ -44,14 +44,12 @@
                 Descripión:
               </label>
               <textarea name="" id="ckeditor_text" name="descripcion" ></textarea>
-              <!--<textarea type="text" class="form-control" name="descripcion" id="descripcion"></textarea>-->
             </div>
             <div class="col-lg-10 form-group">
               <label for="">
                 Descripción (en):
               </label>
               <textarea name="" id="ckeditor_text_en" name="descripcion_en" ></textarea>
-              <!--<textarea type="text" class="form-control" name="descripcion_en" id="descripcion_en"></textarea>-->
             </div>
           @endif
 

@@ -3,7 +3,6 @@
   <div class="right_col" role="main">
 
     <h1 class="text-uppercase">Hotel</h1>
-    @include('master.web-partials._section-form')
     @include('master.web-partials._banner-table')
   </div>
   @include('master.web-partials._banner-form')
