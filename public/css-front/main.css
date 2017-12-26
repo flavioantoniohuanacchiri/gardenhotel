@@ -90,17 +90,17 @@ section.header {
 .idiomas ul li a {
   color: #666; }
 .icon_euu {
-  background: url(../icons/eeuu.svg) no-repeat;
+  background: url(../imgs-front/icons/eeuu.svg) no-repeat;
   padding-left: 40px;
   margin-left: 20px; }
 .icon_euu:hover {
-  background: url(../icons/eeuu-hover.svg) no-repeat;
+  background: url(../imgs-front/icons/eeuu-hover.svg) no-repeat;
 }
 .icon_peru {
-  background: url(../icons/peru.svg) no-repeat;
+  background: url(../imgs-front/icons/peru.svg) no-repeat;
   padding-left: 30px; }
 .icon_peru:hover {
-  background: url(../icons/peru-hover.svg) no-repeat;
+  background: url(../imgs-front/icons/peru-hover.svg) no-repeat;
 }
 .header-contacto {
   display: -webkit-box;
