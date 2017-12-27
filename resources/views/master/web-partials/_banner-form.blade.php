@@ -25,39 +25,39 @@
             </label>
             <input type="orden" class="form-control" name="orden" id="orden">
           </div>
-          @if(explode("-", Request::url())[1] !== 'centrofinanciero' && explode("-", Request::url())[1] !== 'hotel')
-          <div class="col-lg-10 form-group">
-            <label for="">
-              Descripión:
-            </label>
-            <textarea type="text" class="form-control" name="descripcion" id="descripcion"></textarea>
-          </div>
-          <div class="col-lg-10 form-group">
-            <label for="">
-              Descripción (en):
-            </label>
-            <textarea type="text" class="form-control" name="descripcion_en" id="descripcion_en"></textarea>
-          </div>
-          @else
+
+          @if(explode("-", Request::url())[1] == 'salaconferencias' || explode("-", Request::url())[1] == 'hotel' || explode("-", Request::url())[1] == 'habitaciones')
             <div class="col-lg-10 form-group">
               <label for="">
                 Descripión:
               </label>
-              <textarea name="" id="ckeditor_text" name="descripcion" ></textarea>
+              <textarea name="" id="ckeditor_text" name="descripcion" style="display: block; width: 100%" ></textarea>
             </div>
             <div class="col-lg-10 form-group">
               <label for="">
                 Descripción (en):
               </label>
-              <textarea name="" id="ckeditor_text_en" name="descripcion_en" ></textarea>
+              <textarea name="" id="ckeditor_text_en" name="descripcion_en"  style="display: block; width: 100%"></textarea>
+            </div>
+          @elseif( explode("-", Request::url())[1] == 'centrofinanciero' )
+          @else
+            <div class="col-lg-10 form-group">
+              <label for="">
+                Descripión:
+              </label>
+              <textarea type="text" class="form-control" name="descripcion" id="descripcion"></textarea>
+            </div>
+            <div class="col-lg-10 form-group">
+              <label for="">
+                Descripción (en):
+              </label>
+              <textarea type="text" class="form-control" name="descripcion_en" id="descripcion_en"></textarea>
             </div>
           @endif
-
           {{--<div  class="col-lg-10 form-group">
             <label for="">Activo</label>
             <input type="checkbox" name="estado">
           </div>--}}
-
           <div class="col-lg-10 form-group">
             <figure id="img" style="width: 200px; height: 175px; background-size: cover;">
               <img src="" id="img" alt="" >

@@ -70,7 +70,7 @@ class WebController extends Controller
     }
 
     return Response::json([
-      'mensaje' => 'No se logro crear el Banner',
+      'mensaje' => 'No se logro crear el Banner, es necesario agregar una imagen',
       'estado' => 2
     ]);
   }

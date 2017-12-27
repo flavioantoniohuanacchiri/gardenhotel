@@ -222,10 +222,75 @@ class WebBannerSeeder extends Seeder
         'path_imagen' => 'uploads/recepcion.jpg',
         'path_imagen_sm' => 'uploads/recepcion_sm.jpg'
       ]);
-
-
-
-
-
+      //habitaciones
+      DB::table('web_banners')->insert([
+        'titulo' => 'NUESTRAS HABITACIONES CUENTAN CON',
+        'titulo_en' => 'NUESTRAS HABITACIONES CUENTAN CON(en)',
+        'descripcion' =>"<ul>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    </ul>",
+        'descripcion_en' =>"<ul>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    </ul>",
+        'section_id' => '2',
+        'estado' => 1,
+        'path_imagen' => 'uploads/h-1.jpg'
+      ]);
+      DB::table('web_banners')->insert([
+        'titulo' => 'NUESTRAS HABITACIONES CUENTAN CON',
+        'titulo_en' => 'NUESTRAS HABITACIONES CUENTAN CON(en)',
+        'descripcion' =>"<ul>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    </ul>",
+        'descripcion_en' =>"<ul>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    </ul>",
+        'section_id' => '2',
+        'estado' => 1,
+        'path_imagen' => 'uploads/h-2.jpg'
+      ]);
+      ///sala conferencias
+      DB::table('web_banners')->insert([
+        'titulo' => 'NUESTRAS HABITACIONES CUENTAN CON',
+        'titulo_en' => 'NUESTRAS HABITACIONES CUENTAN CON(en)',
+        'descripcion' =>"<ul>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    </ul>",
+        'descripcion_en' =>"<ul>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    </ul>",
+        'section_id' => '4',
+        'estado' => 1,
+        'path_imagen' => 'uploads/c-1.jpg'
+      ]);
+      DB::table('web_banners')->insert([
+        'titulo' => 'NUESTRAS HABITACIONES CUENTAN CON',
+        'titulo_en' => 'NUESTRAS HABITACIONES CUENTAN CON(en)',
+        'descripcion' =>"<ul>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    </ul>",
+        'descripcion_en' =>"<ul>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    </ul>",
+        'section_id' => '4',
+        'estado' => 1,
+        'path_imagen' => 'uploads/c-2.jpg'
+      ]);
     }
 }

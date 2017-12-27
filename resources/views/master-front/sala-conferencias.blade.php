@@ -11,123 +11,51 @@
         <li data-target="#carousel-example-habitaciones" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner">
-        <div class="item active">
-          <div style="position:relative;"><img class="img-hab" src="./imgs-front/sala-conferencia/c-1.jpg" />
-            <a class="left carousel-control" href="#carousel-example-habitaciones" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left"></span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-habitaciones" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
-          </div>
-          <div class="row">
-            <div class="container">
-              <div class="box-body">
-                <div class="green-light">
-                  <div class="green-dark"><img class="img-dark" style="width:30px; margin:auto" src="imgs-front/icons/hotel.svg"></div><br><span class="pd-15 text-light">
-                      NUESTRAS HABITACIONES CUENTAN CON
+        @foreach($banners as $key => $banner)
+          <div @if($key === 0) class="item active" @else class="item" @endif >
+            <div style="position:relative;"><img class="img-hab" src="{{$banner->path_imagen}}" />
+              <a class="left carousel-control" href="#carousel-example-habitaciones" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+              </a>
+              <a class="right carousel-control" href="#carousel-example-habitaciones" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+              </a>
+            </div>
+            <div class="row">
+              <div class="container">
+                <div class="box-body">
+                  <div class="green-light">
+                    <div class="green-dark"><img class="img-dark" style="width:30px; margin:auto" src="imgs-front/icons/hotel.svg"></div><br><span class="pd-15 text-light">
+                      {{$banner->titulo}}
                     </span>
-                </div>
-                <div class="border-green">
-                  <ul class="text-light">
-                    <li>
-                      <div class="inlineflex">
-                        <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                        <p style="font-size: 12px;">
-                          Aire acondicionado, calefacción, wifi gratuito
-                          de máximo 50MB, TV HD de 40 pulgadas con
-                          125 canales de cable Radio/Despertador,
-                          teléfono con discado internacional, frio bar,
-                          caja de seguridad, servicio de lavanderia
-                          express (24 horas), baño con ducha y tina.
-                        </p>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="inlineflex">
-                        <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                        <p style="font-size: 12px;">
-                          La habitación doble puede incluir dos camas
-                          twin o una cama queen.
-                        </p>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="inlineflex">
-                        <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                        <p style="font-size: 12px;">
-                          Habitaciones con piso de alfombra o piso de
-                          madera
-                        </p>
-                      </div>
-                    </li>
-                  </ul>
+                  </div>
+                  <div class="border-green">
+                    <ul class="text-light">
+                      @foreach( $banner->lists as $list)
+                        <li>
+                          <div class="inlineflex">
+                            <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
+                            <p style="font-size: 12px;">
+                              {{ $list }}
+                            </p>
+                          </div>
+                        </li>
+                      @endforeach
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="item">
-          <div style="position:relative;"><img class="img-hab" src="./imgs-front/sala-conferencia/c-2.jpg" />
-            <a class="left carousel-control" href="#carousel-example-habitaciones" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left"></span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-habitaciones" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
-          </div>
-          <div class="row">
-            <div class="container">
-              <div class="box-body">
-                <div class="green-light">
-                  <div class="green-dark"><img class="img-dark" style="width:30px; margin:auto" src="imgs-front/icons/hotel.svg"></div><br><span class="pd-15 text-light">
-                      NUESTRAS HABITACIONES CUENTAN CON
-                    </span>
-                </div>
-                <div class="border-green">
-                  <ul class="text-light">
-                    <li>
-                      <div class="inlineflex">
-                        <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                        <p style="font-size: 12px;">
-                          Aire acondicionado, calefacción, wifi gratuito
-                          de máximo 50MB, TV HD de 40 pulgadas con
-                          125 canales de cable Radio/Despertador,
-                          teléfono con discado internacional, frio bar,
-                          caja de seguridad, servicio de lavanderia
-                          express (24 horas), baño con ducha y tina.
-                        </p>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="inlineflex">
-                        <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                        <p style="font-size: 12px;">
-                          La habitación doble puede incluir dos camas
-                          twin o una cama queen.
-                        </p>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="inlineflex">
-                        <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                        <p style="font-size: 12px;">
-                          Habitaciones con piso de alfombra o piso de
-                          madera
-                        </p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
   </section>
 @endsection
 @push('scripts')
+  <script>
+      var located = 4;
+  </script>
   <script src="js-front/slick.js"></script>
   <script src="js-front/bootstrap.min.js"></script>
 @endpush

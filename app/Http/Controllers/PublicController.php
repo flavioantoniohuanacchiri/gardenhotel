@@ -22,11 +22,19 @@ class PublicController extends Controller
     }
 
     public function habitaciones(){
-      return view('master-front.habitaciones');
+      $banners = WebBannerModel::where([['section_id', '=', 2], ['estado', '=', 1]])->get();
+      foreach ($banners as $banner) {
+        $banner['lists'] =  $this->getLists($banner);
+      }
+      return view('master-front.habitaciones')->with(['banners' => $banners]);
     }
 
     public function sala_conferencias(){
-      return view('master-front.sala-conferencias');
+      $banners = WebBannerModel::where([['section_id', '=', 4], ['estado', '=', 1]])->get();
+      foreach ($banners as $banner) {
+        $banner['lists'] =  $this->getLists($banner);
+      }
+      return view('master-front.sala-conferencias')->with(['banners' => $banners]);
     }
 
     public function ofertas(){
@@ -62,7 +70,4 @@ class PublicController extends Controller
       return $lists_descripciones;
     }
 
-    public function analizeLiTag(){
-      
-    }
 }
