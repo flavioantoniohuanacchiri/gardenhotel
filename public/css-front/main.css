@@ -84,7 +84,7 @@ section.header {
   -ms-flex-pack: end;
   justify-content: flex-end;
   list-style-type: none;
-      display: none; }
+  /*    display: none; */}
 .idiomas ul li {
   font-size: 12px; }
 .idiomas ul li a {
