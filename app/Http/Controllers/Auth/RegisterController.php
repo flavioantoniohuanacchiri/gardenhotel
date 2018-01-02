@@ -39,13 +39,20 @@ class RegisterController extends Controller
 	{
 		$this->middleware('guest');
 	}
-	
+
+  public function showRegistrationForm()
+  {
+    return redirect('admin');
+  }
+  
 	/**
 	 * Get a validator for an incoming registration request.
 	 *
 	 * @param  array  $data
 	 * @return \Illuminate\Contracts\Validation\Validator
 	 */
+
+
 	protected function validator(array $data)
 	{
 		return Validator::make($data, [

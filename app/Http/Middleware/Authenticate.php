@@ -19,17 +19,22 @@ class Authenticate
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->guest()) {
-            if ($request->ajax() || $request->wantsJson()) {
+            //dd($request->path());
+            if (strpos($request->path(), 'admin/section') !== false){
+              return redirect('admin');
+            }
+            /*if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {
                 if (Session::get("sistema")) {
                     Session::forget("sistema");
+                } else {
+
                 }
                 return redirect('admin');
                 //return redirect()->guest('login');
-            }
+            }*/
         }
-
         return $next($request);
     }
 }
