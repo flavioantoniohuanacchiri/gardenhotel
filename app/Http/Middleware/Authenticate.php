@@ -25,6 +25,7 @@ class Authenticate
                 if (Session::get("sistema")) {
                     Session::forget("sistema");
                 }
+                return redirect('admin');
                 //return redirect()->guest('login');
             }
         }

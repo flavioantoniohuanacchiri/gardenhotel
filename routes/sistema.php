@@ -16,9 +16,12 @@ Route::get('habitaciones', 'PublicController@habitaciones');
 Route::get('sala-conferencias', 'PublicController@sala_conferencias');
 Route::get('ubicacion', 'PublicController@ubicacion');
 Route::get('ofertas', 'PublicController@ofertas');
+Route::get('admin', function (){
+  return  view('auth.login');
+});
 
 Auth::routes();
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
     //Route::get('/', 'HomeController@index');
   Route::get('logout', 'Auth\LoginController@logout');
   Route::get('web/listar', 'WebController@listar');
@@ -31,9 +34,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
   Route::get('section-centrofinanciero', 'WebController@centrofinanciero');
 
   Route::resource('web', 'WebController');
-});
-
-
-Route::get('version', function(){
-  echo 'Versión actual de PHP: ' . phpversion();
 });
