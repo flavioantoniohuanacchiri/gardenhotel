@@ -46,4 +46,11 @@ class LoginController extends Controller
       $this->performLogout($request);
       return redirect('/admin');
     }
+
+    public function loginView(){
+      if (auth()->check()) {
+        return redirect('admin/section-inicio');
+      }
+      return view('auth.login');
+    }
 }

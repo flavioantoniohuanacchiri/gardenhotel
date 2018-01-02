@@ -16,13 +16,10 @@ Route::get('habitaciones', 'PublicController@habitaciones');
 Route::get('sala-conferencias', 'PublicController@sala_conferencias');
 Route::get('ubicacion', 'PublicController@ubicacion');
 Route::get('ofertas', 'PublicController@ofertas');
-Route::get('admin', function (){
-  return  view('auth.login');
-});
+Route::get('admin', 'Auth\LoginController@loginView');
 
 Auth::routes();
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
-    //Route::get('/', 'HomeController@index');
   Route::get('logout', 'Auth\LoginController@logout');
   Route::get('web/listar', 'WebController@listar');
   Route::get('web/cambiarestado/{id}', 'WebController@cambiarEstado');
