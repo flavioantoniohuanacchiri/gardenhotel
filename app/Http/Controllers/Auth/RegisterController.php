@@ -44,7 +44,7 @@ class RegisterController extends Controller
   {
     return redirect('admin');
   }
-  
+
 	/**
 	 * Get a validator for an incoming registration request.
 	 *
