@@ -49,7 +49,8 @@ if (!Session::has("sistema.modulos")) {
         <!-- menu profile quick info -->
         <div class="profile">
                 <div class="profile_pic">
-                        <img src="{{ Gravatar::src(Auth::user()->email) }}" alt="Avatar of {{ Auth::user()->name }}" class="img-circle profile_img">
+                    <!--<img src="{{ Gravatar::src(Auth::user()->email) }}" alt="Avatar of {{ Auth::user()->name }}" class="img-circle profile_img">-->
+                    <img src="{{ asset('imgs-front/icons/logo_admin.jpg') }}" alt="Avatar of {{ Auth::user()->name }}">
                 </div>
                 <div class="profile_info">
                         <span>{{ trans('master.welcome') }},</span>
