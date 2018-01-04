@@ -53,7 +53,7 @@ return [
     'tiponotaabono' => 'Tipo Nota Abono',
     //
     'system' => 'Sistema',
-    'name' => 'Tracer de Vehiculos',
+    'name' => 'Garden Hotel - Admin',
     //
     'welcome' => 'Bienvenido',
     'zonal' => 'Zonal',
