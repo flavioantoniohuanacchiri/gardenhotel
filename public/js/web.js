@@ -39,6 +39,7 @@ $('#banner-modal').on('hidden.bs.modal', function () {
     $('#titulo').val('');
     $('#titulo_en').val('');
     $('#img').css('background-image', 'url("")');
+    $('#orden').val(0);
     $('#banner').val('');
     id = '';
     if ( $('#ckeditor_text')[0]  !== undefined &&  $('#ckeditor_text')[0]) {

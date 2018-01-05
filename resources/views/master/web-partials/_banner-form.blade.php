@@ -23,7 +23,7 @@
             <label for="">
               Orden:
             </label>
-            <input type="orden" class="form-control" name="orden" id="orden">
+            <input type="number" class="form-control" name="orden" id="orden">
           </div>
           {{explode("-", Request::url())[1]}}
           @if(explode("-", Request::url())[1] == 'salaconferencias' || explode("-", Request::url())[1] == 'hotel' || explode("-", Request::url())[1] == 'habitaciones')
