@@ -56,7 +56,7 @@ class PublicController extends Controller
     public function ubicacion(Request $request){
       $centros = WebBannerModel::where([['section_id', '=', 5], ['estado', '=', 1]])->orderBy('orden', 'asc')->get();
       $idioma = $this->obtenerLenguaje($request->path());
-      $paths = ['es'=> 'ubicacion', 'en' => 'ubicacion_en'];
+      $paths = ['es'=> 'ubicacion', 'en' => 'location_en'];
       return view('master-front.ubicaciones')->with(['centros' => $centros, 'idioma' => $idioma, 'paths' => $paths]);
     }
 

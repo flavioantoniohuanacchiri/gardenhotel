@@ -123,9 +123,9 @@ class WebBannerSeeder extends Seeder
                     <li>Habitaciones con piso de alfombra o piso de madera</li>
                     </ul>",
         'descripcion_en' => "<ul>
-                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
-                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
-                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina(en).</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen(en).</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera(en)</li>
                     </ul>",
         'section_id' => '1',
         'estado' => 1,
@@ -141,9 +141,9 @@ class WebBannerSeeder extends Seeder
                     <li>Habitaciones con piso de alfombra o piso de madera</li>
                     </ul>",
         'descripcion_en' =>"<ul>
-                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
-                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
-                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina(en).</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen(en).</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera(en)</li>
                     </ul>",
         'section_id' => '1',
         'estado' => 1,
@@ -159,9 +159,9 @@ class WebBannerSeeder extends Seeder
                     <li>Habitaciones con piso de alfombra o piso de madera</li>
                     </ul>",
         'descripcion_en' =>"<ul>
-                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
-                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
-                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina(en).</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen(en).</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera(en)</li>
                     </ul>",
         'section_id' => '1',
         'estado' => 1,
@@ -177,9 +177,9 @@ class WebBannerSeeder extends Seeder
                     <li>Habitaciones con piso de alfombra o piso de madera</li>
                     </ul>",
         'descripcion_en' =>"<ul>
-                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
-                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
-                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina(en).</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen(en).</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera(en)</li>
                     </ul>",
         'section_id' => '1',
         'estado' => 1,
@@ -195,9 +195,9 @@ class WebBannerSeeder extends Seeder
                     <li>Habitaciones con piso de alfombra o piso de madera</li>
                     </ul>",
         'descripcion_en' =>"<ul>
-                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
-                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
-                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina(en).</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen(en).</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera(en)</li>
                     </ul>",
         'section_id' => '1',
         'estado' => 1,
@@ -213,9 +213,9 @@ class WebBannerSeeder extends Seeder
                     <li>Habitaciones con piso de alfombra o piso de madera</li>
                     </ul>",
         'descripcion_en' =>"<ul>
-                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
-                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
-                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina(en).</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen(en).</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera(en)</li>
                     </ul>",
         'section_id' => '1',
         'estado' => 1,
@@ -232,9 +232,9 @@ class WebBannerSeeder extends Seeder
                     <li>Habitaciones con piso de alfombra o piso de madera</li>
                     </ul>",
         'descripcion_en' =>"<ul>
-                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
-                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
-                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina(en).</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen(en).</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera(en)</li>
                     </ul>",
         'section_id' => '2',
         'estado' => 1,
@@ -249,9 +249,9 @@ class WebBannerSeeder extends Seeder
                     <li>Habitaciones con piso de alfombra o piso de madera</li>
                     </ul>",
         'descripcion_en' =>"<ul>
-                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
-                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
-                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina(en).</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen(en).</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera(en)</li>
                     </ul>",
         'section_id' => '2',
         'estado' => 1,
@@ -267,9 +267,9 @@ class WebBannerSeeder extends Seeder
                     <li>Habitaciones con piso de alfombra o piso de madera</li>
                     </ul>",
         'descripcion_en' =>"<ul>
-                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
-                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
-                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina(en).</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen(en).</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera(en)</li>
                     </ul>",
         'section_id' => '4',
         'estado' => 1,
@@ -284,9 +284,9 @@ class WebBannerSeeder extends Seeder
                     <li>Habitaciones con piso de alfombra o piso de madera</li>
                     </ul>",
         'descripcion_en' =>"<ul>
-                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina.</li>
-                    <li>La habitación doble puede incluir dos camas twin o una cama queen.</li>
-                    <li>Habitaciones con piso de alfombra o piso de madera</li>
+                    <li>Aire acondicionado, calefacción, wifi gratuito de máximo 50MB, TV HD de 40 pulgadas con 125 canales de cable Radio/Despertador, teléfono con discado internacional, frio bar, caja de seguridad, servicio de lavanderia express (24 horas), baño con ducha y tina(en).</li>
+                    <li>La habitación doble puede incluir dos camas twin o una cama queen(en).</li>
+                    <li>Habitaciones con piso de alfombra o piso de madera(en)</li>
                     </ul>",
         'section_id' => '4',
         'estado' => 1,
