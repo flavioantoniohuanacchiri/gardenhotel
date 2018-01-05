@@ -2,38 +2,39 @@
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Datos de la página</h2>
+        <h2>Datos de la sección</h2>
         <div class="clearfix"></div>
       </div>
       <div class="x_content col-lg-9">
         <form action="" id="section-form">
-          <div class="col-lg-9 form-group">
-            <label for="">
-              Titulo:
-            </label>
-            <input type="text" class="form-control">
+          <div class="col-lg-9">
+            <button type="submit" class="btn btn-primary pull-right">Guardar</button>
           </div>
           <div class="col-lg-9 form-group">
             <label for="">
-              Titulo (en):
+              Ubicación:
             </label>
-            <input type="text" class="form-control">
+            <textarea type="text" class="form-control" id="ckeditor_ubicacion"></textarea>
           </div>
           <div class="col-lg-9 form-group">
             <label for="">
-              Descripión:
+              Ubicación (en):
             </label>
-            <textarea type="text" class="form-control"></textarea>
+            <textarea type="text" class="form-control" id="ckeditor_ubicacion_en"></textarea>
           </div>
           <div class="col-lg-9 form-group">
             <label for="">
-              Descripión (en):
+              Telefonos:
             </label>
-            <textarea type="text" class="form-control"></textarea>
+            <textarea type="text" class="form-control" id="ckeditor_telefono"></textarea>
           </div>
-          <div class="col-lg-12">
-            <button type="submit" class="btn btn-primary">Guardar</button>
+          <div class="col-lg-9 form-group">
+            <label for="">
+              Correo Electrónico:
+            </label>
+            <textarea type="text" class="form-control" id="ckeditor_email"></textarea>
           </div>
+
         </form>
       </div>
     </div>
