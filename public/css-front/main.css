@@ -93,6 +93,12 @@ section.header {
   background: url(../imgs-front/icons/eeuu.svg) no-repeat;
   padding-left: 40px;
   margin-left: 20px; }
+.icon_euu.active{
+  background: url(../imgs-front/icons/eeuu-hover.svg) no-repeat;
+}
+.icon_peru.active{
+  background: url(../imgs-front/icons/peru-hover.svg) no-repeat;
+}
 .icon_euu:hover {
   background: url(../imgs-front/icons/eeuu-hover.svg) no-repeat;
 }

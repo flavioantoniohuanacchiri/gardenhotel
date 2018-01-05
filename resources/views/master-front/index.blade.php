@@ -15,8 +15,13 @@
               <div class="container-fluid">
                 <div class="enriquecido">
                   <h2>
-                    <span style="font-size:30px"><strong>{{ $banner->titulo }}</strong></span>
-                    <span style="font-size:20px; text-align: center;">{{ $banner->descripcion }}</span>
+                    @if($idioma == 'es')
+                      <span style="font-size:30px"><strong>{{ $banner->titulo }}</strong></span>
+                      <span style="font-size:20px; text-align: center;">{{ $banner->descripcion }}</span>
+                    @else
+                      <span style="font-size:30px"><strong>{{ $banner->titulo_en }}</strong></span>
+                      <span style="font-size:20px; text-align: center;">{{ $banner->descripcion_en }}</span>
+                    @endif
                   </h2>
                 </div>
               </div>
@@ -141,7 +146,11 @@
         <div class="col-md-3 col-sm-6 col-xs-12 pd-0 wow fadeInUp" data-wow-offset="150" data-wow-delay="0.2s">
           <div  class="img-w1" style="background-image: url('../{{$centro->path_imagen}}')"></div>
           <div class="box-verde green-dark wow fadeInRight" data-wow-delay="0.2s">
-            <p class="color-white size-12 mg-0 ">{{$centro->titulo}}</p>
+            @if ($idioma == 'es')
+              <p class="color-white size-12 mg-0 ">{{$centro->titulo}}</p>
+            @else
+              <p class="color-white size-12 mg-0 ">{{$centro->titulo_en}}</p>
+            @endif
           </div>
         </div>
         @endforeach

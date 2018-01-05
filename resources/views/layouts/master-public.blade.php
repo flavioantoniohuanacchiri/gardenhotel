@@ -29,8 +29,8 @@
             </a>
             <div class="idiomas">
               <ul>
-                <li><a class="icon_peru" href=""></a></li>
-                <li><a class="icon_euu" href=""></a></li>
+                <li><a @if($idioma == 'es') class="icon_peru active" @else class="icon_peru" @endif href="{{url($paths['es'])}}" style=""></a></li>
+                <li><a @if($idioma == 'en') class="icon_euu active" @else class="icon_euu" @endif href="{{url($paths['en'])}}"></a></li>
               </ul>
             </div>
             <div class="header-contacto"><img src="imgs-front/icons/tel.svg" width="31px">
@@ -61,14 +61,26 @@
         <!-- Collect the nav links, forms, and other content for toggling-->
         <div class="collapse navbar-collapse content-small" id="bs-example-navbar-collapse-1" style="margin: auto">
           <ul class="nav-hover nav navbar-nav">
-            <li><a href="{{url('/')}}" >INICIO</a></li>
-            <li><a href="{{url('/hotel')}}">HOTEL</a></li>
-            <li><a href="{{url('/habitaciones')}}">HABITACIONES</a></li>
+            @if ($idioma == 'es')
+              <li><a href="{{url('/')}}" >INICIO</a></li>
+              <li><a href="{{url('/hotel')}}">HOTEL</a></li>
+              <li><a href="{{url('/habitaciones')}}">HABITACIONES</a></li>
+            @else
+              <li><a href="{{url('/home_en')}}" >HOME</a></li>
+              <li><a href="{{url('/hotel_en')}}">HOTEL</a></li>
+              <li><a href="{{url('/rooms_en')}}">ROOMS</a></li>
+            @endif
           </ul>
           <ul class="nav-hover nav navbar-nav navbar-right">
-            <li><a href="{{url('/sala-conferencias')}}">SALA DE CONFERENCIA</a></li>
-            <li><a href="{{url('/ofertas')}}">OFERTAS  </a></li>
-            <li><a href="{{url('/ubicacion')}}">UBICACIÓN </a></li>
+            @if ($idioma == 'es')
+              <li><a href="{{url('/sala-conferencias')}}">SALA DE CONFERENCIA</a></li>
+              <li><a href="{{url('/ofertas')}}">OFERTAS  </a></li>
+              <li><a href="{{url('/ubicacion')}}">UBICACIÓN </a></li>
+            @else
+              <li><a href="{{url('/conferencehall_en')}}">CONFERENCE HALL</a></li>
+              <li><a href="{{url('/offers_en')}}">OFFERS  </a></li>
+              <li><a href="{{url('/location_en')}}">FIND US </a></li>
+            @endif
           </ul>
         </div>
       </div>
@@ -122,6 +134,7 @@
       new WOW().init();
   </script>
   @stack('scripts')
+
 </body>
 </html>
 

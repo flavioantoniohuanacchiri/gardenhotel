@@ -61,8 +61,6 @@ class WebController extends Controller
       WebbannerModel::create($datos);
       imagejpeg($new_img, $small_imagen_path, 100);
       imagedestroy($new_img);
-
-
       return Response::json([
         'mensaje' => 'Banner creado correctamente',
         'estado' => 1
