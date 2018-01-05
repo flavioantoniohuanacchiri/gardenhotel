@@ -67,12 +67,14 @@ class ModuloSeeder extends Seeder
       DB::table('modulo')->insert(['id' => 56, 'class_icon' => '' ,'nombre' => ' Grupo de Dispositivos', 'url' => ' grupodispositivo', 'parent' => 11, 'visible' => 1, 'orden' =>0, 'estado' =>1, 'created_at' => 42805.374212963]);
       DB::table('modulo')->insert(['id' => 57, 'class_icon' => '' ,'nombre' => ' Dispositivos', 'url' => 'dispositivo', 'parent' => 11, 'visible' => 1, 'orden' =>0, 'estado' =>1, 'created_at' => 42805.4050347222]);
       DB::table('modulo')->insert(['id' => 58, 'class_icon' => 'fa-credit-card' ,'nombre' => 'Mantenimiento Web', 'url' => ' ', 'parent' => 0, 'visible' => 1, 'orden' =>0, 'estado' =>1, 'created_at' => 43079.8617361111]);
-      DB::table('modulo')->insert(['id' => 59, 'class_icon' => '' ,'nombre' => ' Inicio', 'url' => 'admin/section-inicio', 'parent' => 58, 'visible' => 1, 'orden' =>0, 'estado' =>1, 'created_at' => 43079.8617361111]);
-      DB::table('modulo')->insert(['id' => 60, 'class_icon' => '' ,'nombre' => ' Hotel', 'url' => 'admin/section-hotel', 'parent' => 58, 'visible' => 1, 'orden' =>0, 'estado' =>1, 'created_at' => 43079.8617361111]);
-      DB::table('modulo')->insert(['id' => 61, 'class_icon' => '' ,'nombre' => ' Ofertas', 'url' => 'admin/section-ofertas', 'parent' => 58, 'visible' => 1, 'orden' =>0, 'estado' =>1, 'created_at' => 43079.8617361111]);
-      DB::table('modulo')->insert(['id' => 62, 'class_icon' => '' ,'nombre' => ' Sala de Conferencias', 'url' => 'admin/section-salaconferencias', 'parent' => 58, 'visible' => 1, 'orden' =>0, 'estado' =>1, 'created_at' => 43079.8617361111]);
-      DB::table('modulo')->insert(['id' => 63, 'class_icon' => '' ,'nombre' => ' Habitaciones', 'url' => 'admin/section-habitaciones', 'parent' => 58, 'visible' => 1, 'orden' =>0, 'estado' =>1, 'created_at' => 43079.8617361111]);
-      DB::table('modulo')->insert(['id' => 64, 'class_icon' => '' ,'nombre' => ' Centro Finaciero', 'url' => 'admin/section-centrofinanciero', 'parent' => 58, 'visible' => 1, 'orden' =>0, 'estado' =>1, 'created_at' => 43079.8617361111]);
+      DB::table('modulo')->insert(['id' => 59, 'class_icon' => '' ,'nombre' => 'Inicio', 'url' => 'admin/section-inicio', 'parent' => 58, 'visible' => 1, 'orden' =>0, 'estado' =>1, 'created_at' => 43079.8617361111]);
+      DB::table('modulo')->insert(['id' => 60, 'class_icon' => '' ,'nombre' => 'Hotel', 'url' => 'admin/section-hotel', 'parent' => 58, 'visible' => 1, 'orden' =>0, 'estado' =>1, 'created_at' => 43079.8617361111]);
+      DB::table('modulo')->insert(['id' => 61, 'class_icon' => '' ,'nombre' => 'Ofertas', 'url' => 'admin/section-ofertas', 'parent' => 58, 'visible' => 1, 'orden' =>0, 'estado' =>1, 'created_at' => 43079.8617361111]);
+      DB::table('modulo')->insert(['id' => 62, 'class_icon' => '' ,'nombre' => 'Sala de Conferencias', 'url' => 'admin/section-salaconferencias', 'parent' => 58, 'visible' => 1, 'orden' =>0, 'estado' =>1, 'created_at' => 43079.8617361111]);
+      DB::table('modulo')->insert(['id' => 63, 'class_icon' => '' ,'nombre' => 'Habitaciones', 'url' => 'admin/section-habitaciones', 'parent' => 58, 'visible' => 1, 'orden' =>0, 'estado' =>1, 'created_at' => 43079.8617361111]);
+      DB::table('modulo')->insert(['id' => 64, 'class_icon' => '' ,'nombre' => 'Centro Finaciero', 'url' => 'admin/section-centrofinanciero', 'parent' => 58, 'visible' => 1, 'orden' =>0, 'estado' =>1, 'created_at' => 43079.8617361111]);
+      DB::table('modulo')->insert(['id' => 65, 'class_icon' => '' ,'nombre' => 'Cabecera', 'url' => 'admin/section-cabecera', 'parent' => 58, 'visible' => 1, 'orden' =>0, 'estado' =>1, 'created_at' => 43079.8617361111]);
+      DB::table('modulo')->insert(['id' => 66, 'class_icon' => '' ,'nombre' => 'Pie de Página', 'url' => 'admin/section-pie', 'parent' => 58, 'visible' => 1, 'orden' =>0, 'estado' =>1, 'created_at' => 43079.8617361111]);
     }
 
 }

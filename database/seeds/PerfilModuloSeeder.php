@@ -67,5 +67,7 @@ class PerfilModuloSeeder extends Seeder
       DB::table('perfil_modulo')->insert(['id' =>494, 'id_perfil' =>3, 'id_modulo' => 62]);
       DB::table('perfil_modulo')->insert(['id' =>495, 'id_perfil' =>3, 'id_modulo' => 63]);
       DB::table('perfil_modulo')->insert(['id' =>496, 'id_perfil' =>3, 'id_modulo' => 64]);
+      DB::table('perfil_modulo')->insert(['id' =>497, 'id_perfil' =>3, 'id_modulo' => 65]);
+      DB::table('perfil_modulo')->insert(['id' =>498, 'id_perfil' =>3, 'id_modulo' => 66]);
     }
 }
