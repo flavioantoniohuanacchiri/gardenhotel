@@ -114,7 +114,7 @@ class WebController extends Controller
     $estado_cambio = ($banner->estado == 1) ? 0: 1;
     $banner->estado = $estado_cambio;
     $banner->save();
-    return response(["rst" => 1, "msj" => "Se ha actualizado el estado con éxito"]);
+    return response(["estado" => 1, "msj" => "Se ha actualizado el estado con éxito"]);
   }
 
   function resize_image($file, $w, $h, $crop=FALSE) {
