@@ -16,32 +16,34 @@ class PublicController extends Controller
     }
 
     public function hotel(Request $request){
-      $banners_hotel = WebBannerModel::where([['section_id', '=', 1], ['estado', '=', 1]])->orderBy('orden', 'asc')->get();
-      foreach ($banners_hotel as $banner) {
-        $banner['lists'] =  $this->getLists($banner);
-      }
       $idioma = $this->obtenerLenguaje($request->path());
       $paths = ['es'=> 'hotel', 'en' => 'hotel_en'];
+      $banners_hotel = WebBannerModel::where([['section_id', '=', 1], ['estado', '=', 1]])->orderBy('orden', 'asc')->get();
+      foreach ($banners_hotel as $banner) {
+        $banner['lists'] =  $this->getLists($banner, $idioma);
+      }
+
       return view('master-front.hotel')->with(['banners' => $banners_hotel, 'idioma' => $idioma, 'paths' => $paths]);
     }
 
     public function habitaciones(Request $request){
-      $banners = WebBannerModel::where([['section_id', '=', 2], ['estado', '=', 1]])->orderBy('orden', 'asc')->get();
-      foreach ($banners as $banner) {
-        $banner['lists'] =  $this->getLists($banner);
-      }
       $idioma = $this->obtenerLenguaje($request->path());
       $paths = ['es'=> 'rooms', 'en' => 'rooms_en'];
+      $banners = WebBannerModel::where([['section_id', '=', 2], ['estado', '=', 1]])->orderBy('orden', 'asc')->get();
+      foreach ($banners as $banner) {
+        $banner['lists'] =  $this->getLists($banner, $idioma);
+      }
+
       return view('master-front.habitaciones')->with(['banners' => $banners, 'idioma' => $idioma, 'paths' => $paths]);
     }
 
     public function sala_conferencias(Request $request){
-      $banners = WebBannerModel::where([['section_id', '=', 4], ['estado', '=', 1]])->orderBy('orden', 'asc')->get();
-      foreach ($banners as $banner) {
-        $banner['lists'] =  $this->getLists($banner);
-      }
       $idioma = $this->obtenerLenguaje($request->path());
       $paths = ['es'=> 'sala-conferencias', 'en' => 'conferencehall_en'];
+      $banners = WebBannerModel::where([['section_id', '=', 4], ['estado', '=', 1]])->orderBy('orden', 'asc')->get();
+      foreach ($banners as $banner) {
+        $banner['lists'] =  $this->getLists($banner, $idioma);
+      }
       return view('master-front.sala-conferencias')->with(['banners' => $banners, 'idioma' => $idioma, 'paths' => $paths]);
     }
 
@@ -60,11 +62,12 @@ class PublicController extends Controller
       return view('master-front.ubicaciones')->with(['centros' => $centros, 'idioma' => $idioma, 'paths' => $paths]);
     }
 
-    public function getLists($banner){
+    public function getLists($banner, $idioma){
 
       $lists_descripciones = [];
-      if ($banner['descripcion'] !== null && $banner['descripcion']) {
-        $descripciones = preg_split("/[\r\n]+/", $banner['descripcion']);
+      $descrion_request = ($idioma == 'es') ? $banner['descripcion'] : $banner['descripcion_en'];
+      if ($descrion_request !== null && $descrion_request) {
+        $descripciones = preg_split("/[\r\n]+/", $descrion_request);
         $cantidad_descripciones = count($descripciones);
         if( strpos($descripciones[$cantidad_descripciones - 1], "<li>") === false ){
           unset($descripciones[$cantidad_descripciones - 1]);

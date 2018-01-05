@@ -26,7 +26,11 @@
                 <div class="box-body">
                   <div class="green-light">
                     <div class="green-dark"><img class="img-dark" style="width:30px; margin:auto" src="imgs-front/icons/hotel.svg"></div><br><span class="pd-15 text-light">
-                      {{$banner->titulo}}
+                      @if ($idioma == 'es')
+                        {{$banner->titulo}}
+                      @else
+                        {{$banner->titulo_en}}
+                      @endif
                     </span>
                   </div>
                   <div class="border-green">

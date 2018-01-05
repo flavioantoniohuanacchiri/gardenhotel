@@ -27,7 +27,7 @@
           <div class="col-md-3 col-sm-6 col-xs-12 pd-0 wow fadeInUp" data-wow-offset="150" data-wow-delay="0.2s">
             <div  class="img-w1" style="background-image: url('../{{$centro->path_imagen}}')"></div>
             <div class="box-verde green-dark wow fadeInRight" data-wow-delay="0.2s">
-              <p class="color-white size-12 mg-0 ">{{$centro->titulo}}</p>
+              <p class="color-white size-12 mg-0 ">@if ($idioma == 'es'){{$centro->titulo}} @else {{$centro->titulo_en}} @endif</p>
             </div>
           </div>
         @endforeach

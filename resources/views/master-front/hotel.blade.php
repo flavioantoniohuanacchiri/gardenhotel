@@ -70,7 +70,11 @@
           <div class="wrap-small">
             <img class="img-hotel" alt="" src="{{$banner->path_imagen_sm}}" alt="">
             <p class="txt-float color-white">
-              {{$banner->titulo}}
+              @if ($idioma == 'es')
+                {{$banner->titulo}}
+              @else
+                {{$banner->titulo_en}}
+              @endif
             </p>
           </div>
         @endforeach
