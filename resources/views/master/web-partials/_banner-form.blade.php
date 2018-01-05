@@ -25,7 +25,7 @@
             </label>
             <input type="orden" class="form-control" name="orden" id="orden">
           </div>
-
+          {{explode("-", Request::url())[1]}}
           @if(explode("-", Request::url())[1] == 'salaconferencias' || explode("-", Request::url())[1] == 'hotel' || explode("-", Request::url())[1] == 'habitaciones')
             <div class="col-lg-10 form-group">
               <label for="">

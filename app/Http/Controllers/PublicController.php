@@ -22,7 +22,7 @@ class PublicController extends Controller
     }
 
     public function habitaciones(){
-      $banners = WebBannerModel::where([['section_id', '=', 2], ['estado', '=', 1]])->get();
+      $banners = WebBannerModel::where([['section_id', '=', 2], ['estado', '=', 1]])->orderBy('orden', 'asc')->get();
       foreach ($banners as $banner) {
         $banner['lists'] =  $this->getLists($banner);
       }
@@ -30,7 +30,7 @@ class PublicController extends Controller
     }
 
     public function sala_conferencias(){
-      $banners = WebBannerModel::where([['section_id', '=', 4], ['estado', '=', 1]])->get();
+      $banners = WebBannerModel::where([['section_id', '=', 4], ['estado', '=', 1]])->orderBy('orden', 'asc')->get();
       foreach ($banners as $banner) {
         $banner['lists'] =  $this->getLists($banner);
       }

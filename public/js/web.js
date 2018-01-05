@@ -29,7 +29,7 @@ $(document).ready(function () {
             WebItem.Guardar('web/' + id, formData, section);
         } else {
             formData.delete('_method');
-            WebItem.Guardar('web/', formData, section);
+            WebItem.Guardar('web', formData, section);
         }
     })
 });
