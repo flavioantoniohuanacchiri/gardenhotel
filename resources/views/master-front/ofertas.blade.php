@@ -14,7 +14,7 @@
     <div @if ($key % 2 == 0) class="pull-left bg-white position-box wow fadeInLeft " @else  class="pull-right bg-white position-box-right wow fadeInRight" @endif data-wow-offset="150" data-wow-delay="0.2s">
       <div class="box-body">
         <div class="green-light">
-          <div class="green-dark"><img class="img-dark" style="width:30px; margin:auto" src="imgs-front/icons/hotel.svg"></div><br><span style="font-size: 14px;" class="pd-15 text-light">{{$oferta->titulo}} @else {{$oferta->titulo_en}} @endif</span>
+          <div class="green-dark"><img class="img-dark" style="width:30px; margin:auto" src="imgs-front/icons/hotel.svg"></div><br><span style="font-size: 14px;" class="pd-15 text-light">@if($idioma == 'es'){{$oferta->titulo}} @else {{$oferta->titulo_en}} @endif</span>
         </div>
         <div class="border-green">
           <ul class="text-light">
