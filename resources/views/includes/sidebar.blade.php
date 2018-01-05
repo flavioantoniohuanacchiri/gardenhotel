@@ -41,7 +41,7 @@ if (!Session::has("sistema.modulos")) {
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-                <!--<a href="{{ url('/') }}" class="site_title"><i class="fa fa-paw"></i> <span>{{ trans('master.name') }}</span></a>-->
+                <a href="{{ url('/') }}" class="site_title"><i class="fa fa-paw"></i> <span>{{ trans('master.name') }}</span></a>
         </div>
 
         <div class="clearfix"></div>
@@ -49,7 +49,8 @@ if (!Session::has("sistema.modulos")) {
         <!-- menu profile quick info -->
         <div class="profile">
                 <div class="profile_pic">
-                        <img src="{{ Gravatar::src(Auth::user()->email) }}" alt="Avatar of {{ Auth::user()->name }}" class="img-circle profile_img">
+                    <!--<img src="{{ Gravatar::src(Auth::user()->email) }}" alt="Avatar of {{ Auth::user()->name }}" class="img-circle profile_img">-->
+                    <img src="{{ asset('imgs-front/icons/logo_admin.jpg') }}" alt="Avatar of {{ Auth::user()->name }}" class="img-circle profile_img">
                 </div>
                 <div class="profile_info">
                         <span>{{ trans('master.welcome') }},</span>
