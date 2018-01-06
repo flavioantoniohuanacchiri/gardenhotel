@@ -12,14 +12,24 @@
   <script>
       var located = 2;
   </script>
-  <script src="{{ asset("js/web.js") }}"></script>
-  <script src="{{ asset("js/web_ajax.js") }}"></script>
+  <script src="{{ asset("js/web-small.js") }}"></script>
+  <script src="{{ asset("js/web-small_ajax.js") }}"></script>
   <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
   <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+  <script> var section_name="{{$section}}"</script>
   <script>
-      $('#ckeditor_ubicacion').ckeditor();
-      $('#ckeditor_ubicacion_en').ckeditor();
-      $('#ckeditor_telefono').ckeditor();
-      $('#ckeditor_email').ckeditor();
+
+      CKEDITOR.replace( 'ckeditor_telefono', {
+          height: 60
+      });
+      CKEDITOR.replace( 'ckeditor_ubicacion_en', {
+          height: 60
+      });
+      CKEDITOR.replace( 'ckeditor_ubicacion', {
+          height: 60
+      });
+      CKEDITOR.replace( 'ckeditor_email', {
+          height: 60
+      });
   </script>
 @endpush

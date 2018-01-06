@@ -6,7 +6,6 @@ $(document).ready(function () {
         ev.preventDefault();
     });
 
-    //console.log($('#ck_editor').val());
     $('#banner-form').submit( function (ev) {
         ev.preventDefault();
         //
@@ -14,8 +13,8 @@ $(document).ready(function () {
         let formData = new FormData($('#banner-form')[0]);
         formData.append('file', file_data);
         formData.append('section_id', section);
+
         if ( $('#ckeditor_text')[0]  !== undefined &&  $('#ckeditor_text')[0]) {
-            console.log('qweq', $('#ckeditor_text')[0]);
             let descripcion = CKEDITOR.instances.ckeditor_text;
             let descripcion_en = CKEDITOR.instances.ckeditor_text_en;
             descripcion = descripcion.getData();
@@ -43,6 +42,7 @@ $('#banner-modal').on('hidden.bs.modal', function () {
     $('#banner').val('');
     id = '';
     if ( $('#ckeditor_text')[0]  !== undefined &&  $('#ckeditor_text')[0]) {
+
         let descripcion = CKEDITOR.instances.ckeditor_text;
         let descripcion_en = CKEDITOR.instances.ckeditor_text_en;
         descripcion.setData('');
@@ -51,6 +51,7 @@ $('#banner-modal').on('hidden.bs.modal', function () {
         $('#descripcion_en').val('');
         $('#descripcion').val('');
     }
+
 });
 
 $(document).on('click', '.edit-item', function () {

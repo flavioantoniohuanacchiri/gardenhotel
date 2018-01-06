@@ -37,7 +37,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
   Route::get('section-centrofinanciero', 'WebController@centrofinanciero');
   Route::get('section-cabecera', 'SectionController@mostrarSeccion');
   Route::get('section-pie', 'SectionController@mostrarSeccion');
-
+  Route::post('section/guardar', 'SectionController@guardar');
   Route::resource('web', 'WebController');
   Route::resource('section', 'SectionController');
+
 });

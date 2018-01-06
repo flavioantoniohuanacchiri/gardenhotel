@@ -14,25 +14,25 @@
             <label for="">
               Ubicación:
             </label>
-            <textarea type="text" class="form-control" id="ckeditor_ubicacion"></textarea>
+            <textarea type="text" class="form-control" id="ckeditor_ubicacion" name="ckeditor_ubicacion"></textarea>
           </div>
           <div class="col-lg-9 form-group">
             <label for="">
               Ubicación (en):
             </label>
-            <textarea type="text" class="form-control" id="ckeditor_ubicacion_en"></textarea>
+            <textarea type="text" class="form-control" id="ckeditor_ubicacion_en" name="ckeditor_ubicacion_en"></textarea>
           </div>
           <div class="col-lg-9 form-group">
             <label for="">
               Telefonos:
             </label>
-            <textarea type="text" class="form-control" id="ckeditor_telefono"></textarea>
+            <textarea type="text" class="form-control" id="ckeditor_telefono" name="ckeditor_telefono"></textarea>
           </div>
-          <div class="col-lg-9 form-group">
+          <div class="col-lg-9 form-group telefono">
             <label for="">
               Correo Electrónico:
             </label>
-            <textarea type="text" class="form-control" id="ckeditor_email"></textarea>
+            <textarea type="text" class="form-control" id="ckeditor_email" name="ckeditor_email"></textarea>
           </div>
 
         </form>

@@ -12,14 +12,33 @@
   <link href="{{ asset('css-front/main.css')}}" rel="stylesheet" type="text/css" media="all">
   <link href="{{ asset('css-front/fonts.css')}}" rel="stylesheet" type="text/css">
   @stack('styles')
+  <style>
+    .ubicacion-header p{
+      margin: 0px;
+      font-size: 12px;
+      padding-left: 10px;
+    }
+    .footer-p p {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    .footer-p a {
+      color: white
+    }
+    .footer-p img {
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
   <div class="navbar navbar-default navbar-fixed-top">
   <section class="header">
     <div class="container content-small">
       <div class="row">
-        <div class="items-line col-md-3 col-xs-12 col-sm-12"><img src="{{asset('imgs-front/icons/ubicacion.svg')}}" width="25px">
-          <p class="mg-0" style="font-size: 12px;    padding-left: 10px">Avenida Ricardo Rivera Navarrete 450, San Isidro</p>
+        <div class="items-line col-md-3 col-xs-12 col-sm-12 ubicacion-header"><img src="{{asset('imgs-front/icons/ubicacion.svg')}}" width="25px">
+          @if ($idioma == 'es')  {!! $header['ubicacion'] !!}
+          @else {!! $header['ubicacion_en'] !!}
+          @endif
         </div>
         <div class="col-md-5 col-xs-12 col-sm-12"></div>
         <div class="col-md-4 col-xs-12 col-sm-12">
@@ -34,7 +53,7 @@
               </ul>
             </div>
             <div class="header-contacto"><img src="{{asset('imgs-front/icons/tel.svg') }}" width="31px">
-              <p>(511) <strong>4421771</strong> / 995743685 </p>
+              {!! $header['telefono'] !!}
             </div>
           </div>
         </div>
@@ -95,28 +114,23 @@
     <div class="contac">
       <div class="container text-center" style="padding: 2% 0 0%">
         <div class="row">
-          <div class="col-md-5">
-            <p class="color-white direc">
-              <img class="icon-footer" src="{{ asset('imgs-front/icons/direccion-cabecera.svg') }}" alt="">
-              Avenida Ricardo Rivera Navarrete 450, San Isidro </p>
+          <div class="col-md-5 footer-p">
+            <img class="icon-footer" src="{{ asset('imgs-front/icons/direccion-cabecera.svg') }}" alt="" style="display: inline-block">
+            @if ($idioma == 'es') {!! $footer['ubicacion'] !!}
+            @else {!! $footer['ubicacion_en'] !!}
+            @endif
           </div>
-          <div class="col-md-3">
-            <p class="color-white tel">
+          <div class="col-md-3 footer-p">
               <img class="icon-footer" src="{{ asset('imgs-front/icons/telefono-footer.svg') }}">
-              (511) 4421771 / 995743685
-            </p>
+              {!! $footer['telefono'] !!}
           </div>
-          <div class="col-md-4">
-            <p class="color-white mail">
-              <img class="icon-footer" src="{{ asset('imgs-front/icons/sms.svg') }}">
-              <a href="mailto:reservas@gardenhotel.com.pe" style="text-decoration: none; color: #fff;">
-                reservas@gardenhotel.com.pe
-              </a>
-            </p>
+          <div class="col-md-4 footer-p">
+            <img class="icon-footer" src="{{ asset('imgs-front/icons/sms.svg') }}">
+            {!! $footer['email'] !!}
           </div>
         </div>
         <div class="row creditos" style="color: #1e5f33;">
-          <div class="col-md-6 copy" >
+          <div class="col-md-6 copy  footer-p">
             <p>Copyright 2017 - Garden Hotel</p>
           </div>
           <div class="col-md-6 name">

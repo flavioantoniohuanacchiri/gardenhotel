@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Section as SectionModel;
+use Illuminate\Support\Facades\Response as Response;
 
 class SectionController extends Controller
 {
@@ -16,6 +18,15 @@ class SectionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function guardar(Request $request){
+      //return $request->all();
+      SectionModel::updateOrCreate(['section' => $request->section], $request->all());
+      return Response::json([
+        'mensaje' => 'Se actualizaron los datos con éxito',
+        'estado' => 1
+      ]);
+    }
+
     public function index()
     {
         //
@@ -50,7 +61,8 @@ class SectionController extends Controller
      */
     public function show($id)
     {
-        //
+       $section = SectionModel::where('section', $id)->first();
+       return $section;
     }
 
     /**
