@@ -11,7 +11,7 @@
 |
 */
 Route::get('/', 'PublicController@index');
-Route::get('home/en', 'PublicController@index');
+Route::get('home/{lang}', 'PublicController@index');
 Route::get('hotel', 'PublicController@hotel');
 Route::get('hotel/{lang}', 'PublicController@hotel');
 Route::get('habitaciones', 'PublicController@habitaciones');
