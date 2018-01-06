@@ -6,7 +6,7 @@ use App\WebBanner as WebBannerModel;
 class PublicController extends Controller
 {
     public function index(Request $request){
-      $banners_inicio = WebBannerModel::where([['section_id', '=', 0], ['estado', '=', 1]])->get();
+      $banners_inicio = WebBannerModel::where([['section_id', '=', 0], ['estado', '=', 1]])->orderBy("orden", "asc")->get();
       $centros = WebBannerModel::where([['section_id', '=', 5], ['estado', '=', 1]])->orderBy('orden', 'asc')->get();
       $idioma = $this->obtenerLenguaje($request->path());
       $paths = ['es'=> '', 'en' => 'home_en'];

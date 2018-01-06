@@ -11,7 +11,7 @@ class WebController extends Controller
 {
   public function listar(Request $request)
   {
-    $banners = WebbannerModel::where('section_id', '=', $request->section)->get();
+    $banners = WebbannerModel::where('section_id', '=', $request->section)->orderBy("orden", "ASC")->get();
     return $banners;
   }
 
