@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PerfilModuloSeeder::class);
         $this->call(WebBannerSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(SectionSeeder::class);
     }
 }
