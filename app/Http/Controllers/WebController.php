@@ -59,11 +59,12 @@ class WebController extends Controller
           'estado' => 2
         ]);
       } else {
-        Storage::disk('uploads')->put($request->banner->getClientOriginalName(), file_get_contents($request->banner->getRealPath()));
-        $datos['path_imagen'] = 'uploads/'.$request->banner->getClientOriginalName();
+        $file_name = md5($request->banner->getClientOriginalName(). date('H:i:s')). '.jpg';
+        Storage::disk('uploads')->put($file_name, file_get_contents($request->banner->getRealPath()));
+        $datos['path_imagen'] = 'uploads/'.$file_name;
         //creamos un path y rediseñamos la imagen
         $small_imagen_path = substr_replace($datos['path_imagen'], '_small', strlen($datos['path_imagen']) - 4, 0 );
-        $new_img = $this->resize_image('uploads/'.$request->banner->getClientOriginalName(), 500, 250, $tamanos['w'], $tamanos['h']);
+        $new_img = $this->resize_image('uploads/'.$file_name, 500, 250, $tamanos['w'], $tamanos['h']);
         imagejpeg($new_img, $small_imagen_path, 100);
         imagedestroy($new_img);
         $datos['path_imagen_sm'] = $small_imagen_path;
@@ -99,10 +100,11 @@ class WebController extends Controller
         } else {
           Storage::disk('uploads')->delete(str_replace("uploads/", "", $banner->path_imagen));
           Storage::disk('uploads')->delete(str_replace("uploads/", "", $banner->path_imagen_sm));
-          Storage::disk('uploads')->put($request->banner->getClientOriginalName(), file_get_contents($request->banner->getRealPath()));
-          $datos['path_imagen'] = 'uploads/'.$request->banner->getClientOriginalName();
+          $file_name = md5($request->banner->getClientOriginalName(). date('H:i:s')). '.jpg';
+          Storage::disk('uploads')->put($file_name, file_get_contents($request->banner->getRealPath()));
+          $datos['path_imagen'] = 'uploads/'.$file_name;
           $small_imagen_path = substr_replace($datos['path_imagen'], '_small', strlen($datos['path_imagen']) - 4, 0 );
-          $new_img = $this->resize_image('uploads/'.$request->banner->getClientOriginalName(), 500, 250, $tamanos['w'], $tamanos['h']);
+          $new_img = $this->resize_image('uploads/'.$file_name, 500, 250, $tamanos['w'], $tamanos['h']);
           imagejpeg($new_img, $small_imagen_path, 100);
           imagedestroy($new_img);
           $datos['path_imagen_sm'] = $small_imagen_path;
