@@ -8,6 +8,7 @@
 
   </div>
   @include('master.web-partials._banner-form')
+
 @endsection
 @push('scripts')
   <script>

@@ -51,16 +51,26 @@ class WebController extends Controller
   public function store(Request $request)
   {
     if ($request->hasFile('banner')) {
-      Storage::disk('uploads')->put($request->banner->getClientOriginalName(), file_get_contents($request->banner->getRealPath()));
       $datos = (array) $request->all();
-      $datos['path_imagen'] = 'uploads/'.$request->banner->getClientOriginalName();
-      //creamos un path y rediseñamos la imagen
-      $small_imagen_path = substr_replace($datos['path_imagen'], '_small', strlen($datos['path_imagen']) - 4, 0 );
-      $new_img = $this->resize_image('uploads/'.$request->banner->getClientOriginalName(), 242, 120, true);
-      $datos['path_imagen_sm'] = $small_imagen_path;
-      WebbannerModel::create($datos);
-      imagejpeg($new_img, $small_imagen_path, 100);
-      imagedestroy($new_img);
+      $tamanos = $this->check_sizes($request->banner->getRealPath());
+      if (!$tamanos) {
+        return Response::json([
+          'mensaje' => 'El ancho de la imagen no debe ser menor a la altura',
+          'estado' => 2
+        ]);
+      } else {
+        Storage::disk('uploads')->put($request->banner->getClientOriginalName(), file_get_contents($request->banner->getRealPath()));
+        $datos['path_imagen'] = 'uploads/'.$request->banner->getClientOriginalName();
+        //creamos un path y rediseñamos la imagen
+        $small_imagen_path = substr_replace($datos['path_imagen'], '_small', strlen($datos['path_imagen']) - 4, 0 );
+        $new_img = $this->resize_image('uploads/'.$request->banner->getClientOriginalName(), 2000, 1000, $tamanos['w'], $tamanos['h']);
+        imagejpeg($new_img, $small_imagen_path, 100);
+        imagedestroy($new_img);
+        $datos['path_imagen_sm'] = $small_imagen_path;
+
+        WebbannerModel::create($datos);
+      }
+
       return Response::json([
         'mensaje' => 'Banner creado correctamente',
         'estado' => 1
@@ -79,14 +89,24 @@ class WebController extends Controller
     if ($banner) {
       $datos = (array) $request->all();
       if ($request->hasFile('banner')) {
-        Storage::disk('uploads')->delete(str_replace("uploads/", "", $banner->path_imagen));
-        Storage::disk('uploads')->delete(str_replace("uploads/", "", $banner->path_imagen_sm));
-        Storage::disk('uploads')->put($request->banner->getClientOriginalName(), file_get_contents($request->banner->getRealPath()));
-        $datos['path_imagen'] = 'uploads/'.$request->banner->getClientOriginalName();
 
-        $small_imagen_path = substr_replace($datos['path_imagen'], '_small', strlen($datos['path_imagen']) - 4, 0 );
-        $new_img = $this->resize_image('uploads/'.$request->banner->getClientOriginalName(), 242, 120, true);
-        $datos['path_imagen_sm'] = $small_imagen_path;
+        $tamanos = $this->check_sizes($request->banner->getRealPath());
+        if (!$tamanos) {
+          return Response::json([
+            'mensaje' => 'El ancho de la imagen no debe ser menor a la altura',
+            'estado' => 2
+          ]);
+        } else {
+          Storage::disk('uploads')->delete(str_replace("uploads/", "", $banner->path_imagen));
+          Storage::disk('uploads')->delete(str_replace("uploads/", "", $banner->path_imagen_sm));
+          Storage::disk('uploads')->put($request->banner->getClientOriginalName(), file_get_contents($request->banner->getRealPath()));
+          $datos['path_imagen'] = 'uploads/'.$request->banner->getClientOriginalName();
+          $small_imagen_path = substr_replace($datos['path_imagen'], '_small', strlen($datos['path_imagen']) - 4, 0 );
+          $new_img = $this->resize_image('uploads/'.$request->banner->getClientOriginalName(), 2000, 1000, $tamanos['w'], $tamanos['h']);
+          imagejpeg($new_img, $small_imagen_path, 100);
+          imagedestroy($new_img);
+          $datos['path_imagen_sm'] = $small_imagen_path;
+        }
       }
       $banner->update($datos);
 
@@ -115,33 +135,25 @@ class WebController extends Controller
     return response(["estado" => 1, "msj" => "Se ha actualizado el estado con éxito"]);
   }
 
-  function resize_image($file, $w, $h, $crop=FALSE) {
-    list($width, $height) = getimagesize($file);
-    $r = $width / $height;
-    if ($crop) {
-      if ($width > $height) {
-        $width = ceil($width-($width*abs($r-$w/$h)));
-      } else {
-        $height = ceil($height-($height*abs($r-$w/$h)));
-      }
-      $newwidth = $w;
-      $newheight = $h;
-    } else {
-      if ($w/$h > $r) {
-        $newwidth = $h*$r;
-        $newheight = $h;
-      } else {
-        $newheight = $w/$r;
-        $newwidth = $w;
-      }
-    }
-    $src = imagecreatefromjpeg($file);
-    $dst = imagecreatetruecolor($newwidth, $newheight);
-    imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+  function resize_image($file, $w, $h, $original_w, $original_h) {
 
+    header('Content-Type: image/jpeg');
+    $dst = imagecreatetruecolor($w, $h);
+    $src = imagecreatefromjpeg($file);
+    imagecopyresampled($dst, $src, 0, 0, 0, 0, $w, $h, $original_w, $original_h);
     return $dst;
   }
 
+  function check_sizes($file_path) {
 
+    $tamanos = getimagesize($file_path);
+    $original_w = $tamanos[0];
+    $original_h = $tamanos[1];
+    if ($original_w <= $original_h) {
+      return false;
+    } else {
+      return $sizes= array('w' => $original_w, 'h' => $original_h);
+    }
+  }
 
 }

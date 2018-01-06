@@ -63,8 +63,7 @@ var  WebItem = {
     },
     
     Guardar: function (url, formData, section) {
-        console.log(section);
-        console.log(url);
+        $('.loading').show();
         $.ajax({
             url: url,
             type: 'POST',
@@ -81,8 +80,10 @@ var  WebItem = {
                 } else {
                     toastr.error(data.mensaje);
                 }
+                $('.loading').hide();
             },
             error: function(data){
+                $('.loading').hide();
                 $("#banner-modal").modal("hide");
             }
         });

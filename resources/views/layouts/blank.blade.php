@@ -47,7 +47,7 @@
                 @include('includes/topbar')
 
                 @yield('main_container')
-
+                <img class="loading" src="../imgs-front/icons/loading-green.gif" alt="" style="position: absolute; display:none; top: 50%; left: 50%; transform: translate(-50%, -50%);">
             </div>
         </div>
 
