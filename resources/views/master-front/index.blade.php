@@ -1,5 +1,5 @@
 @push('styles')
-  <link rel="stylesheet" type="text/css" href="css-front/slidzomm.css" property="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ asset('css-front/slidzomm.css') }}" property="stylesheet">
 @endpush
 @extends('layouts.master-public')
 @section('content')
@@ -11,7 +11,7 @@
           <div class="owl-carousel">
             @foreach ($banners as $banner)
             <div class="item">
-              <img src="{{ $banner->path_imagen}}" width="1500" height="800">
+              <img src="{{ asset($banner->path_imagen) }}" width="1500" height="800">
               <div class="container-fluid">
                 <div class="enriquecido">
                   <h2>
@@ -41,7 +41,7 @@
             <h2 class="mg-0 color-green wow fadeInUp " data-wow-offset="150" data-wow-delay="0.2s">
               OFRECEMOS CALIDAD
             </h2>
-            <img src="imgs-front/marco-centro.png">
+            <img src="{{ asset('imgs-front/marco-centro.png') }}">
           </div>
           <p  class="wow fadeInUp" data-wow-offset="150" data-wow-delay="0.2s">
             El Garden Hotel es un hotel 4 estrellas, ubicado en el moderno distrito de San Isidro, en la cuidad de Lima, Perú.<br>
@@ -85,7 +85,7 @@
         <div class="row">
           <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="150" style="padding: 0px">
             <div class="green-light">
-              <div class="green-dark"><img class="img-dark" src="imgs-front/icons/hotel.svg"></div><br><span class="title-service">HOTEL</span>
+              <div class="green-dark"><img class="img-dark" src="{{ asset('imgs-front/icons/hotel.svg') }}"></div><br><span class="title-service">HOTEL</span>
             </div>
             <div class="overflow">
               <div class="img-box1 img-zoom" style="background-image:url('../imgs-front/calidad/habitaciones.jpg')"></div>
@@ -93,7 +93,7 @@
           </div>
           <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="150" style="padding: 0px">
             <div class="green-light">
-              <div class="green-dark"><img class="img-dark" src="imgs-front/icons/cama1.svg"></div><br><span class="title-service">HABITACIONES</span>
+              <div class="green-dark"><img class="img-dark" src="{{ asset('imgs-front/icons/cama1.svg') }}"></div><br><span class="title-service">HABITACIONES</span>
             </div>
             <div class="overflow">
               <div class="img-box img-zoom" style="background-image:url('../imgs-front/calidad/hotel.jpg')"></div>
@@ -101,7 +101,7 @@
           </div>
           <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="150" style="padding: 0px">
             <div class="green-light">
-              <div class="green-dark"><img class="img-dark" src="imgs-front/icons/sala-de-conferencias.svg"></div><br><span class="title-service">SALA DE CONFERENCIA</span>
+              <div class="green-dark"><img class="img-dark" src="{{ asset('imgs-front/icons/sala-de-conferencias.svg') }}"></div><br><span class="title-service">SALA DE CONFERENCIA</span>
             </div>
             <div class="overflow">
               <div class="img-box2 img-zoom" style="background-image:url('../imgs-front/calidad/auditrorio.jpg')"></div>
@@ -109,7 +109,7 @@
           </div>
           <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="150" style="padding: 0px">
             <div class="green-light">
-              <div class="green-dark"><img class="img-dark" src="imgs-front/icons/hotel-restaurante.svg"></div><br><span class="title-service">RESTAURANT</span>
+              <div class="green-dark"><img class="img-dark" src="{{ asset('imgs-front/icons/hotel-restaurante.svg') }}"></div><br><span class="title-service">RESTAURANT</span>
             </div>
             <div class="overflow">
               <div class="img-box3 img-zoom" style="background-image:url('../imgs-front/calidad/comedor.jpg')"></div>
@@ -129,7 +129,7 @@
           <h2 class="mg-0 color-green wow fadeInUp " data-wow-offset="150" data-wow-delay="0.2s">
             CENTRO FINANCIERO
           </h2>
-          <img src="imgs-front/marco-centro.png">
+          <img src="{{ asset('imgs-front/marco-centro.png') }}">
         </div>
         <div class="row">
           <div class="col-md-offset-2 col-md-8 intro wow fadeInUp" data-wow-offset="150" data-wow-delay="0.2s">
@@ -159,10 +159,10 @@
   </section>
 @endsection
 @push('scripts')
-  <script src="js-front/bootstrap.min.js"></script>
-  <script src="js-front/min.js"></script>
-  <script type="text/javascript" src="js-front/slidzomm.js"></script>
-  <script type="text/javascript" src="js-front/jquery.owl.carousel.min.js"></script>
+  <script src="{{ asset('js-front/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('js-front/min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js-front/slidzomm.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js-front/jquery.owl.carousel.min.js') }}"></script>
   <script type="text/javascript">
       $(document).ready(function () {
           var iniciar = new hansermarConstructor();

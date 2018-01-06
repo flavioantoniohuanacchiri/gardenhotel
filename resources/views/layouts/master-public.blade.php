@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <link href="./images/garden.ico" rel="shortcut icon" />
-  <link href="css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css-front/bootstrap.css" rel="stylesheet" type="text/css" media="all">
-  <link href="css-front/animate.css" rel="stylesheet" type="text/css" media="all">
-  <link href="css-front/main.css" rel="stylesheet" type="text/css" media="all">
-  <link href="css-front/fonts.css" rel="stylesheet" type="text/css">
+  <link href="{{ asset('css/font-awesome-4.7.0/css/font-awesome.min.css')}}" rel="stylesheet">
+  <link href="{{ asset('css-front/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all">
+  <link href="{{ asset('css-front/animate.css')}}" rel="stylesheet" type="text/css" media="all">
+  <link href="{{ asset('css-front/main.css')}}" rel="stylesheet" type="text/css" media="all">
+  <link href="{{ asset('css-front/fonts.css')}}" rel="stylesheet" type="text/css">
   @stack('styles')
 </head>
 <body>
@@ -25,7 +25,7 @@
         <div class="col-md-4 col-xs-12 col-sm-12">
           <div class="head-right">
             <a href="index.html">
-              <img class="logo-responsive" src="imgs-front/logo-menu.svg" alt="logo-hotel-garden">
+              <img class="logo-responsive" src="{{asset('imgs-front/logo-menu.svg')}}" alt="logo-hotel-garden">
             </a>
             <div class="idiomas">
               <ul>
@@ -33,7 +33,7 @@
                 <li><a @if($idioma == 'en') class="icon_euu active" @else class="icon_euu" @endif href="{{url($paths['en'])}}"></a></li>
               </ul>
             </div>
-            <div class="header-contacto"><img src="imgs-front/icons/tel.svg" width="31px">
+            <div class="header-contacto"><img src="{{asset('imgs-front/icons/tel.svg') }}" width="31px">
               <p>(511) <strong>4421771</strong> / 995743685 </p>
             </div>
           </div>
@@ -44,9 +44,9 @@
   <a href="index.html">
     <section class="logo-nav">
       <div class="circle-logo">
-        <img src="imgs-front/medialuna.png">
+        <img src="{{ asset('imgs-front/medialuna.png') }}">
       </div>
-      <img class="logo" src="imgs-front/logo-menu.svg" alt="logo-hotel-garden">
+      <img class="logo" src="{{ asset('imgs-front/logo-menu.svg') }}" alt="logo-hotel-garden">
     </section>
   </a>
   <section class="menu">
@@ -66,9 +66,9 @@
               <li><a href="{{url('/hotel')}}">HOTEL</a></li>
               <li><a href="{{url('/habitaciones')}}">HABITACIONES</a></li>
             @else
-              <li><a href="{{url('/home_en')}}" >HOME</a></li>
-              <li><a href="{{url('/hotel_en')}}">HOTEL</a></li>
-              <li><a href="{{url('/rooms_en')}}">ROOMS</a></li>
+              <li><a href="{{url('/home/en')}}" >HOME</a></li>
+              <li><a href="{{url('/hotel/en')}}">HOTEL</a></li>
+              <li><a href="{{url('/rooms/en')}}">ROOMS</a></li>
             @endif
           </ul>
           <ul class="nav-hover nav navbar-nav navbar-right">
@@ -77,9 +77,9 @@
               <li><a href="{{url('/ofertas')}}">OFERTAS  </a></li>
               <li><a href="{{url('/ubicacion')}}">UBICACIÓN </a></li>
             @else
-              <li><a href="{{url('/conferencehall_en')}}">CONFERENCE HALL</a></li>
-              <li><a href="{{url('/offers_en')}}">OFFERS  </a></li>
-              <li><a href="{{url('/location_en')}}">FIND US </a></li>
+              <li><a href="{{url('/conferencehall/en')}}">CONFERENCE HALL</a></li>
+              <li><a href="{{url('/offers/en')}}">OFFERS  </a></li>
+              <li><a href="{{url('/location/en')}}">FIND US </a></li>
             @endif
           </ul>
         </div>
@@ -90,25 +90,25 @@
   @yield('content')
   <div class="footer">
     <div class="footer-logo container">
-      <div class="row"><img src="imgs-front/logo-footer.svg"></div>
+      <div class="row"><img src="{{ asset('imgs-front/logo-footer.svg') }}"></div>
     </div>
     <div class="contac">
       <div class="container text-center" style="padding: 2% 0 0%">
         <div class="row">
           <div class="col-md-5">
             <p class="color-white direc">
-              <img class="icon-footer" src="imgs-front/icons/direccion-cabecera.svg" alt="">
+              <img class="icon-footer" src="{{ asset('imgs-front/icons/direccion-cabecera.svg') }}" alt="">
               Avenida Ricardo Rivera Navarrete 450, San Isidro </p>
           </div>
           <div class="col-md-3">
             <p class="color-white tel">
-              <img class="icon-footer" src="imgs-front/icons/telefono-footer.svg">
+              <img class="icon-footer" src="{{ asset('imgs-front/icons/telefono-footer.svg') }}">
               (511) 4421771 / 995743685
             </p>
           </div>
           <div class="col-md-4">
             <p class="color-white mail">
-              <img class="icon-footer" src="imgs-front/icons/sms.svg">
+              <img class="icon-footer" src="{{ asset('imgs-front/icons/sms.svg') }}">
               <a href="mailto:reservas@gardenhotel.com.pe" style="text-decoration: none; color: #fff;">
                 reservas@gardenhotel.com.pe
               </a>
@@ -128,8 +128,8 @@
       </div>
     </div>
   </div>
-  <script src="js-front/jquery.min.js"></script>
-  <script src="js-front/wow1-2.min.js"></script>
+  <script src="{{ asset('js-front/jquery.min.js') }}"></script>
+  <script src="{{ asset('js-front/wow1-2.min.js') }}"></script>
   <script>
       new WOW().init();
   </script>

@@ -1,7 +1,7 @@
 @push('styles')
-  <link href="css-front/ofertas.css" rel="stylesheet" type="text/css" media="all">
-  <link href="css-front/slick-theme.css" rel="stylesheet">
-  <link href="css-front/slick.css" rel="stylesheet" type="text/css">
+  <link href="{{ asset('css-front/ofertas.css') }}" rel="stylesheet" type="text/css" media="all">
+  <link href="{{ asset('css-front/slick-theme.css')}}" rel="stylesheet">
+  <link href="{{ asset('css-front/slick.css')}}" rel="stylesheet" type="text/css">
   <style>
     html, body {
       margin: 0;
@@ -35,12 +35,12 @@
     <div id="slider-hotel" class="slider slider-for">
       @foreach ($banners as $key => $banner)
       <div class="mezanine{{$key}}">
-        <img class="img-hotel1" alt="" src="{{ $banner->path_imagen }}" alt="">
+        <img class="img-hotel1" alt="" src="{{ asset($banner->path_imagen) }}" alt="">
         <div class="row">
           <div class="container">
             <div class="box-body">
               <div class="green-light">
-                <div class="green-dark"><img class="img-dark" style="width:30px; margin:auto" src="imgs-front/icons/hotel.svg"></div><br><span class="pd-15 text-light">
+                <div class="green-dark"><img class="img-dark" style="width:30px; margin:auto" src="{{ asset('imgs-front/icons/hotel.svg') }}"></div><br><span class="pd-15 text-light">
                     GARDEN HOTEL CUENTAN CON
                   </span>
               </div>
@@ -68,7 +68,7 @@
       <div class="slider slider-nav">
         @foreach ($banners as $key => $banner)
           <div class="wrap-small">
-            <img class="img-hotel" alt="" src="{{$banner->path_imagen_sm}}" alt="">
+            <img class="img-hotel" alt="" src="{{ asset($banner->path_imagen_sm) }}" alt="">
             <p class="txt-float color-white">
               @if ($idioma == 'es')
                 {{$banner->titulo}}
@@ -83,7 +83,7 @@
   </section>
 @endsection
 @push('scripts')
-  <script src="js-front/slick.js"></script>
+  <script src="{{ asset('js-front/slick.js') }}"></script>
   <script type="text/javascript">
       $(document).on('ready', function() {
           $('.slider-for').slick({

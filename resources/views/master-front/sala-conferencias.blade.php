@@ -1,5 +1,5 @@
 @push('styles')
-  <link href="css-front/ofertas.css" rel="stylesheet" type="text/css" media="all">
+  <link href="{{ asset('css-front/ofertas.css') }}" rel="stylesheet" type="text/css" media="all">
 @endpush
 @extends('layouts.master-public')
 @section('content')
@@ -13,7 +13,7 @@
       <div class="carousel-inner">
         @foreach($banners as $key => $banner)
           <div @if($key === 0) class="item active" @else class="item" @endif >
-            <div style="position:relative;"><img class="img-hab" src="{{$banner->path_imagen}}" />
+            <div style="position:relative;"><img class="img-hab" src="{{ asset($banner->path_imagen) }}" />
               <a class="left carousel-control" href="#carousel-example-habitaciones" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left"></span>
               </a>
@@ -25,7 +25,7 @@
               <div class="container">
                 <div class="box-body">
                   <div class="green-light">
-                    <div class="green-dark"><img class="img-dark" style="width:30px; margin:auto" src="imgs-front/icons/hotel.svg"></div><br><span class="pd-15 text-light">
+                    <div class="green-dark"><img class="img-dark" style="width:30px; margin:auto" src="{{ asset('imgs-front/icons/hotel.svg') }}"></div><br><span class="pd-15 text-light">
                       @if ($idioma == 'es')
                         {{$banner->titulo}}
                       @else

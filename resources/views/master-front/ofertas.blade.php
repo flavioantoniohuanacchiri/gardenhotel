@@ -1,12 +1,12 @@
 @push('styles')
-  <link href="css-front/ofertas.css" rel="stylesheet" type="text/css" media="all">
+  <link href="{{ asset('css-front/ofertas.css') }}" rel="stylesheet" type="text/css" media="all">
 @endpush
 @extends('layouts.master-public')
 @section('content')
   <div class="container padding-off">
     <div class="text-center">
       <p class="text-light mb-0">Para nuestro futuros huéspedes les traemos</p>
-      <h2 class="text-aparaj mt-0">LAS MEJORES OFERTAS</h2><img src="imgs-front/marco-centro.png">
+      <h2 class="text-aparaj mt-0">LAS MEJORES OFERTAS</h2><img src="{{ asset('imgs-front/marco-centro.png') }}">
     </div>
   </div>
   @foreach ($ofertas as $key => $oferta)
@@ -14,7 +14,7 @@
     <div @if ($key % 2 == 0) class="pull-left bg-white position-box wow fadeInLeft " @else  class="pull-right bg-white position-box-right wow fadeInRight" @endif data-wow-offset="150" data-wow-delay="0.2s">
       <div class="box-body">
         <div class="green-light">
-          <div class="green-dark"><img class="img-dark" style="width:30px; margin:auto" src="imgs-front/icons/hotel.svg"></div><br><span style="font-size: 14px;" class="pd-15 text-light">@if($idioma == 'es'){{$oferta->titulo}} @else {{$oferta->titulo_en}} @endif</span>
+          <div class="green-dark"><img class="img-dark" style="width:30px; margin:auto" src="{{ asset('imgs-front/icons/hotel.svg') }}"></div><br><span style="font-size: 14px;" class="pd-15 text-light">@if($idioma == 'es'){{$oferta->titulo}} @else {{$oferta->titulo_en}} @endif</span>
         </div>
         <div class="border-green">
           <ul class="text-light">

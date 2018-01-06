@@ -1,5 +1,5 @@
 @push('styles')
-  <link href="css-front/ofertas.css" rel="stylesheet" type="text/css" media="all">
+  <link href="{{ asset('css-front/ofertas.css') }}" rel="stylesheet" type="text/css" media="all">
 @endpush
 @extends('layouts.master-public')
 @section('content')
@@ -9,7 +9,7 @@
         <h2 class="mg-0 color-green wow fadeInUp " data-wow-offset="150" data-wow-delay="0.2s">
           UBICACIÓN
         </h2>
-        <img class="fadeInUp mt-30" data-wow-offset="150" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;" src="imgs-front/marco-centro.png">
+        <img class="fadeInUp mt-30" data-wow-offset="150" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;" src="{{ asset('imgs-front/marco-centro.png') }}">
         <p class="wow fadeInUp mt-30" data-wow-offset="150" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
           Garden Hotel se ubica en el corazón del exclusivo y moderno centro finaciero de Lima, en el distrito de San Isidro.
           Además estamos cerca del Centro de Convenciones de Lima donde se realizan los mas importantes eventos
@@ -39,5 +39,5 @@
   </section>
 @endsection
 @push('scripts')
-  <script src="js/bootstrap.min.js"></script>
+  <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 @endpush

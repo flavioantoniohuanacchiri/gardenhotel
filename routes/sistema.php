@@ -11,17 +11,17 @@
 |
 */
 Route::get('/', 'PublicController@index');
-Route::get('home_en', 'PublicController@index');
+Route::get('home/en', 'PublicController@index');
 Route::get('hotel', 'PublicController@hotel');
-Route::get('hotel_en', 'PublicController@hotel');
+Route::get('hotel/{lang}', 'PublicController@hotel');
 Route::get('habitaciones', 'PublicController@habitaciones');
-Route::get('rooms_en', 'PublicController@habitaciones');
+Route::get('rooms/{lang}', 'PublicController@habitaciones');
 Route::get('sala-conferencias', 'PublicController@sala_conferencias');
-Route::get('conferencehall_en', 'PublicController@sala_conferencias');
+Route::get('conferencehall/{lang}', 'PublicController@sala_conferencias');
 Route::get('ubicacion', 'PublicController@ubicacion');
-Route::get('location_en', 'PublicController@ubicacion');
+Route::get('location/{lang}', 'PublicController@ubicacion');
 Route::get('ofertas', 'PublicController@ofertas');
-Route::get('offers_en', 'PublicController@ofertas');
+Route::get('offers/{lang}', 'PublicController@ofertas');
 //login view
 Route::get('admin', 'Auth\LoginController@loginView');
 Auth::routes();

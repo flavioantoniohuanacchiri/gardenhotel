@@ -1,5 +1,5 @@
 @push('styles')
-  <link href="css-front/ofertas.css" rel="stylesheet" type="text/css" media="all">
+  <link href="{{ asset('css-front/ofertas.css') }}" rel="stylesheet" type="text/css" media="all">
 @endpush
 @extends('layouts.master-public')
 @section('content')
@@ -13,7 +13,7 @@
       <div class="carousel-inner">
         @foreach($banners as $key => $banner)
         <div @if($key === 0) class="item active" @else class="item" @endif >
-          <div style="position:relative;"><img class="img-hab" src="{{$banner->path_imagen}}" />
+          <div style="position:relative;"><img class="img-hab" src="{{ asset($banner->path_imagen) }}" />
             <a class="left carousel-control" href="#carousel-example-habitaciones" data-slide="prev">
               <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
@@ -102,5 +102,5 @@
   </section>
 @endsection
 @push('scripts')
-  <script src="js/bootstrap.min.js"></script>
+  <script src="{{ asset('js/bootstrap.min.js')}}"></script>
 @endpush
