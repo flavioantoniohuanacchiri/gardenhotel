@@ -7,15 +7,16 @@
     <div class="container">
       <div class="sectio-title text-center">
         <h2 class="mg-0 color-green wow fadeInUp " data-wow-offset="150" data-wow-delay="0.2s">
-          UBICACIÓN
+          @if ($idioma == 'es')  UBICACIÓN @else LOCATION @endif
         </h2>
         <img class="fadeInUp mt-30" data-wow-offset="150" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;" src="{{ asset('imgs-front/marco-centro.png') }}">
-        <p class="wow fadeInUp mt-30" data-wow-offset="150" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-          Garden Hotel se ubica en el corazón del exclusivo y moderno centro finaciero de Lima, en el distrito de San Isidro.
-          Además estamos cerca del Centro de Convenciones de Lima donde se realizan los mas importantes eventos
+        <p class="wow fadeInUp mt-30" data-wow-offset="150" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp; font-size: 16px">
+          @if ($idioma == 'es') Somos una exelente opción en su viaje y negocios @else
+            We are an excellent option in your trip and business @endif
         </p>
         <h5 class="color-green mt-30 wow fadeInUp " data-wow-offset="150" data-wow-delay="0.2s">
-          LA INMEJORABLE UBICACIÓN DEL GARDEN HOTEL LE PERMITE ACCESO A:
+          @if ($idioma == 'es')  LA INMEJORABLE UBICACIÓN DEL GARDEN HOTEL LE PERMITE ACCESO A: @else
+            THE UNIQUE LOCATION OF THE GARDEN HOTEL ALLOWS YOU ACCESS TO: @endif
         </h5>
       </div>
     </div>

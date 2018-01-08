@@ -386,9 +386,14 @@ section.header {
   background-color: rgba(14, 93, 54, 0.79);
   position: absolute;
   bottom: -1px;
-  height: 38%;
+  height: 27%;
   width: 100%;
   padding: 14px;}
+@media (max-width: 767px) {
+  .box-verde {
+    height: 24% !important;
+  }
+}
 .box-financiero .col-flex .box-verde p {
   margin: 0;
   font-size: 13px;

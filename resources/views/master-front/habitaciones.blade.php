@@ -25,8 +25,8 @@
             <div class="container">
               <div class="box-body">
                 <div class="green-light">
-                  <div class="green-dark"><img class="img-dark" style="width:30px; margin:auto" src="imgs-front/icons/hotel.svg"></div><br><span class="pd-15 text-light">
-                      @if ($idioma == 'es') {{$banner->titulo}}@else {{$banner->titulo_en}}@endif
+                  <div class="green-dark"><img class="img-dark" style="width:30px; margin:auto" src="{{ asset('imgs-front/icons/hotel.svg') }}"></div><br><span class="pd-15 text-light">
+                      @if ($idioma == 'es') NUESTRAS HABITACIONES CUENTAN CON @else OUR ROOMS HAVE @endif
                     </span>
                 </div>
                 <div class="border-green">

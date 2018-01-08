@@ -15,7 +15,7 @@
   <style>
     .ubicacion-header p{
       margin: 0px;
-      font-size: 12px;
+      font-size: 14px;
       padding-left: 10px;
     }
     .footer-p p {
@@ -43,7 +43,7 @@
         <div class="col-md-5 col-xs-12 col-sm-12"></div>
         <div class="col-md-4 col-xs-12 col-sm-12">
           <div class="head-right">
-            <a href="index.html">
+            <a href="{{url('/')}}">
               <img class="logo-responsive" src="{{asset('imgs-front/logo-menu.svg')}}" alt="logo-hotel-garden">
             </a>
             <div class="idiomas">
@@ -60,12 +60,12 @@
       </div>
     </div>
   </section>
-  <a href="index.html">
+  <a href="{{url('/')}}">
     <section class="logo-nav">
       <div class="circle-logo">
         <img src="{{ asset('imgs-front/medialuna.png') }}">
       </div>
-      <img class="logo" src="{{ asset('imgs-front/logo-menu.svg') }}" alt="logo-hotel-garden">
+      <img class="logo" src="{{ asset('imgs-front/logo-garden-hotel.png') }}" alt="logo-hotel-garden">
     </section>
   </a>
   <section class="menu">
