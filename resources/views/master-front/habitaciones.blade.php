@@ -35,7 +35,7 @@
                     <li>
                       <div class="inlineflex">
                         <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-                        <p style="font-size: 12px;">
+                        <p style="font-size: 14px;">
                           {{ $list }}
                         </p>
                       </div>
