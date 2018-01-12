@@ -37,13 +37,7 @@
       <div class="container">
         <div class="text-center">
           <div class="sectio-title">
-            <p class="wow fadeInUp" data-wow-offset="150" style="font-size: 16px">
-              @if($idioma == 'es')
-                Nuestra privilegiada ubicación, confort y tarifas corporativas aseguran el éxito de su viaje.
-              @else
-                Our privileged location, comfort and corporate rates ensure the success of your trip.
-              @endif
-            </p>
+            
             <h2 class="mg-0 color-green wow fadeInUp " data-wow-offset="150" data-wow-delay="0.2s">
               @if($idioma == 'es')
                 OFRECEMOS CALIDAD
@@ -52,8 +46,16 @@
               @endif
             </h2>
             <img src="{{ asset('imgs-front/marco-centro.png') }}">
+            <br><br>
+            <p class="wow fadeInUp" data-wow-offset="150" style="font-size: 16px">
+              @if($idioma == 'es')
+                Nuestra privilegiada ubicación, confort y tarifas corporativas aseguran el éxito de su viaje.
+              @else
+                Our privileged location, comfort and corporate rates ensure the success of your trip.
+              @endif
+            </p>
           </div>
-          <p  class="wow fadeInUp" data-wow-offset="150" data-wow-delay="0.2s" style="font-size: 16px">
+          <!--<p  class="wow fadeInUp" data-wow-offset="150" data-wow-delay="0.2s" style="font-size: 16px">
             @if($idioma == 'es')
               Garden Hotel es un hotel 4 estrellas, ubicado en el distrito de San Isidro, en la ciudad de la Lima, Perú.<br>
               Nuestras confortables habitaciones, coordial serivicio  y exelente ubicación aseguran el éxito en su viaje.
@@ -61,30 +63,30 @@
               Garden Hotel is a 4 stars hotel, located in the district of San Isidro, in the city of Lima, Peru. <br>
               Our comfortable rooms, coordinated service and excellent location ensure success in your trip.
             @endif
-          </p><br><br>
+          </p>-->
         </div>
         <div class="col-md-3 wow fadeInUp " data-wow-offset="150" data-wow-delay="0.2s">
           <div class="inlineflex">
             <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-            <p style="font-size: 13px;">@if($idioma == 'es')  Wifi alta velocidad @else High speed Wifi @endif</p>
+            <p style="font-size: 16px;">@if($idioma == 'es')  Wifi alta velocidad @else High speed Wifi @endif</p>
           </div>
         </div>
         <div class="col-md-3 wow fadeInUp " data-wow-offset="150" data-wow-delay="0.2s" >
           <div class="inlineflex">
             <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-            <p style="font-size: 13px;">Bussiness Center</p>
+            <p style="font-size: 16px;">Bussiness Center</p>
           </div>
         </div>
         <div class="col-md-3 wow fadeInUp " data-wow-offset="150" data-wow-delay="0.2s" >
           <div class="inlineflex">
             <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-            <p style="font-size: 13px;">@if($idioma == 'es') Estacionamiento @else Parking @endif</p>
+            <p style="font-size: 16px;">@if($idioma == 'es') Estacionamiento @else Parking @endif</p>
           </div>
         </div>
         <div class="col-md-3 wow fadeInUp " data-wow-offset="150" data-wow-delay="0.2s" >
           <div class="inlineflex">
             <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-            <p style="font-size: 13px;">@if($idioma == 'es') Sala de Conferencia @else Conference Hall @endif</p>
+            <p style="font-size: 16px;">@if($idioma == 'es') Sala de Conferencia @else Conference Hall @endif</p>
           </div>
         </div>
       </div>
