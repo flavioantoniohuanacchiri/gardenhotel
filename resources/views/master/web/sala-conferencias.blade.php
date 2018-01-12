@@ -3,7 +3,7 @@
   <div class="right_col" role="main">
 
     <h1 class="text-uppercase">Sala de Conferencias</h1>
-
+    @include('master.web-partials._section-data')
     @include('master.web-partials._banner-table')
 
   </div>

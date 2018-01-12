@@ -5,6 +5,8 @@
   <meta name="keywords" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="title" content="{{$titulo}}">
+  <meta name="description" content="{{$desc}}">
   <link href="./images/garden.ico" rel="shortcut icon" />
   <link href="{{ asset('css/font-awesome-4.7.0/css/font-awesome.min.css')}}" rel="stylesheet">
   <link href="{{ asset('css-front/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all">
@@ -15,7 +17,7 @@
   <style>
     .ubicacion-header p{
       margin: 0px;
-      font-size: 14px;
+      font-size: 1px;
       padding-left: 10px;
     }
     .footer-p p {
@@ -27,6 +29,11 @@
     }
     .footer-p img {
       display: inline-block;
+    }
+    .desayuno p{
+      font-size: 10px;
+      color: white;
+      line-height: 1.2;
     }
   </style>
 </head>

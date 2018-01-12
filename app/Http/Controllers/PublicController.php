@@ -3,11 +3,14 @@
 use Illuminate\Http\Request;
 use App\WebBanner as WebBannerModel;
 use App\Section as SectionModel;
+use App\SectionContent as SectionContentModel;
 
 class PublicController extends Controller
 {
     public $header;
     public $footer;
+    public $titulo_head;
+    public $desc_head;
     public function __construct()
     {
       $header = SectionModel::where('section', 1)->first();
@@ -20,7 +23,17 @@ class PublicController extends Controller
       $paths = ['es'=> '', 'en' => 'home/en'];
       $banners_inicio = WebBannerModel::where([['section_id', '=', 0], ['estado', '=', 1]])->orderBy("orden", "asc")->get();
       $centros = WebBannerModel::where([['section_id', '=', 5], ['estado', '=', 1]])->orderBy('orden', 'asc')->get();
-      return view('master-front.index')->with(['banners' => $banners_inicio, 'centros' => $centros, 'idioma' => $lang, 'paths' => $paths, 'header' => $this->header, 'footer' => $this->footer]);
+      $section_content = SectionContentModel::where('section_id', 0)->first();
+      $titulo_head = ($lang == 'es') ? $section_content->titulo: $section_content->titulo_en;
+      $desc_head = ($lang == 'es') ? $section_content->descripcion: $section_content->descripcion_en;
+      return view('master-front.index')->with(['banners' => $banners_inicio,
+                                               'centros' => $centros,
+                                               'idioma' => $lang,
+                                               'paths' => $paths,
+                                               'titulo' => $titulo_head,
+                                               'desc' => $desc_head,
+                                               'header' => $this->header,
+                                               'footer' => $this->footer]);
     }
 
     public function hotel($lang = 'es'){
@@ -29,7 +42,16 @@ class PublicController extends Controller
       foreach ($banners_hotel as $banner) {
         $banner['lists'] =  $this->getLists($banner, $lang);
       }
-      return view('master-front.hotel')->with(['banners' => $banners_hotel, 'idioma' => $lang, 'paths' => $paths, 'header' => $this->header, 'footer' => $this->footer]);
+      $section_content = SectionContentModel::where('section_id', 0)->first();
+      $titulo_head = ($lang == 'es') ? $section_content->titulo: $section_content->titulo_en;
+      $desc_head = ($lang == 'es') ? $section_content->descripcion: $section_content->descripcion_en;
+      return view('master-front.hotel')->with(['banners' => $banners_hotel,
+                              'idioma' => $lang,
+                              'paths' => $paths,
+                              'titulo' => $titulo_head,
+                              'desc' => $desc_head,
+                              'header' => $this->header,
+                              'footer' => $this->footer]);
     }
 
     public function habitaciones($lang = 'es'){
@@ -38,7 +60,13 @@ class PublicController extends Controller
       foreach ($banners as $banner) {
         $banner['lists'] =  $this->getLists($banner, $lang);
       }
-      return view('master-front.habitaciones')->with(['banners' => $banners, 'idioma' => $lang, 'paths' => $paths, 'header' => $this->header, 'footer' => $this->footer]);
+      $section_content = SectionContentModel::where('section_id', 2)->first();
+      $titulo_head = ($lang == 'es') ? $section_content->titulo: $section_content->titulo_en;
+      $desc_head = ($lang == 'es') ? $section_content->descripcion: $section_content->descripcion_en;
+      $desc_desayuno = ($lang == 'es') ? $section_content->desayuno_desc: $section_content->desayuno_desc_en;
+      $precio_simple = $section_content->habitacion_simple_precio;
+      $precio_doble = $section_content->habitacion_doble_precio;
+      return view('master-front.habitaciones')->with(['banners' => $banners, 'idioma' => $lang, 'paths' => $paths, 'header' => $this->header, 'footer' => $this->footer, 'desc' => $desc_head, 'titulo' =>$titulo_head, 'precio_doble' =>$precio_doble, 'precio_simple'=>$precio_simple, 'desc_desayuno'=>$desc_desayuno]);
     }
 
     public function sala_conferencias($lang = 'es'){
@@ -47,20 +75,44 @@ class PublicController extends Controller
       foreach ($banners as $banner) {
         $banner['lists'] =  $this->getLists($banner, $lang);
       }
-      return view('master-front.sala-conferencias')->with(['banners' => $banners, 'idioma' => $lang, 'paths' => $paths, 'header' => $this->header, 'footer' => $this->footer]);
+      $desc_head  = '';
+      $titulo_head ='';
+      $section_content = SectionContentModel::where('section_id', 4)->first();
+      if ($section_content){
+        $titulo_head = ($lang == 'es') ? $section_content->titulo: $section_content->titulo_en;
+        $desc_head = ($lang == 'es') ? $section_content->descripcion: $section_content->descripcion_en;
+      }
+
+      return view('master-front.sala-conferencias')->with(['banners' => $banners, 'idioma' => $lang, 'paths' => $paths, 'header' => $this->header, 'footer' => $this->footer, 'desc' => $desc_head, 'titulo' =>$titulo_head]);
     }
 
     public function ofertas($lang = 'es'){
       $ofertas = WebBannerModel::where([['section_id', '=', 3], ['estado', '=', 1]])->orderBy('orden', 'asc')->get();
       $clases = ['one', 'two', 'three', 'four'];
       $paths = ['es'=> 'ofertas', 'en' => 'offers/en'];
-      return view('master-front.ofertas')->with(['ofertas' => $ofertas, 'clases' => $clases, 'idioma' => $lang, 'paths' => $paths, 'header' => $this->header, 'footer' => $this->footer]);
+      $desc_head  = '';
+      $titulo_head ='';
+      $section_content = SectionContentModel::where('section_id', 3)->first();
+      if ($section_content){
+        $titulo_head = ($lang == 'es') ? $section_content->titulo: $section_content->titulo_en;
+        $desc_head = ($lang == 'es') ? $section_content->descripcion: $section_content->descripcion_en;
+      }
+
+      return view('master-front.ofertas')->with(['ofertas' => $ofertas, 'clases' => $clases, 'idioma' => $lang, 'paths' => $paths, 'header' => $this->header, 'footer' => $this->footer, 'desc' => $desc_head, 'titulo' =>$titulo_head]);
     }
 
     public function ubicacion($lang = 'es'){
       $centros = WebBannerModel::where([['section_id', '=', 5], ['estado', '=', 1]])->orderBy('orden', 'asc')->get();
       $paths = ['es'=> 'ubicacion', 'en' => 'location/en'];
-      return view('master-front.ubicaciones')->with(['centros' => $centros, 'idioma' => $lang, 'paths' => $paths, 'header' => $this->header, 'footer' => $this->footer]);
+      $titulo_head  = '';
+      $desc_head  = '';
+      $section_content = SectionContentModel::where('section_id', 5)->first();
+      if ($section_content){
+        $titulo_head = ($lang == 'es') ? $section_content->titulo: $section_content->titulo_en;
+        $desc_head = ($lang == 'es') ? $section_content->descripcion: $section_content->descripcion_en;
+      }
+
+      return view('master-front.ubicaciones')->with(['centros' => $centros, 'idioma' => $lang, 'paths' => $paths, 'header' => $this->header, 'footer' => $this->footer, 'desc' => $desc_head, 'titulo' =>$titulo_head]);
     }
 
     public function getLists($banner, $idioma){

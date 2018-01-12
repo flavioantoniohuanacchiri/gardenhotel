@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response as Response;
 use App\WebBanner as WebbannerModel;
+use App\SectionContent as SectionContentModel;
 use Illuminate\Support\Facades\Storage as Storage;
 
 class WebController extends Controller
@@ -156,6 +157,19 @@ class WebController extends Controller
     } else {
       return $sizes= array('w' => $original_w, 'h' => $original_h);
     }
+  }
+
+  public function guardarseccion(Request $request) {
+    SectionContentModel::updateOrCreate(['section_id' => $request->section_id], $request->all());
+    return Response::json([
+      'msj' => 'Se actualizaron los datos con éxito',
+      'estado' => 1
+    ]);
+  }
+
+  public function mostrarseccion($section_id) {
+    $section = SectionContentModel::where('section_id', $section_id)->first();
+    return $section;
   }
 
 }

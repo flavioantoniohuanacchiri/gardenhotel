@@ -152,6 +152,53 @@ var  WebItem = {
             error: function(){
             }
         });
+    },
+
+    GuardarSeccion: function (data) {
+        $('.loading').show();
+        $.ajax({
+            url: 'web/guardarseccion',
+            type: 'POST',
+            contentType: false,
+            cache: false,
+            processData: false,
+            data: data,
+            success: function (data) {
+                if (data.estado === 1) {
+                    toastr.info(data.msj);
+                } else {
+                    toastr.error(data.msj);
+                }
+                $('.loading').hide();
+            },
+            error: function(){
+                $('.loading').hide();
+            }
+        });
+    },
+
+    MostrarSeccion: function (section_id) {
+        $.ajax({
+            url: 'web/mostrarseccion/' + section_id,
+            type: 'GET',
+            contentType: false,
+            cache: false,
+            success: function (data) {
+                console.log(data.titulo, $('#titulo_head'));
+                let desayuno_desc = CKEDITOR.instances.ckeditor_desayuno_desc;
+                let desayuno_desc_en = CKEDITOR.instances.ckeditor_desayuno_desc_en;
+                desayuno_desc.setData(data.desayuno_desc);
+                desayuno_desc_en.setData(data.desayuno_desc_en);
+                $('#titulo_head').val(data.titulo);
+                $('#tituto_head_en').val(data.titulo_en);
+                $('#habitacion_doble_precio').val(data.habitacion_doble_precio);
+                $('#habitacion_simple_precio').val(data.habitacion_simple_precio);
+                $('#descripcion_head').val(data.descripcion);
+                $('#descripcion_head_en').val(data.descripcion_en);
+            },
+            error: function(){
+            }
+        });
     }
 
 

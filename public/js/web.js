@@ -5,7 +5,14 @@ $(document).ready(function () {
     $('#section-form').submit( function (ev) {
         ev.preventDefault();
     });
-
+    if (section != 2) {
+       $('.ckeditor_desayuno_desc_d').hide();
+       $('.ckeditor_desayuno_desc_en_d').hide();
+       $('.habitacion_simple_precio_d').hide();
+       $('.habitacion_doble_precio_d').hide();
+    }
+    CargarCkeditor();
+    WebItem.MostrarSeccion(section);
     $('#banner-form').submit( function (ev) {
         ev.preventDefault();
         //
@@ -22,14 +29,13 @@ $(document).ready(function () {
             formData.append('descripcion', descripcion);
             formData.append('descripcion_en', descripcion_en);
         }
-
-
         if (id !== undefined && id !==  '') {
             WebItem.Guardar('web/' + id, formData, section);
         } else {
             formData.delete('_method');
             WebItem.Guardar('web', formData, section);
         }
+
     })
 });
 
@@ -68,3 +74,29 @@ $(document).on('click', '.cambiarestado-item', function () {
     let id_cambiar = $(this).data('id');
     WebItem.CambiarEstado(id_cambiar, located);
 });
+
+$('#section-form').submit(function (ev) {
+    ev.preventDefault();
+    llenarForm();
+});
+
+function llenarForm(){
+    let formData = new FormData($('#section-form')[0]);
+    let desayuno_desc = CKEDITOR.instances.ckeditor_desayuno_desc;
+    let desayuno_desc_en = CKEDITOR.instances.ckeditor_desayuno_desc_en;
+    desayuno_desc_en = desayuno_desc_en.getData();
+    desayuno_desc = desayuno_desc.getData();
+    formData.append('desayuno_desc', desayuno_desc);
+    formData.append('desayuno_desc_en', desayuno_desc_en);
+    formData.append('section_id', located);
+    WebItem.GuardarSeccion(formData);
+}
+
+function CargarCkeditor() {
+    CKEDITOR.replace( 'ckeditor_desayuno_desc', {
+        height: 60
+    });
+    CKEDITOR.replace( 'ckeditor_desayuno_desc_en', {
+        height: 60
+    });
+}

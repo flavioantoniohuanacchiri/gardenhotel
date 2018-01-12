@@ -61,7 +61,7 @@
             </div>
             <div class="txt-hab color-white">
               <p class="mg-0 inlineflex">HABITACIÓN&nbsp;<strong> SIMPLE</strong></p>
-              <span class="txt-light">90.00 <strong>USD</strong></span>
+              <span class="txt-light">{{$precio_simple}} <strong>USD</strong></span>
             </div>
           </div>
         </div>
@@ -72,20 +72,17 @@
             </div>
             <div class="txt-hab color-white">
               <p class="mg-0 inlineflex">HABITACIÓN&nbsp;<strong> DOBLE</strong></p>
-              <span class="txt-light">95.00 <strong>USD</strong></span>
+              <span class="txt-light">{{$precio_doble}} <strong>USD</strong></span>
             </div>
           </div>
         </div>
         <div class="col-md-5 col-sm-12 space pd-left wow fadeInRight" data-wow-delay="0.2s">
           <div class="stick-left"></div>
-          <div class="pd-18">
+          <div class="pd-18 desayuno">
             <img class="icon-cafe" src="./imgs-front/icons/taza-cafe.svg">
             <span style="font-size: 15px;letter-spacing: 1px;"><strong class="txt-light">Los precios incluyen desayuno buffet</strong></span>
             <hr>
-            <p class="txt-price mg-0">
-              Los precios no incluyen I.G.V. Las personas no residentes en
-              Perú están exoneradas de I.G.V. mostrando su tarjeta de migraciones.
-            </p>
+            {!! $desc_desayuno !!}
           </div>
           <div class="stick-right"></div>
         </div>

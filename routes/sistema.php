@@ -38,6 +38,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
   Route::get('section-cabecera', 'SectionController@mostrarSeccion');
   Route::get('section-pie', 'SectionController@mostrarSeccion');
   Route::post('section/guardar', 'SectionController@guardar');
+  Route::post('web/guardarseccion', 'WebController@guardarseccion');
+  Route::get('web/mostrarseccion/{section_id}', 'WebController@mostrarseccion');
   Route::resource('web', 'WebController');
   Route::resource('section', 'SectionController');
 

@@ -34,7 +34,7 @@ class CreateWebBannersTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down() //php artisan migrate:rest
     {
       Schema::dropIfExists('web_banners');
     }
