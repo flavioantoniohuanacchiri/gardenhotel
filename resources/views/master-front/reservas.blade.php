@@ -77,7 +77,7 @@
       </div>
     </div>
   </section>
-  <section id="ubicacion">
+  <section id="ubicacion" style="padding-top: 10px">
     <div class="container">
       <div class="col-md-8 col-sm-6">
         <figure class="figure-resev" style="background: url('../imgs-front/img-resrvas.jpg'); height: 398px; width: 100%; display: block; background-size: cover;">
