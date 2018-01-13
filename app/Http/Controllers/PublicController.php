@@ -42,7 +42,7 @@ class PublicController extends Controller
       foreach ($banners_hotel as $banner) {
         $banner['lists'] =  $this->getLists($banner, $lang);
       }
-      $section_content = SectionContentModel::where('section_id', 0)->first();
+      $section_content = SectionContentModel::where('section_id', 1)->first();
       $titulo_head = ($lang == 'es') ? $section_content->titulo: $section_content->titulo_en;
       $desc_head = ($lang == 'es') ? $section_content->descripcion: $section_content->descripcion_en;
       return view('master-front.hotel')->with(['banners' => $banners_hotel,
