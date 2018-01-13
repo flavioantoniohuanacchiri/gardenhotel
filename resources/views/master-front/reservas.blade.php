@@ -63,7 +63,7 @@
       </a>
     </div>
   </section>
-  <section id="ubicacion">
+  <section id="ubicacion" style="padding-top: 50px">
     <div class="container">
       <div class="sectio-title text-center">
         <h2 class="mg-0 color-green wow fadeInUp " data-wow-offset="150" data-wow-delay="0.2s">
