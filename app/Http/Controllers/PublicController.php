@@ -66,7 +66,16 @@ class PublicController extends Controller
       $desc_desayuno = ($lang == 'es') ? $section_content->desayuno_desc: $section_content->desayuno_desc_en;
       $precio_simple = $section_content->habitacion_simple_precio;
       $precio_doble = $section_content->habitacion_doble_precio;
-      return view('master-front.habitaciones')->with(['banners' => $banners, 'idioma' => $lang, 'paths' => $paths, 'header' => $this->header, 'footer' => $this->footer, 'desc' => $desc_head, 'titulo' =>$titulo_head, 'precio_doble' =>$precio_doble, 'precio_simple'=>$precio_simple, 'desc_desayuno'=>$desc_desayuno]);
+      return view('master-front.habitaciones')->with(['banners' => $banners,
+                                                      'idioma' => $lang,
+                                                      'paths' => $paths,
+                                                      'header' => $this->header,
+                                                      'footer' => $this->footer,
+                                                      'desc' => $desc_head,
+                                                      'titulo' =>$titulo_head,
+                                                      'precio_doble' =>$precio_doble,
+                                                      'precio_simple'=>$precio_simple,
+                                                      'desc_desayuno'=>$desc_desayuno]);
     }
 
     public function sala_conferencias($lang = 'es'){
@@ -83,7 +92,13 @@ class PublicController extends Controller
         $desc_head = ($lang == 'es') ? $section_content->descripcion: $section_content->descripcion_en;
       }
 
-      return view('master-front.sala-conferencias')->with(['banners' => $banners, 'idioma' => $lang, 'paths' => $paths, 'header' => $this->header, 'footer' => $this->footer, 'desc' => $desc_head, 'titulo' =>$titulo_head]);
+      return view('master-front.sala-conferencias')->with(['banners' => $banners,
+                                                           'idioma' => $lang,
+                                                           'paths' => $paths,
+                                                           'header' => $this->header,
+                                                           'footer' => $this->footer,
+                                                           'desc' => $desc_head,
+                                                           'titulo' =>$titulo_head]);
     }
 
     public function ofertas($lang = 'es'){
@@ -98,7 +113,14 @@ class PublicController extends Controller
         $desc_head = ($lang == 'es') ? $section_content->descripcion: $section_content->descripcion_en;
       }
 
-      return view('master-front.ofertas')->with(['ofertas' => $ofertas, 'clases' => $clases, 'idioma' => $lang, 'paths' => $paths, 'header' => $this->header, 'footer' => $this->footer, 'desc' => $desc_head, 'titulo' =>$titulo_head]);
+      return view('master-front.ofertas')->with(['ofertas' => $ofertas,
+                                                 'clases' => $clases,
+                                                 'idioma' => $lang,
+                                                 'paths' => $paths,
+                                                 'header' => $this->header,
+                                                 'footer' => $this->footer,
+                                                 'desc' => $desc_head,
+                                                 'titulo' =>$titulo_head]);
     }
 
     public function ubicacion($lang = 'es'){
@@ -112,7 +134,13 @@ class PublicController extends Controller
         $desc_head = ($lang == 'es') ? $section_content->descripcion: $section_content->descripcion_en;
       }
 
-      return view('master-front.ubicaciones')->with(['centros' => $centros, 'idioma' => $lang, 'paths' => $paths, 'header' => $this->header, 'footer' => $this->footer, 'desc' => $desc_head, 'titulo' =>$titulo_head]);
+      return view('master-front.ubicaciones')->with(['centros' => $centros,
+                                                     'idioma' => $lang,
+                                                     'paths' => $paths,
+                                                     'header' => $this->header,
+                                                     'footer' => $this->footer,
+                                                     'desc' => $desc_head,
+                                                     'titulo' =>$titulo_head]);
     }
 
     public function getLists($banner, $idioma){

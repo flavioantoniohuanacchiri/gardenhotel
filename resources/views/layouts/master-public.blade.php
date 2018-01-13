@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Garden Hotel</title>
+  <title>{{$titulo}}</title>
   <meta name="keywords" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="title" content="{{$titulo}}">
   <meta name="description" content="{{$desc}}">
   <link href="./images/garden.ico" rel="shortcut icon" />
   <link href="{{ asset('css/font-awesome-4.7.0/css/font-awesome.min.css')}}" rel="stylesheet">
