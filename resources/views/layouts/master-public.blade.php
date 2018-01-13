@@ -16,7 +16,7 @@
   <style>
     .ubicacion-header p{
       margin: 0px;
-      font-size: 1px;
+      font-size: 12px;
       padding-left: 10px;
     }
     .footer-p p {
