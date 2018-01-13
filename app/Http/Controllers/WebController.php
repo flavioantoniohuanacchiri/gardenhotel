@@ -44,6 +44,11 @@ class WebController extends Controller
     return view('master.web.centro-financiero');
   }
 
+  public function ubicacion()
+  {
+    return view('master.web.ubicacion');
+  }
+
   public function show($id){
     $banner = WebbannerModel::find($id);
     return $banner;

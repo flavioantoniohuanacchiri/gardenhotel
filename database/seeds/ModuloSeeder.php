@@ -75,6 +75,7 @@ class ModuloSeeder extends Seeder
       DB::table('modulo')->insert(['id' => 64, 'class_icon' => '' ,'nombre' => 'Centro Finaciero', 'url' => 'admin/section-centrofinanciero', 'parent' => 58, 'visible' => 1, 'orden' =>0, 'estado' =>1, 'created_at' => 43079.8617361111]);
       DB::table('modulo')->insert(['id' => 65, 'class_icon' => '' ,'nombre' => 'Cabecera', 'url' => 'admin/section-cabecera', 'parent' => 58, 'visible' => 1, 'orden' =>0, 'estado' =>1, 'created_at' => 43079.8617361111]);
       DB::table('modulo')->insert(['id' => 66, 'class_icon' => '' ,'nombre' => 'Pie de Página', 'url' => 'admin/section-pie', 'parent' => 58, 'visible' => 1, 'orden' =>0, 'estado' =>1, 'created_at' => 43079.8617361111]);
+
     }
 
 }

@@ -128,7 +128,7 @@ class PublicController extends Controller
       $paths = ['es'=> 'ubicacion', 'en' => 'location/en'];
       $titulo_head  = '';
       $desc_head  = '';
-      $section_content = SectionContentModel::where('section_id', 5)->first();
+      $section_content = SectionContentModel::where('section_id', 6)->first();
       if ($section_content){
         $titulo_head = ($lang == 'es') ? $section_content->titulo: $section_content->titulo_en;
         $desc_head = ($lang == 'es') ? $section_content->descripcion: $section_content->descripcion_en;
