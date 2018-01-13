@@ -31,7 +31,7 @@ class WebController extends Controller
   }
   public function ofertas()
   {
-    return view('master.web.ofertas');
+    return view('master.web.reservas');
   }
 
   public function salaconferencias()

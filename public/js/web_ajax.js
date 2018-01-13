@@ -49,7 +49,7 @@ var  WebItem = {
                     autoWidth: true,
                     responsive: true
                 });
-                if (section === 5) {
+                if (section === 5 || section == 7) {
                     let column_descripcion  = table.DataTable().column(2);
                     column_descripcion.visible( false);
                     let column_descripcion_en = table.DataTable().column(3);

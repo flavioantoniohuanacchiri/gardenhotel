@@ -38,7 +38,7 @@
               </label>
               <textarea name="" id="ckeditor_text_en" name="descripcion_en"  style="display: block; width: 100%"></textarea>
             </div>
-          @elseif( explode("-", Request::url())[1] == 'centrofinanciero' )
+          @elseif( explode("-", Request::url())[1] == 'centrofinanciero' || explode("-", Request::url())[1] == 'ofertas' )
           @else
             <div class="col-lg-10 form-group">
               <label for="">

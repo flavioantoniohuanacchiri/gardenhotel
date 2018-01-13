@@ -22,6 +22,8 @@ Route::get('ubicacion', 'PublicController@ubicacion');
 Route::get('location/{lang}', 'PublicController@ubicacion');
 Route::get('ofertas', 'PublicController@ofertas');
 Route::get('offers/{lang}', 'PublicController@ofertas');
+Route::get('reservas', 'PublicController@reservas');
+Route::get('reservations/{lang}', 'PublicController@reservas');
 //login view
 Route::get('admin', 'Auth\LoginController@loginView');
 Auth::routes();

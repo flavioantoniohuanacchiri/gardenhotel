@@ -2,13 +2,21 @@
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Datos de la sección</h2>
+        <h2>Datos de la sección
+          <ul class="nav navbar-right panel_toolbox" style="margin-left: 10px; margin-top: -6px; ">
+            <li>
+              <a class="collapse-link"><i class="fa fa-chevron-up" style="font-size: 18px"></i></a>
+            </li>
+          </ul>
+        </h2>
         <div class="clearfix"></div>
       </div>
-      <div class="x_content col-lg-12">
+
+      <div class="x_content col-lg-12" style="display: none">
         <form action="" id="section-form">
           <div class="col-lg-12">
-            <button type="submit" class="btn btn-primary pull-right">Guardar datos sección</button>
+            <button type="submit" class="btn btn-primary pull-right" style="margin-right: 10px">Guardar datos sección</button>
+
           </div>
           <div class="col-lg-6 form-group">
             <label for="">

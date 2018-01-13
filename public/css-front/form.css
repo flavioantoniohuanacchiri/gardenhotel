@@ -1,0 +1,57 @@
+form.fbqs {
+  width: 400px;
+  margin: 40px auto;
+  padding: 40px;
+  background: #f5f5f5; }
+  form.fbqs .field {
+    margin-bottom: 5px;
+    display: block; }
+    form.fbqs .field:after {
+      visibility: hidden;
+      display: block;
+      font-size: 0;
+      content: " ";
+      clear: both;
+      height: 0; }
+    form.fbqs .field label {
+      line-height: 30px;
+      display: inline-block; }
+    form.fbqs .field input[type=text],
+    form.fbqs .field select {
+      height: 30px;
+      line-height: 30px;
+      border: 1px solid #ddd; }
+    form.fbqs .field.dates select {
+      width: 30%;
+      margin-right: 4%;
+      text-indent: 5px; }
+      form.fbqs .field.dates select:last-child {
+        float: right;
+        margin-right: 0; }
+  form.fbqs .field:not(.dates) label {
+    padding-right: 10px; }
+  form.fbqs .field:not(.dates) label,
+  form.fbqs .field:not(.dates) select,
+  form.fbqs .field:not(.dates) input[type=text] {
+    width: 50%;
+    float: left; }
+  form.fbqs .field:not(.dates) select,
+  form.fbqs .field:not(.dates) input[type=text] {
+    text-align: right;
+    padding-right: 20px; }
+  form.fbqs input.submit {
+    display: inline-block;
+    background: #091e3b;
+    color: #fff;
+    border: none;
+    margin-top: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: block;
+    margin-bottom: 10px;
+    width: 100%; }
+  form.fbqs a.cancel {
+    text-align: center;
+    display: block; }
+
+/*# sourceMappingURL=form.css.map */

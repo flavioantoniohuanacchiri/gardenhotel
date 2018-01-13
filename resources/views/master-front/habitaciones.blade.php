@@ -57,7 +57,7 @@
         <div class="col-md-2 col-sm-12 wow fadeInLeft" data-wow-delay="0.2s">
           <div class="content-hab">
             <div class="box-green">
-              <img class="icon-hab" src="./imgs-front/icons/cama2.svg">
+              <img class="icon-hab" src="{{ asset('imgs-front/icons/cama2.svg')}}">
             </div>
             <div class="txt-hab color-white">
               <p class="mg-0 inlineflex">HABITACIÓN&nbsp;<strong> SIMPLE</strong></p>
@@ -68,7 +68,7 @@
         <div class="col-md-2 col-sm-12 wow fadeInLeft" data-wow-delay="0.2s">
           <div class="content-hab">
             <div class="box-green">
-              <img class="icon-hab" src="./imgs-front/icons/cama1.svg">
+              <img class="icon-hab" src="{{ asset('imgs-front/icons/cama1.svg')}}">
             </div>
             <div class="txt-hab color-white">
               <p class="mg-0 inlineflex">HABITACIÓN&nbsp;<strong> DOBLE</strong></p>
@@ -79,7 +79,7 @@
         <div class="col-md-5 col-sm-12 space pd-left wow fadeInRight" data-wow-delay="0.2s">
           <div class="stick-left"></div>
           <div class="pd-18 desayuno">
-            <img class="icon-cafe" src="./imgs-front/icons/taza-cafe.svg">
+            <img class="icon-cafe" src="{{ asset('imgs-front/icons/taza-cafe.svg')}}">
             <span style="font-size: 15px;letter-spacing: 1px;"><strong class="txt-light">Los precios incluyen desayuno buffet</strong></span>
             <hr>
             {!! $desc_desayuno !!}
@@ -88,7 +88,7 @@
         </div>
         <div class="col-md-3 col-sm-12 wow fadeInRight" data-wow-delay="0.2s">
           <div class="inlineflex sis-reserva">
-            <img class="icon-reserva" src="./imgs-front/icons/lapiz.svg">
+            <img class="icon-reserva" src="{{ asset('imgs-front/icons/lapiz.svg')}}">
             <a href="#" class="btn btn-success">
               &nbsp;&nbsp;&nbsp;SISTEMA DE RESERVAS
             </a>

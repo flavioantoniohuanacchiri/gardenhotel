@@ -34,6 +34,10 @@
       color: white;
       line-height: 1.2;
     }
+    form.fbqs {
+      margin-top: 0px !important;
+      padding: 15px 30px
+    }
   </style>
 </head>
 <body>
@@ -99,11 +103,13 @@
           <ul class="nav-hover nav navbar-nav navbar-right">
             @if ($idioma == 'es')
               <li><a href="{{url('/sala-conferencias')}}">SALA DE CONFERENCIA</a></li>
-              <li><a href="{{url('/ofertas')}}">OFERTAS  </a></li>
+              {{--<li><a href="{{url('/ofertas')}}">OFERTAS  </a></li>--}}
+              <li><a href="{{url('/reservas')}}">RESERVAS </a></li>
               <li><a href="{{url('/ubicacion')}}">UBICACIÓN </a></li>
             @else
               <li><a href="{{url('/conferencehall/en')}}">CONFERENCE HALL</a></li>
-              <li><a href="{{url('/offers/en')}}">OFFERS  </a></li>
+              {{--<li><a href="{{url('/offers/en')}}">OFFERS  </a></li>--}}
+              <li><a href="{{url('/reservas')}}">RESERVATIONS </a></li>
               <li><a href="{{url('/location/en')}}">FIND US </a></li>
             @endif
           </ul>

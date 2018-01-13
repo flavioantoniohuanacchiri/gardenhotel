@@ -102,6 +102,7 @@ class PublicController extends Controller
     }
 
     public function ofertas($lang = 'es'){
+      //section_id = 3 ofertas
       $ofertas = WebBannerModel::where([['section_id', '=', 3], ['estado', '=', 1]])->orderBy('orden', 'asc')->get();
       $clases = ['one', 'two', 'three', 'four'];
       $paths = ['es'=> 'ofertas', 'en' => 'offers/en'];
@@ -122,12 +123,35 @@ class PublicController extends Controller
                                                  'desc' => $desc_head,
                                                  'titulo' =>$titulo_head]);
     }
+    public function reservas($lang = 'es'){
+      //section_id = 7 reservas
+      $reservas = WebBannerModel::where([['section_id', '=', 7], ['estado', '=', 1]])->orderBy('orden', 'asc')->get();
+      $clases = ['one', 'two', 'three', 'four'];
+      $paths = ['es'=> 'reservaciones', 'en' => 'reservations/en'];
+      $desc_head  = '';
+      $titulo_head ='';
+      $section_content = SectionContentModel::where('section_id', 7)->first();
+      if ($section_content){
+        $titulo_head = ($lang == 'es') ? $section_content->titulo: $section_content->titulo_en;
+        $desc_head = ($lang == 'es') ? $section_content->descripcion: $section_content->descripcion_en;
+      }
+
+      return view('master-front.reservas')->with(['banners' => $reservas,
+                                                'clases' => $clases,
+                                                'idioma' => $lang,
+                                                'paths' => $paths,
+                                                'header' => $this->header,
+                                                'footer' => $this->footer,
+                                                'desc' => $desc_head,
+                                                'titulo' =>$titulo_head]);
+    }
 
     public function ubicacion($lang = 'es'){
       $centros = WebBannerModel::where([['section_id', '=', 5], ['estado', '=', 1]])->orderBy('orden', 'asc')->get();
       $paths = ['es'=> 'ubicacion', 'en' => 'location/en'];
       $titulo_head  = '';
       $desc_head  = '';
+      //section_id = 6 ubicacion
       $section_content = SectionContentModel::where('section_id', 6)->first();
       if ($section_content){
         $titulo_head = ($lang == 'es') ? $section_content->titulo: $section_content->titulo_en;
