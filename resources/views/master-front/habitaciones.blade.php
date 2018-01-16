@@ -96,7 +96,7 @@
         </div>
         <div class="col-sm-12" style="margin-left: 30px">
           <span style="color: white">CHECK IN 13:00</span>
-          <span style="color: white">CHECK OUT 12:00</span>
+          <span style="color: white; padding-left: 20px">CHECK OUT 12:00</span>
         </div>
       </div>
     </div>
