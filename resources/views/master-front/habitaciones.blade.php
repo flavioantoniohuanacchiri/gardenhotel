@@ -89,10 +89,14 @@
         <div class="col-md-3 col-sm-12 wow fadeInRight" data-wow-delay="0.2s">
           <div class="inlineflex sis-reserva">
             <img class="icon-reserva" src="{{ asset('imgs-front/icons/lapiz.svg')}}">
-            <a href="#" class="btn btn-success">
+            <a href="{{url('reservas') }}" class="btn btn-success">
               &nbsp;&nbsp;&nbsp;SISTEMA DE RESERVAS
             </a>
           </div>
+        </div>
+        <div class="col-sm-12" style="margin-left: 30px">
+          <span style="color: white">CHECK IN 13:00</span>
+          <span style="color: white">CHECK OUT 12:00</span>
         </div>
       </div>
     </div>

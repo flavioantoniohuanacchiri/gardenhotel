@@ -45,8 +45,8 @@
     <div id="carousel-example-habitaciones" class="carousel slide" data-ride="carousel">
       <!-- Wrapper for slides -->
       <div class="carousel-inner">
-        @foreach($banners as $banner)
-        <div class="item active">
+        @foreach($banners as $key => $banner)
+        <div  @if($key === 0) class="item active" @else class="item" @endif >
           <img src="{{ asset($banner->path_imagen)}}" alt="Los Angeles">
         </div>
         @endforeach

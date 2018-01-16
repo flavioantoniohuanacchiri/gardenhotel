@@ -10,8 +10,9 @@ $(document).ready(function () {
        $('.ckeditor_desayuno_desc_en_d').hide();
        $('.habitacion_simple_precio_d').hide();
        $('.habitacion_doble_precio_d').hide();
+    } else {
+        CargarCkeditor();
     }
-    CargarCkeditor();
     WebItem.MostrarSeccion(section);
     $('#banner-form').submit( function (ev) {
         ev.preventDefault();
@@ -21,7 +22,7 @@ $(document).ready(function () {
         formData.append('file', file_data);
         formData.append('section_id', section);
 
-        if ( $('#ckeditor_text')[0]  !== undefined &&  $('#ckeditor_text')[0]) {
+        if (section == 1 || section == 2 || section == 4 ) {
             let descripcion = CKEDITOR.instances.ckeditor_text;
             let descripcion_en = CKEDITOR.instances.ckeditor_text_en;
             descripcion = descripcion.getData();
@@ -82,21 +83,25 @@ $('#section-form').submit(function (ev) {
 
 function llenarForm(){
     let formData = new FormData($('#section-form')[0]);
-    let desayuno_desc = CKEDITOR.instances.ckeditor_desayuno_desc;
-    let desayuno_desc_en = CKEDITOR.instances.ckeditor_desayuno_desc_en;
-    desayuno_desc_en = desayuno_desc_en.getData();
-    desayuno_desc = desayuno_desc.getData();
-    formData.append('desayuno_desc', desayuno_desc);
-    formData.append('desayuno_desc_en', desayuno_desc_en);
+    if (located == 2) {
+        let desayuno_desc = CKEDITOR.instances.ckeditor_desayuno_desc;
+        let desayuno_desc_en = CKEDITOR.instances.ckeditor_desayuno_desc_en;
+        desayuno_desc_en = desayuno_desc_en.getData();
+        desayuno_desc = desayuno_desc.getData();
+        formData.append('desayuno_desc', desayuno_desc);
+        formData.append('desayuno_desc_en', desayuno_desc_en);
+    }
     formData.append('section_id', located);
     WebItem.GuardarSeccion(formData);
 }
 
 function CargarCkeditor() {
-    CKEDITOR.replace( 'ckeditor_desayuno_desc', {
-        height: 60
-    });
-    CKEDITOR.replace( 'ckeditor_desayuno_desc_en', {
-        height: 60
-    });
+    if (located == 2) {
+        CKEDITOR.replace( 'ckeditor_desayuno_desc', {
+            height: 60
+        });
+        CKEDITOR.replace( 'ckeditor_desayuno_desc_en', {
+            height: 60
+        });
+    }
 }

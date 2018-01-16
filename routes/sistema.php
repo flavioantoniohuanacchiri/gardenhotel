@@ -35,6 +35,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
   Route::get('section-hotel', 'WebController@hotel');
   Route::get('section-habitaciones', 'WebController@habitaciones');
   Route::get('section-ofertas', 'WebController@ofertas');
+  Route::get('section-reservas', 'WebController@reservas');
   Route::get('section-salaconferencias', 'WebController@salaconferencias');
   Route::get('section-centrofinanciero', 'WebController@centrofinanciero');
   Route::get('section-ubicacion', 'WebController@ubicacion');

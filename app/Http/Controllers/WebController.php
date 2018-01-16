@@ -29,7 +29,7 @@ class WebController extends Controller
   {
     return view('master.web.habitaciones');
   }
-  public function ofertas()
+  public function reservas()
   {
     return view('master.web.reservas');
   }

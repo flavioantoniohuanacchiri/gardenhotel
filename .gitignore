@@ -10,3 +10,4 @@ Homestead.json
 composer.lock
 .idea
 /storage
+/public/uploads

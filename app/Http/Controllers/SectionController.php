@@ -20,7 +20,7 @@ class SectionController extends Controller
      */
     public function guardar(Request $request){
       //return $request->all();
-      SectionModel::updateOrCreate(['section_id' => $request->section], $request->all());
+      SectionModel::updateOrCreate(['section' => $request->section], $request->all());
       return Response::json([
         'mensaje' => 'Se actualizaron los datos con éxito',
         'estado' => 1

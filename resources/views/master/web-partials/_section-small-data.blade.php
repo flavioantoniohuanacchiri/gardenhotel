@@ -28,7 +28,7 @@
             </label>
             <textarea type="text" class="form-control" id="ckeditor_telefono" name="ckeditor_telefono"></textarea>
           </div>
-          <div class="col-lg-9 form-group telefono">
+          <div class="col-lg-9 form-group email">
             <label for="">
               Correo Electrónico:
             </label>

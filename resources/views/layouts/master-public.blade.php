@@ -109,7 +109,7 @@
             @else
               <li><a href="{{url('/conferencehall/en')}}">CONFERENCE HALL</a></li>
               {{--<li><a href="{{url('/offers/en')}}">OFFERS  </a></li>--}}
-              <li><a href="{{url('/reservas')}}">RESERVATIONS </a></li>
+              <li><a href="{{url('/reservations/en')}}">RESERVATIONS </a></li>
               <li><a href="{{url('/location/en')}}">FIND US </a></li>
             @endif
           </ul>

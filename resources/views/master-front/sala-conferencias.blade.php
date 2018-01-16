@@ -60,6 +60,6 @@
   <script>
       var located = 4;
   </script>
-  <script src="js-front/slick.js"></script>
-  <script src="js-front/bootstrap.min.js"></script>
+  <script src={{ asset('js-front/slick.js') }}></script>
+  <script src={{ asset('js-front/bootstrap.min.js') }}></script>
 @endpush

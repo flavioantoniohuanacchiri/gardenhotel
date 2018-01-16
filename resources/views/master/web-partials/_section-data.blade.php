@@ -54,7 +54,6 @@
             </label>
             <input type="number" name="habitacion_doble_precio" id="habitacion_doble_precio" class="form-control">
           </div>
-
           <div class="col-lg-6 form-group ckeditor_desayuno_desc_d">
             <label for="">
               Desayuno descripción

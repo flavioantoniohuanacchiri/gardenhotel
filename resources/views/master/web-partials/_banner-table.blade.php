@@ -18,15 +18,15 @@
 
           <table class="table table-striped table-bordered dt-responsive" id="banner-table"  cellspacing="0" width="100%">
             <thead>
-            <tr>
-              <th>Título</th>
-              <th>Título (en)</th>
-              <th>Descripción</th>
-              <th>Descripción (en)</th>
-              <th>Estado</th>
-              <th style="display: block !important; text-align: center">[]</th>
-              <th style="display: block !important; text-align: center">[]</th>
-            </tr>
+              <tr>
+                <th>Título</th>
+                <th>Título (en)</th>
+                <th>Descripción</th>
+                <th>Descripción (en)</th>
+                <th>Estado</th>
+                <th style="display: block !important; text-align: center">[]</th>
+                <th style="display: block !important; text-align: center">[]</th>
+              </tr>
             </thead>
           </table>
 

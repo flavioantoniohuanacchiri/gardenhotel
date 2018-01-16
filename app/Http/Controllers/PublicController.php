@@ -127,7 +127,7 @@ class PublicController extends Controller
       //section_id = 7 reservas
       $reservas = WebBannerModel::where([['section_id', '=', 7], ['estado', '=', 1]])->orderBy('orden', 'asc')->get();
       $clases = ['one', 'two', 'three', 'four'];
-      $paths = ['es'=> 'reservaciones', 'en' => 'reservations/en'];
+      $paths = ['es'=> 'reservas', 'en' => 'reservations/en'];
       $desc_head  = '';
       $titulo_head ='';
       $section_content = SectionContentModel::where('section_id', 7)->first();

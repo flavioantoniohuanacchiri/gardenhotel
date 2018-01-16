@@ -101,7 +101,7 @@ var  WebItem = {
                 $('#titulo_en').val(data.titulo_en);
                 $('#img').css('background-image', 'url(../'+ data.path_imagen + ')');
                 $('#orden').val(data.orden);
-                if ( $('#ckeditor_text')[0]  !== undefined &&  $('#ckeditor_text')[0]) {
+               if ( data.section_id == 1 || data.section_id == 4 || data.section_id == 2) {
                     let descripcion = CKEDITOR.instances.ckeditor_text;
                     let descripcion_en = CKEDITOR.instances.ckeditor_text_en;
                     descripcion.setData(data.descripcion);
@@ -184,11 +184,12 @@ var  WebItem = {
             contentType: false,
             cache: false,
             success: function (data) {
-                console.log(data.titulo, $('#titulo_head'));
                 let desayuno_desc = CKEDITOR.instances.ckeditor_desayuno_desc;
                 let desayuno_desc_en = CKEDITOR.instances.ckeditor_desayuno_desc_en;
-                desayuno_desc.setData(data.desayuno_desc);
-                desayuno_desc_en.setData(data.desayuno_desc_en);
+                if(section_id == 2) {
+                    desayuno_desc.setData(data.desayuno_desc);
+                    desayuno_desc_en.setData(data.desayuno_desc_en);
+                }
                 $('#titulo_head').val(data.titulo);
                 $('#tituto_head_en').val(data.titulo_en);
                 $('#habitacion_doble_precio').val(data.habitacion_doble_precio);

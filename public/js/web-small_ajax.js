@@ -38,11 +38,14 @@ var  WebSection = {
                 let ubicacion = CKEDITOR.instances.ckeditor_ubicacion;
                 let ubicacion_en = CKEDITOR.instances.ckeditor_ubicacion_en;
                 let telefono = CKEDITOR.instances.ckeditor_telefono;
-                let email = CKEDITOR.instances.ckeditor_email;
                 ubicacion.setData(data.ubicacion);
                 ubicacion_en.setData(data.ubicacion_en);
                 telefono.setData(data.telefono);
-                email.setData(data.email);
+                if (section == 2) {
+                    let email = CKEDITOR.instances.ckeditor_email;
+                    email.setData(data.email);
+                }
+
 
             },
             error: function(data){
