@@ -107,7 +107,7 @@
               <li><a href="{{url('/reservas')}}">RESERVAS </a></li>
               <li><a href="{{url('/ubicacion')}}">UBICACIÓN </a></li>
             @else
-              <li><a href="{{url('/conferencehall/en')}}">CONFERENCE HALL</a></li>
+              <li><a href="{{url('/conferencehall/en')}}">MEETING ROOM</a></li>
               {{--<li><a href="{{url('/offers/en')}}">OFFERS  </a></li>--}}
               <li><a href="{{url('/reservations/en')}}">RESERVATIONS </a></li>
               <li><a href="{{url('/location/en')}}">FIND US </a></li>

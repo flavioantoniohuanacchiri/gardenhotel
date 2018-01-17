@@ -42,7 +42,7 @@
               @if($idioma == 'es')
                 OFRECEMOS CALIDAD
               @else
-                WE OFFER QUALITY
+                WE OFFER QUALITY SERVICES
               @endif
             </h2>
             <img src="{{ asset('imgs-front/marco-centro.png') }}">
@@ -51,7 +51,7 @@
               @if($idioma == 'es')
                 Nuestra privilegiada ubicación, confort y tarifas corporativas aseguran el éxito de su viaje.
               @else
-                Our privileged location, comfort and corporate rates ensure the success of your trip.
+                Our privileged location, comfort and corporate rates warrant the success of your trip.
               @endif
             </p>
           </div>
@@ -86,7 +86,7 @@
         <div class="col-md-3 wow fadeInUp " data-wow-offset="150" data-wow-delay="0.2s" >
           <div class="inlineflex">
             <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-            <p style="font-size: 16px;">@if($idioma == 'es') Sala de Conferencia @else Conference Hall @endif</p>
+            <p style="font-size: 16px;">@if($idioma == 'es') Sala de Conferencia @else Meeting Room @endif</p>
           </div>
         </div>
       </div>
@@ -105,20 +105,21 @@
               <div class="green-dark"><img class="img-dark" src="{{ asset('imgs-front/icons/hotel.svg') }}"></div><br><span class="title-service">HOTEL</span>
             </div>
             <div class="overflow">
-              <div class="img-box1 img-zoom" style="background-image:url('../imgs-front/calidad/habitaciones.jpg')"></div>
+              <div class="img-box img-zoom" style="background-image:url('../imgs-front/calidad/hotel.jpg')"></div>
             </div>
           </div>
           <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="150" style="padding: 0px">
             <div class="green-light">
-              <div class="green-dark"><img class="img-dark" src="{{ asset('imgs-front/icons/cama1.svg') }}"></div><br><span class="title-service">HABITACIONES</span>
+              <div class="green-dark"><img class="img-dark" src="{{ asset('imgs-front/icons/cama1.svg') }}"></div><br><span class="title-service">@if($idioma == 'es') HABITACIONES @else ROOMS @endif</span>
             </div>
             <div class="overflow">
-              <div class="img-box img-zoom" style="background-image:url('../imgs-front/calidad/hotel.jpg')"></div>
+              <div class="img-box1 img-zoom" style="background-image:url('../imgs-front/calidad/habitaciones.jpg')"></div>
             </div>
+            
           </div>
           <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="150" style="padding: 0px">
             <div class="green-light">
-              <div class="green-dark"><img class="img-dark" src="{{ asset('imgs-front/icons/sala-de-conferencias.svg') }}"></div><br><span class="title-service">SALA DE CONFERENCIA</span>
+              <div class="green-dark"><img class="img-dark" src="{{ asset('imgs-front/icons/sala-de-conferencias.svg') }}"></div><br><span class="title-service">@if($idioma == 'es') SALA DE CONFERENCIA @else MEETING ROOM @endif</span>
             </div>
             <div class="overflow">
               <div class="img-box2 img-zoom" style="background-image:url('../imgs-front/calidad/auditrorio.jpg')"></div>
@@ -141,10 +142,10 @@
       <div class="container" style="padding: 0px">
         <div class="row">
           <p class="wow fadeInUp" data-wow-offset="150" style="font-size: 16px">
-            @if($idioma == 'es') Estamos ubicados en el @else  Find us in @endif
+            @if($idioma == 'es') Estamos ubicados en el @else  We are located @endif
           </p>
           <h2 class="mg-0 color-green wow fadeInUp " data-wow-offset="150" data-wow-delay="0.2s">
-            @if($idioma == 'es') CENTRO FINANCIERO @else BUSSINESS CENTER @endif
+            @if($idioma == 'es') CENTRO FINANCIERO @else FINANCIAL CENTER @endif
           </h2>
           <img src="{{ asset('imgs-front/marco-centro.png') }}">
         </div>
@@ -155,8 +156,8 @@
               Garden Hotel está ubicado en la zona donde se realizan los más importantes eventos<br>
               a nivel internacional y cerca de los centros comerciales
               @else
-                Garden Hotel is located in the area where the most important events are held<br>
-                internationally and near the shopping centers and other important places
+                At near the most importants and prestigious<br>
+                international events and the Shopping Centers in Lima
               @endif
             </p>
           </div>
