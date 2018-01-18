@@ -12,11 +12,11 @@
         <img class="fadeInUp mt-30" data-wow-offset="150" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;" src="{{ asset('imgs-front/marco-centro.png') }}">
         <p class="wow fadeInUp mt-30" data-wow-offset="150" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp; font-size: 16px">
           @if ($idioma == 'es') Somos una exelente opción en su viaje y negocios @else
-            We are an excellent option in your trip and business @endif
+            We are an excellent option in your trip of business @endif
         </p>
         <h5 class="color-green mt-30 wow fadeInUp " data-wow-offset="150" data-wow-delay="0.2s">
           @if ($idioma == 'es')  LA INMEJORABLE UBICACIÓN DEL GARDEN HOTEL LE PERMITE ACCESO A: @else
-            THE UNIQUE LOCATION OF THE GARDEN HOTEL ALLOWS YOU ACCESS TO: @endif
+            THE  LOCATION OF THE GARDEN HOTEL ALLOWS YOU ACCESS TO: @endif
         </h5>
       </div>
     </div>

@@ -89,7 +89,7 @@
         <div class="col-md-3 col-sm-12 wow fadeInRight" data-wow-delay="0.2s">
           <div class="inlineflex sis-reserva">
             <img class="icon-reserva" src="{{ asset('imgs-front/icons/lapiz.svg')}}">
-            <a href="{{url('reservas') }}" class="btn btn-success">
+            <a href="{{($idioma == 'es')? url('reservas') : url('reservations/en') }}" class="btn btn-success">
               &nbsp;&nbsp;&nbsp;@if ($idioma == 'es') {{"SISTEMA DE RESERVAS"}} @else {{"BOOKING"}} @endif
             </a>
           </div>
