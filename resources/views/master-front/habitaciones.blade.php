@@ -80,7 +80,7 @@
           <div class="stick-left"></div>
           <div class="pd-18 desayuno">
             <img class="icon-cafe" src="{{ asset('imgs-front/icons/taza-cafe.svg')}}">
-            <span style="font-size: 15px;letter-spacing: 1px;"><strong class="txt-light">Los precios incluyen desayuno buffet</strong></span>
+            <span style="font-size: 15px;letter-spacing: 1px;"><strong class="txt-light">@if ($idioma == 'es') {{"Los precios incluyen desayuno buffet"}} @else {{"Rate incluid Buffet Breakfast"}} @endif</strong></span>
             <hr>
             {!! $desc_desayuno !!}
           </div>
@@ -90,7 +90,7 @@
           <div class="inlineflex sis-reserva">
             <img class="icon-reserva" src="{{ asset('imgs-front/icons/lapiz.svg')}}">
             <a href="{{url('reservas') }}" class="btn btn-success">
-              &nbsp;&nbsp;&nbsp;SISTEMA DE RESERVAS
+              &nbsp;&nbsp;&nbsp;@if ($idioma == 'es') {{"SISTEMA DE RESERVAS"}} @else {{"BOOKING"}} @endif
             </a>
           </div>
         </div>
