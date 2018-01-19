@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="description" content="{{$desc}}">
-  <link href="./images/garden.ico" rel="shortcut icon" />
+  <link href="{{ asset('favicon.ico')}}" rel="shortcut icon" />
   <link href="{{ asset('css/font-awesome-4.7.0/css/font-awesome.min.css')}}" rel="stylesheet">
   <link href="{{ asset('css-front/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all">
   <link href="{{ asset('css-front/animate.css')}}" rel="stylesheet" type="text/css" media="all">
