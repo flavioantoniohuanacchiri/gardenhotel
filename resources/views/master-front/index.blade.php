@@ -74,7 +74,7 @@
         <div class="col-md-3 wow fadeInUp " data-wow-offset="150" data-wow-delay="0.2s" >
           <div class="inlineflex">
             <span class="mr-5"><i class="fa fa-circle i-green-light" aria-hidden="true"></i></span>
-            <p style="font-size: 16px;">Bussiness Center</p>
+            <p style="font-size: 16px;">Business Center</p>
           </div>
         </div>
         <div class="col-md-3 wow fadeInUp " data-wow-offset="150" data-wow-delay="0.2s" >

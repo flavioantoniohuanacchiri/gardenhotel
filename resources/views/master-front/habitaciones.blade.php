@@ -60,7 +60,11 @@
               <img class="icon-hab" src="{{ asset('imgs-front/icons/cama2.svg')}}">
             </div>
             <div class="txt-hab color-white">
-              <p class="mg-0 inlineflex">HABITACIÓN&nbsp;<strong> SIMPLE</strong></p>
+              @if ($idioma == 'es')
+                <p class="mg-0 inlineflex">HABITACIÓN&nbsp;<strong> SIMPLE</strong></p>
+              @else
+                <p class="mg-0 inlineflex">SIMPLE&nbsp;<strong> ROOMS</strong></p>
+              @endif
               <span class="txt-light">{{$precio_simple}} <strong>USD</strong></span>
             </div>
           </div>
@@ -71,7 +75,11 @@
               <img class="icon-hab" src="{{ asset('imgs-front/icons/cama1.svg')}}">
             </div>
             <div class="txt-hab color-white">
-              <p class="mg-0 inlineflex">HABITACIÓN&nbsp;<strong> DOBLE</strong></p>
+              @if ($idioma == 'es')
+                <p class="mg-0 inlineflex">HABITACIÓN&nbsp;<strong> DOBLE</strong></p>
+              @else
+                <p class="mg-0 inlineflex">DOUBLE&nbsp;<strong> ROOMS</strong></p>
+              @endif
               <span class="txt-light">{{$precio_doble}} <strong>USD</strong></span>
             </div>
           </div>

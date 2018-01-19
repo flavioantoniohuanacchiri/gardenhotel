@@ -71,8 +71,8 @@
         </h2>
         <img class="fadeInUp mt-30" data-wow-offset="150" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;" src="{{ asset('imgs-front/marco-centro.png') }}">
         <p class="wow fadeInUp mt-30" data-wow-offset="150" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp; font-size: 16px">
-          @if ($idioma == 'es') Juntos darmeos solución a sus necesidades, no dudeen contactarnos para toda la información @else
-            Thanks for Choosing Us  @endif
+          @if ($idioma == 'es') Gracias por Elegirnos @else
+            Thanks you for Choosing Us  @endif
         </p>
       </div>
     </div>
