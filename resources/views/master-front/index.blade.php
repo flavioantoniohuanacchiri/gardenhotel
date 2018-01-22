@@ -141,9 +141,9 @@
     <div class="text-financiero" >
       <div class="container" style="padding: 0px">
         <div class="row">
-          <p class="wow fadeInUp" data-wow-offset="150" style="font-size: 16px">
+          <!--<p class="wow fadeInUp" data-wow-offset="150" style="font-size: 16px">
             @if($idioma == 'es') Estamos ubicados en el @else  We are located @endif
-          </p>
+          </p>-->
           <h2 class="mg-0 color-green wow fadeInUp " data-wow-offset="150" data-wow-delay="0.2s">
             @if($idioma == 'es') CENTRO FINANCIERO @else FINANCIAL CENTER @endif
           </h2>
