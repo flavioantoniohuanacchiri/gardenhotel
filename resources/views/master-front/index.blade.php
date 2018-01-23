@@ -47,7 +47,7 @@
             </h2>
             <img src="{{ asset('imgs-front/marco-centro.png') }}">
             <br><br>
-            <p class="wow fadeInUp" data-wow-offset="150" style="font-size: 16px">
+            <p class="wow fadeInUp" data-wow-offset="150" style="font-size: 22px; color: #0E5D36">
               @if($idioma == 'es')
                 Nuestra privilegiada ubicación, confort y tarifas corporativas aseguran el éxito de su viaje.
               @else
