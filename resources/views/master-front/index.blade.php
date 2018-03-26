@@ -132,9 +132,7 @@
           <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="150" style="padding: 0px">
             <div class="green-light">
               <div class="green-dark"><img class="img-dark" src="{{ asset('imgs-front/icons/hotel-restaurante.svg') }}"></div><br>
-              <a href="{{$idioma == 'es'? '/hotel/' : '/hotel/en/'}}">
-                <span class="title-service">RESTAURANT</span>
-              </a>
+              <a href="{{$idioma == 'es'? '/hotel/' : '/hotel/en/'}}"><span class="title-service">RESTAURANT</span></a>
             </div>
             <div class="overflow">
               <a href="{{$idioma == 'es'? '/hotel/' : '/hotel/en/'}}">
