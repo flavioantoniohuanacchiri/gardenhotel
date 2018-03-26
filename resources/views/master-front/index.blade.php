@@ -189,7 +189,7 @@
     </div>
   </section>
 <style type="text/css">
-  #grid-img a {display: inherit; color: inherit;}
+  #grid-img a {display: inherit; color: inherit; text-decoration: none;}
 </style>
 @endsection
 @push('scripts')
