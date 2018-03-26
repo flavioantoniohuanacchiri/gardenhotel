@@ -110,27 +110,36 @@
           </div>
           <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="150" style="padding: 0px">
             <div class="green-light">
-              <div class="green-dark"><img class="img-dark" src="{{ asset('imgs-front/icons/cama1.svg') }}"></div><br><span class="title-service">@if($idioma == 'es') HABITACIONES @else ROOMS @endif</span>
+              <div class="green-dark"><img class="img-dark" src="{{ asset('imgs-front/icons/cama1.svg') }}"></div><br><span class="title-service"><a href="{{$idioma == 'es'? '/habitaciones' : '/rooms/en/'}}">@if($idioma == 'es') HABITACIONES @else ROOMS @endif</a></span>
             </div>
             <div class="overflow">
-              <div class="img-box1 img-zoom" style="background-image:url('../imgs-front/calidad/habitaciones.jpg')"></div>
+              <a href="{{$idioma == 'es'? '/habitaciones' : '/rooms/en/'}}">
+                <div class="img-box1 img-zoom" style="background-image:url('../imgs-front/calidad/habitaciones.jpg')"></div>
+              </a>
             </div>
             
           </div>
           <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="150" style="padding: 0px">
             <div class="green-light">
-              <div class="green-dark"><img class="img-dark" src="{{ asset('imgs-front/icons/sala-de-conferencias.svg') }}"></div><br><span class="title-service">@if($idioma == 'es') SALA DE CONFERENCIA @else MEETING ROOM @endif</span>
+              <div class="green-dark"><img class="img-dark" src="{{ asset('imgs-front/icons/sala-de-conferencias.svg') }}"></div><br><span class="title-service"><a href="{{$idioma == 'es'? '/sala-conferencias' : '/conferencehall/en/'}}">@if($idioma == 'es') SALA DE CONFERENCIA @else MEETING ROOM @endif</a></span>
             </div>
             <div class="overflow">
-              <div class="img-box2 img-zoom" style="background-image:url('../imgs-front/calidad/auditrorio.jpg')"></div>
+              <a href="{{$idioma == 'es'? '/sala-conferencias' : '/conferencehall/en/'}}">
+                <div class="img-box2 img-zoom" style="background-image:url('../imgs-front/calidad/auditrorio.jpg')"></div>
+              </a>
             </div>
           </div>
           <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="150" style="padding: 0px">
             <div class="green-light">
-              <div class="green-dark"><img class="img-dark" src="{{ asset('imgs-front/icons/hotel-restaurante.svg') }}"></div><br><span class="title-service">RESTAURANT</span>
+              <div class="green-dark"><img class="img-dark" src="{{ asset('imgs-front/icons/hotel-restaurante.svg') }}"></div><br>
+              <a href="{{$idioma == 'es'? '/hotel/' : '/hotel/en/'}}">
+                <span class="title-service">RESTAURANT</span>
+              </a>
             </div>
             <div class="overflow">
-              <div class="img-box3 img-zoom" style="background-image:url('../imgs-front/calidad/comedor.jpg')"></div>
+              <a href="{{$idioma == 'es'? '/hotel/' : '/hotel/en/'}}">
+                <div class="img-box3 img-zoom" style="background-image:url('../imgs-front/calidad/comedor.jpg')"></div>
+              </a>
             </div>
           </div>
         </div>
