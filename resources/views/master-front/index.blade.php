@@ -102,10 +102,10 @@
         <div class="row">
           <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="150" style="padding: 0px">
             <div class="green-light">
-              <div class="green-dark"><img class="img-dark" src="{{ asset('imgs-front/icons/hotel.svg') }}"></div><br><span class="title-service"><a href="{{$idioma == 'es'? '/hotel' : '/en/hotel/'}}">HOTEL</a></span>
+              <div class="green-dark"><img class="img-dark" src="{{ asset('imgs-front/icons/hotel.svg') }}"></div><br><span class="title-service"><a href="{{$idioma == 'es'? '/hotel' : '/hotel/en/'}}">HOTEL</a></span>
             </div>
             <div class="overflow">
-              <div class="img-box img-zoom" style="background-image:url('../imgs-front/calidad/hotel.jpg')"></div>
+              <a href="{{$idioma == 'es'? '/hotel' : '/hotel/en/'}}"><div class="img-box img-zoom" style="background-image:url('../imgs-front/calidad/hotel.jpg')"></div></a>
             </div>
           </div>
           <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="150" style="padding: 0px">
