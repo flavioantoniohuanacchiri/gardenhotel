@@ -188,6 +188,9 @@
       </div>
     </div>
   </section>
+<style type="text/css">
+  #grid-img a {display: inherit; color: inherit;}
+</style>
 @endsection
 @push('scripts')
   <script src="{{ asset('js-front/bootstrap.min.js') }}"></script>
